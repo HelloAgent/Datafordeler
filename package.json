@@ -21,6 +21,11 @@
   },
   "author": "HelloAgent",
   "license": "ISC",
+  "keywords": [
+    "SDK",
+    "Wrapper",
+    "Datafordeler"
+  ],
   "bugs": {
     "url": "https://github.com/HelloAgent/Datafordeler.git/issues"
   },
