@@ -1,7 +1,7 @@
 {
   "name": "datafordelersdk",
-  "version": "1.0.0",
-  "description": "Wrapper for Datafordeler Api",
+  "version": "0.0.1",
+  "description": "Unofficial SDK for Datafordeler API",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Simon-SDK/Datafordeler.git"
+    "url": "git+https://github.com/HelloAgent/Datafordeler.git"
   },
   "author": "HelloAgent",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Simon-SDK/Datafordeler/issues"
+    "url": "https://github.com/HelloAgent/Datafordeler.git/issues"
   },
-  "homepage": "https://github.com/Simon-SDK/Datafordeler#readme",
+  "homepage": "https://github.com/HelloAgent/Datafordeler.git#readme",
   "devDependencies": {
     "@types/jest": "^26.0.14",
     "@types/node": "^14.11.2",
