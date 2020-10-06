@@ -2,21 +2,41 @@
   "name": "datafordelersdk",
   "version": "1.0.0",
   "description": "Wrapper for Datafordeler Api",
-  "main": "lib/datafordeler.js",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "test"
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Simon-SDK/Datafordeler.git"
   },
-  "author": "",
+  "author": "HelloAgent",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Simon-SDK/Datafordeler/issues"
   },
   "homepage": "https://github.com/Simon-SDK/Datafordeler#readme",
   "devDependencies": {
-    "@types/node": "^14.11.2"
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.2",
+    "@types/node-fetch": "^2.5.7",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.0.3"
+  },
+  "files": [
+    "./lib/**/*"
+  ],
+  "dependencies": {
+    "node-fetch": "^2.6.1"
   }
 }
