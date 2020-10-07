@@ -1,19 +1,14 @@
-import {} from "../../core/types";
-
-interface adresseTilEnhedBfeRequest {
-  adresseId: string;
-}
-interface adresseTilEnhedBfeResponseItem {
-  item: number;
-}
-interface adresseTilEnhedBfeResponse
-  extends Array<adresseTilEnhedBfeResponseItem> {}
+import { Types } from "../sharedTypes";
 
 export type Id = string;
 export type Bygning = string;
 
-export interface getAdresse {
-  Id?: Id;
+type addressId = Types.id_lokalId;
+type husnummerId = Types.id_lokalId;
+type vejId = Types.id_lokalId;
+
+export interface adresseRequest {
+  Id?: addressId;
   VirkningFra?: string;
   VirkningTil?: string;
   Virkningsaktoer?: string;
@@ -37,4 +32,14 @@ export interface getAdresse {
   Syd?: string;
   Oest?: string;
   Vest?: string;
+}
+
+export interface adresseResponse {
+  id_lokalId: addressId;
+  husnummer: {
+    id_lokalId: husnummerId;
+    navngivenVej: {
+      id_lokalId: vejId;
+    };
+  };
 }

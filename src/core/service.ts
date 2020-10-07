@@ -32,7 +32,7 @@ export class Service {
     this.serviceType = serviceType;
   }
 
-  protected async Req<T>(opt: MethodInfo, params: Parameters): Promise<T> {
+  protected async Request<T>(opt: MethodInfo, params: Parameters): Promise<T> {
     let url = this.buildUrl(opt, params);
     let config: fetchRequestInit = {};
 
@@ -46,26 +46,31 @@ export class Service {
       config.agent = this.#agent;
     }
 
-    console.log(url);
     try {
       return fetch(url, config).then((res) => {
         if (res.ok) return res.json();
         if (!res.ok) throw res.statusText;
       });
     } catch (error) {
-      //   /**Some errorhandling*/
+      // Further errorhandling
       throw new Error(error.message);
     }
   }
 
   private validateAgent() {
-    if (!this.#agent) throw new Error("No agent initiated");
+    if (!this.#agent)
+      throw new Error(
+        "No agent initiated. Use the createAgent method on the client or insert an https-agent on client creation"
+      );
     //Further validation
     return true;
   }
 
   private validateAuth(): boolean {
-    if (!this.#username && !this.#password) throw new Error("No auth");
+    if (!this.#username && !this.#password)
+      throw new Error(
+        "This endpoint is protected. You need to insert username and password for your Datafordeler-account."
+      );
     // Further validation
     return true;
   }
@@ -77,20 +82,24 @@ export class Service {
     })}`;
   }
 
-  //QUICK MASHUP, Make pretty
   private buildUrl(opt: MethodInfo, params: Parameters) {
-    let ep = this.getEndpoint(opt.zone);
-    let r = this.register;
-    let version: Version = "1";
-    let serviceType = this.serviceType;
+    const endpoint = this.getEndpoint(opt.zone);
+    const register = this.register;
+    const service = opt.service;
+    const version: Version = "1";
+    const serviceType = this.serviceType;
+    const method = opt.method;
 
-    let paramstring = this.createQueryString(params);
+    const paramstring = this.createQueryString(params);
 
-    let url = `https://${ep}/${r}/${opt.service}/${version}/${serviceType}/${opt.method}?${paramstring}`;
-
-    return url;
+    /**
+     * Example url structure
+     * https://services.datafordeler.dk/DAR/DAR_BFE_Public/1/res/adresse?Id=xxx
+     */
+    return `https://${endpoint}/${register}/${service}/${version}/${serviceType}/${method}?${paramstring}`;
   }
 
+  /** Returns correct endpoint to be used in Request() */
   private getEndpoint(zone: Zone): Endpoint {
     if (zone === "public") return "services.datafordeler.dk";
     if (zone === "public_protected") return "services.datafordeler.dk";
@@ -99,7 +108,9 @@ export class Service {
     throw new Error("Wrong zone entered. Could not parse endpoint");
   }
 
+  /** Takes an object {key: "value"} and creates a url string */
   private createQueryString(parameters: Parameters): string {
+    //Add validation of parameters object before init
     return Object.keys(parameters)
       .map(
         (key) =>
@@ -108,12 +119,3 @@ export class Service {
       .join("&");
   }
 }
-
-// let serviceOrg = {
-//   endpoint: "services.datafordeler.dk",
-//   register: "DAR",
-//   service: "DAR_BFE_Public", //"DAR"
-//   version: "1",
-//   servicetype: "rest",
-//   metode: "adresseTilEnhedBfe",
-// };

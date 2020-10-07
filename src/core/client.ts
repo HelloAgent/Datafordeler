@@ -7,7 +7,9 @@ import { clientInit, certificateOptions } from "./types";
  * Initializes a Datafordeler client that can be configured with credentials
  * that will be passed along to its services when created. Changes to the
  * client will not be passed to services already created.
- * @params username, password and/or an agent (can also create an agent with the helper function)
+ * @param {string} [username] (optional) - username for use with password-protected endpoints
+ * @param {string} [password] (optional) - password for use with password-protected endpoints
+ * @param {Agent} [agent] (optional) - an alreaded created https-agent to be used for protected calls
  */
 export class Client {
   #agent?: Agent;
@@ -22,9 +24,10 @@ export class Client {
 
   /**
    * Create a certificate agent to access secured apis
+   * Required fields are passphrase and certBuffer OR localFileName
    * @param passphrase password for validation of the certifcate
    * @param certBuffer a buffer of the pcks/.p12 certificate
-   * @param localFileName a path to a local file of format .pcks/.p12
+   * @param localFileName full path to a local file of format .pcks/.p12
    * @returns Void
    */
   public createAgent(opt: certificateOptions) {
@@ -46,7 +49,9 @@ export class Client {
   }
 
   /**
-   * Returns a new immutable DAR client.
+   * Create a new DAR client
+   * @params none
+   * @return DAR client
    */
   DAR() {
     return new DAR(this.Auth);

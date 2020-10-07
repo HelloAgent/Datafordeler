@@ -1,6 +1,6 @@
 import { Service } from "../../core/service";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
-import { getAdresse } from "./types";
+import { adresseRequest, adresseResponse } from "./types";
 
 export class DAR extends Service {
   static Register = "DAR";
@@ -12,10 +12,10 @@ export class DAR extends Service {
   /**
    * Get an DAR address object
    * @param {string} [Id] - the dar id for the address
-   * @return Array of address objects
+   * @return {array} Returns array of addresses
    */
-  getAdresse(params: getAdresse) {
-    return this.Req<getResponse[]>(DAR.Methods.adresse, params);
+  async getAdresse(params: adresseRequest): Promise<adresseResponse[]> {
+    return await this.Request<adresseResponse[]>(DAR.Methods.adresse, params);
   }
 
   static get Services(): ServiceObject {
@@ -36,20 +36,12 @@ export class DAR extends Service {
   }
 }
 
-interface getResponse {
-  id_lokalId: string;
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
+/**  Experimenting - not in use */
+// interface DarServiceObject extends ServiceObject {
+//   DAR: "DAR";
+//   DAR_BFE_Public: "DAR_BFE_Public";
+// }
 
-// Experimenting - not in use
-interface DarServiceObject extends ServiceObject {
-  DAR: "DAR";
-  DAR_BFE_Public: "DAR_BFE_Public";
-}
-
-interface DarMethodObject extends MethodObject {
-  adresse: { zone: "public"; service: ""; method: "" };
-}
+// interface DarMethodObject extends MethodObject {
+//   adresse: { zone: "public"; service: ""; method: "" };
+// }
