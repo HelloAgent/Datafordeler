@@ -1,6 +1,6 @@
 {
   "name": "datafordelersdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Unofficial SDK for Datafordeler API",
   "main": "index.js",
   "types": "index.d.ts",
@@ -11,7 +11,7 @@
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm test",
-    "version": "npm run format && git add -A src",
+    "version": "git add -A src",
     "postversion": "git push && git push --tags"
   },
   "repository": {
