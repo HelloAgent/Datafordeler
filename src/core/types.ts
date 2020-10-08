@@ -76,7 +76,7 @@ export enum Endpoints {
   CERT5 = "s5-certservices.datafordeler.dk",
 }
 
-export type Register = "DAR" | "BBR";
+export type Register = "DAR" | "BBR" | "system";
 export type Service = string;
 export type Version = "1";
 export type Servicetype = "rest" | "custom";

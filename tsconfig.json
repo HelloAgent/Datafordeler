@@ -6,7 +6,7 @@
     "lib": [
       "ES2020"
     ] /* Specify library files to be included in the compilation. */,
-    
+
     "declaration": true /* Generates corresponding '.d.ts' file. */,
     // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
     // "sourceMap": true,                     /* Generates corresponding '.map' file. */
