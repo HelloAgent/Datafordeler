@@ -1,6 +1,6 @@
 import { Agent } from "https";
 import { readFileSync } from "fs";
-import { DAR } from "../services/all";
+import { DAR, Haendelser } from "../services/all";
 import { clientInit, certificateOptions } from "./types";
 
 /**
@@ -55,5 +55,14 @@ export class Client {
    */
   DAR() {
     return new DAR(this.Auth);
+  }
+
+  /**
+   * Create a new Events client
+   * @params none
+   * @return Event client
+   */
+  Events() {
+    return new Haendelser(this.Auth);
   }
 }
