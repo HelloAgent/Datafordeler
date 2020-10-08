@@ -19,17 +19,20 @@ export class Service {
   #password?: string;
   private register: Register;
   private serviceType: Servicetype;
+  private version: Version;
 
   constructor(
     config: clientInit,
     register: Register,
-    serviceType: Servicetype
+    serviceType: Servicetype,
+    version?: Version
   ) {
     this.#username = config?.username || "";
     this.#password = config?.password || "";
     this.#agent = config?.agent;
     this.register = register;
     this.serviceType = serviceType;
+    this.version = version || "1";
   }
 
   protected async Request<T>(opt: MethodInfo, params: Parameters): Promise<T> {
@@ -41,7 +44,7 @@ export class Service {
       url = this.addAuthToUrl(url);
     }
 
-    if (opt.zone === ("cert0" || "cert5")) {
+    if (opt.zone === "cert0" || "cert5") {
       this.validateAgent();
       config.agent = this.#agent;
     }
@@ -86,7 +89,7 @@ export class Service {
     const endpoint = this.getEndpoint(opt.zone);
     const register = this.register;
     const service = opt.service;
-    const version: Version = "1";
+    const version = this.version; // Version = "1";
     const serviceType = this.serviceType;
     const method = opt.method;
 

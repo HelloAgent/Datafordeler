@@ -78,7 +78,7 @@ export enum Endpoints {
 
 export type Register = "DAR" | "BBR" | "system";
 export type Service = string;
-export type Version = "1";
+export type Version = "1" | "1.0.0";
 export type Servicetype = "rest" | "custom";
 export type Metode = string;
 export type Parameters = { [k: string]: any };

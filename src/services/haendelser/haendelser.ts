@@ -6,7 +6,7 @@ export class Haendelser extends Service {
   static Register = "DAR";
 
   constructor(config: clientInit) {
-    super(config, "system", "custom");
+    super(config, "system", "custom", "1.0.0");
   }
 
   /**
