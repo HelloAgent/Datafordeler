@@ -1,13 +1,14 @@
-import { Types } from "../sharedTypes";
+// import { Types } from "../sharedTypes";
+//<endpoint>/system/EventMessages/1.0.0/custom?datefrom=yyyy-mm-ddTHH:mm:ss&dateto=yyyy-mm-ddTHH:mm:ss&username=xxxx&password=yyyy.
 
-export interface eventRequest {
+export interface Request {
   datefrom: string;
   dateto: string;
   page?: number;
   pagesize?: number;
 }
 
-export interface eventResponse extends Array<Message> {}
+export type Response = Message[];
 
 interface Message {
   Id: number; //123456789
@@ -52,15 +53,16 @@ interface Message {
             dannelsestidspunkt: string; //"2020-09-29T07:46:57.0134940+02:00";
             transaktionsID: string; //uuid;
             kildesystem: string; //"http://data.gov.dk/id/itsystem/basicdata#uuid";
-            sikkerhedsklassificering: "http://data.gov.dk/vocabulary/security/confidentiality#Confidential";
+            sikkerhedsklassificering: string; //"http://data.gov.dk/vocabulary/security/confidentiality#Confidential";
           };
         };
         Beskeddata: [
           {
-            Objektdata: {
+            Objektdata?: {
               entityType: string;
-              attributes: { [k: string]: string };
+              attributes: { [k: string]: string | number };
             };
+            Objektreference?: unknown;
           }
         ];
       };

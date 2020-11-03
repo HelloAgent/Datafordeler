@@ -1,8 +1,6 @@
 import { Service } from "../../core/service";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
-import { adresseRequest, adresseResponse, adresse,  } from "./types";
-
-let v: adresse.request = {}
+import { adresseRequest, adresseResponse, adresse } from "./types";
 
 export class DAR extends Service {
   static Register = "DAR";
