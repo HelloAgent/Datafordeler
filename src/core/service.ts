@@ -44,7 +44,7 @@ export class Service {
       url = this.addAuthToUrl(url);
     }
 
-    if (opt.zone === "cert0" || "cert5") {
+    if (opt.zone === "cert0" || opt.zone === "cert5") {
       this.validateAgent();
       config.agent = this.#agent;
     }

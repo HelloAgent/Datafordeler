@@ -7,6 +7,13 @@ type addressId = Types.id_lokalId;
 type husnummerId = Types.id_lokalId;
 type vejId = Types.id_lokalId;
 
+export namespace adresse {
+  export interface request {}
+  export interface response {}
+}
+
+
+
 export interface adresseRequest {
   Id?: addressId;
   VirkningFra?: string;

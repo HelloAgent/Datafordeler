@@ -1,8 +1,8 @@
 import { Types } from "../sharedTypes";
 
 export interface eventRequest {
-  datefrom?: string;
-  dateto?: string;
+  datefrom: string;
+  dateto: string;
   page?: number;
   pagesize?: number;
 }

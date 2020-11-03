@@ -14,14 +14,14 @@ export class Haendelser extends Service {
    * @param {string} [Id] - the dar id for the address
    * @return {array} Returns array of addresses
    */
-  async getPublicEvents(params: eventRequest): Promise<eventResponse[]> {
-    return await this.Request<eventResponse[]>(
+  async getPublicEvents(params: eventRequest): Promise<eventResponse> {
+    return await this.Request<eventResponse>(
       Haendelser.Methods.public,
       params
     );
   }
-  async getPrivateEvents(params: eventRequest): Promise<eventResponse[]> {
-    return await this.Request<eventResponse[]>(
+  async getPrivateEvents(params: eventRequest): Promise<eventResponse> {
+    return await this.Request<eventResponse>(
       Haendelser.Methods.protected,
       params
     );

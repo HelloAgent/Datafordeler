@@ -31,6 +31,9 @@ export class Client {
    * @returns Void
    */
   public createAgent(opt: certificateOptions) {
+    // Consider to add keepalive: true to new agent or have it as an option
+    // Consier to add rejectUnauthorized: false to new agent or have it as an option,
+    // Consier to add requestCert: true
     let agent = new Agent({ passphrase: opt.passphrase });
     if (!opt.certBuffer && !opt.localFilePath) {
       throw new Error("buffer or localFilePath needs to be defined");
