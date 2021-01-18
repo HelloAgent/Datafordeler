@@ -15,7 +15,7 @@ export interface beskyttelser {
 
 export interface ejendePerson {
   Person: {
-    Beskyttelser: beskyttelser[];
+    Beskyttelser?: beskyttelser[];
     CprAdresse?: {
       cprKommunekode: string;
       cprKommunenavn: string;
