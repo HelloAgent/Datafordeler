@@ -45,3 +45,8 @@ export class DAR extends Service {
 // interface DarMethodObject extends MethodObject {
 //   adresse: { zone: "public"; service: ""; method: "" };
 // }
+
+
+// import Buffer from "buffer"
+
+

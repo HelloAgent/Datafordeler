@@ -21,12 +21,7 @@ export class Service {
   private serviceType: Servicetype;
   private version: Version;
 
-  constructor(
-    config: clientInit,
-    register: Register,
-    serviceType: Servicetype,
-    version?: Version
-  ) {
+  constructor(config: clientInit, register: Register, serviceType: Servicetype, version?: Version) {
     this.#username = config?.username || "";
     this.#password = config?.password || "";
     this.#agent = config?.agent;
@@ -115,10 +110,7 @@ export class Service {
   private createQueryString(parameters: Parameters): string {
     //Add validation of parameters object before init
     return Object.keys(parameters)
-      .map(
-        (key) =>
-          `${encodeURIComponent(key)}=${encodeURIComponent(parameters[key])}`
-      )
+      .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(parameters[key])}`)
       .join("&");
   }
 }

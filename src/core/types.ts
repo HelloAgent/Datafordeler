@@ -76,21 +76,21 @@ export enum Endpoints {
   CERT5 = "s5-certservices.datafordeler.dk",
 }
 
-export type Register = "DAR" | "BBR" | "system";
+export type Register = "DAR" | "BBR" | "EJERFORTEGNELSE" | "system";
 export type Service = string;
 export type Version = "1" | "1.0.0";
 export type Servicetype = "rest" | "custom";
 export type Metode = string;
 export type Parameters = { [k: string]: any };
 
-let _temp_url_structure_ = {
-  endpoint: "services.datafordeler.dk",
-  register: "DAR",
-  service: "DAR_BFE_Public", //"DAR"
-  version: "1",
-  servicetype: "rest",
-  metode: "adresseTilEnhedBfe",
-};
+// let _temp_url_structure_ = {
+//   endpoint: "services.datafordeler.dk",
+//   register: "DAR",
+//   service: "DAR_BFE_Public", //"DAR"
+//   version: "1",
+//   servicetype: "rest",
+//   metode: "adresseTilEnhedBfe",
+// };
 
 /**
  *

@@ -1,6 +1,6 @@
 import { Agent } from "https";
 import { readFileSync } from "fs";
-import { DAR, Haendelser } from "../services/all";
+import { EJF, DAR, Haendelser } from "../services/all";
 import { clientInit, certificateOptions } from "./types";
 
 /**
@@ -58,6 +58,10 @@ export class Client {
    */
   DAR() {
     return new DAR(this.Auth);
+  }
+
+  EJF() {
+    return new EJF(this.Auth);
   }
 
   /**
