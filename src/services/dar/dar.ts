@@ -1,11 +1,11 @@
-import { Service } from "../../core/service";
+import { Service } from "../../core";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
 import { adresseRequest, adresseResponse, adresse } from "./types";
 
 export class DAR extends Service {
   static Register = "DAR";
 
-  constructor(config: clientInit) {
+  constructor(config: clientInit = {}) {
     super(config, "DAR", "rest");
   }
 

@@ -14,7 +14,7 @@ describe("Passive test for imports", () => {
   });
 
   test("Dar import", () => {
-    const client = new DAR({});
+    const client = new DAR();
     expect(client).toBeInstanceOf(Service);
   });
 

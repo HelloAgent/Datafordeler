@@ -1,11 +1,11 @@
-import { Service } from "../../core/service";
+import { Service } from "../../core/";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
 import { ejerskabMedStamoplysningerRequest, ejerskabMedStamoplysningerResponse } from "./types";
 
 export class EJF extends Service {
   static Register = "EJERFORTEGNELSE";
 
-  constructor(config: clientInit) {
+  constructor(config: clientInit = {}) {
     super(config, "EJERFORTEGNELSE", "rest");
   }
 

@@ -1,4 +1,4 @@
-export * from "./dar/dar";
-export * from "./ejf/ejf"
-export * from "./haendelser/haendelser";
+export * from "./dar/Dar";
+export * from "./ejf/Ejf"
+export * from "./haendelser/Haendelser";
 export * from "./sharedTypes"

@@ -21,7 +21,12 @@ export class Service {
   private serviceType: Servicetype;
   private version: Version;
 
-  constructor(config: clientInit, register: Register, serviceType: Servicetype, version?: Version) {
+  constructor(
+    config: clientInit = {},
+    register: Register,
+    serviceType: Servicetype,
+    version?: Version
+  ) {
     this.#username = config?.username || "";
     this.#password = config?.password || "";
     this.#agent = config?.agent;
@@ -103,7 +108,7 @@ export class Service {
     if (zone === "public_protected") return "services.datafordeler.dk";
     if (zone === "cert0") return "certservices.datafordeler.dk";
     if (zone === "cert5") return "s5-certservices.datafordeler.dk";
-    throw new Error("Wrong zone entered. Could not parse endpoint");
+    throw new Error("Wrong zone, could not parse a correct endpoint");
   }
 
   /** Takes an object {key: "value"} and creates a url string */

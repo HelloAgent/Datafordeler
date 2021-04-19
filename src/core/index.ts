@@ -1,2 +1,3 @@
-export * from "./client";
-export * from "./service";
+//Service should be exported first to avoid conflicts
+export * from "./Service";
+export * from "./Client";
