@@ -45,7 +45,7 @@ export class Service {
     }
 
     if (opt.zone === "cert0" || opt.zone === "cert5") {
-      this.validateAgent();
+      this.validateAgent(opt.zone);
       config.agent = this.#agent;
     }
 
@@ -60,10 +60,10 @@ export class Service {
     }
   }
 
-  private validateAgent() {
+  private validateAgent(zone: string) {
     if (!this.#agent)
       throw new Error(
-        "No agent initiated. Use the createAgent method on the client or insert an https-agent on client creation"
+        `This endpoint is proctected (zone ${zone}) and no agent/certificate was initiated.\nUse the createAgent method on the client or insert an https-agent on client creation.`
       );
     //Further validation
     return true;
