@@ -19,12 +19,12 @@ describe("Passive test for imports", () => {
   });
 
   test("EJF import", () => {
-    const client = new EJF({});
+    const client = new EJF();
     expect(client).toBeInstanceOf(Service);
   });
 
   test("Haendelser import", () => {
-    const client = new Haendelser({});
+    const client = new Haendelser({ username: "user", password: "pass" });
     expect(client).toBeInstanceOf(Service);
   });
 });
