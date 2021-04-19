@@ -1,6 +1,6 @@
 import { Agent } from "https";
 import { readFileSync } from "fs";
-import { EJF, DAR, Haendelser } from "../services/all";
+import { EJF, DAR, Haendelser } from "../services";
 import { clientInit, certificateOptions } from "./types";
 
 /**

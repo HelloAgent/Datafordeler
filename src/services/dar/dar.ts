@@ -46,7 +46,4 @@ export class DAR extends Service {
 //   adresse: { zone: "public"; service: ""; method: "" };
 // }
 
-
 // import Buffer from "buffer"
-
-

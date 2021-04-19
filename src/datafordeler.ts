@@ -1,6 +1,5 @@
 import { Client as Datafordeler } from "./core/client";
-// Load all service classes
-// require("../lib/services/all");
 
-module.exports = Datafordeler;
+export { DAR, EJF, Haendelser } from "./services";
+export { Datafordeler };
 export default Datafordeler;
