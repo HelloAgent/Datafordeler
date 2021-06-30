@@ -1,8 +1,15 @@
 import { Service } from "../../core/";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
-import { ejerskabMedStamoplysningerRequest, ejerskabMedStamoplysningerResponse } from "./models";
-import { HandelsoplysningerRequest, HandelsoplysningerResponse } from "./models";
-import { EjerskifteRequest, EjerskifteResponse } from "./models";
+import {
+  ejerskabMedStamoplysningerRequest,
+  ejerskabMedStamoplysningerResponse,
+  HandelsoplysningerRequest,
+  HandelsoplysningerResponse,
+  EjerskifteRequest,
+  EjerskifteResponse,
+  EjerskabsskifteRequest,
+  EjerskabsskifteResponse,
+} from "./models";
 
 export class EJF extends Service {
   static Register = "EJERFORTEGNELSE";
@@ -33,6 +40,10 @@ export class EJF extends Service {
     return await this.Request<EjerskifteResponse>(EJF.Methods.Ejerskifte, params);
   }
 
+  async ejerskabsskifte(params: EjerskabsskifteRequest): Promise<EjerskabsskifteResponse> {
+    return await this.Request<EjerskabsskifteResponse>(EJF.Methods.Ejerskabsskifte, params);
+  }
+
   static get Services(): ServiceObject {
     return Object.freeze({
       Ejerfortegnelsen: "Ejerfortegnelsen",
@@ -57,6 +68,11 @@ export class EJF extends Service {
         zone: "cert5",
         service: EJF.Services.Ejerfortegnelsen,
         method: "Ejerskifte",
+      },
+      Ejerskabsskifte: {
+        zone: "cert5",
+        service: EJF.Services.Ejerfortegnelsen,
+        method: "Ejerskabsskifte",
       },
     });
   }
