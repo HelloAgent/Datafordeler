@@ -1,6 +1,7 @@
 import { Service } from "../../core/";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
-import { ejerskabMedStamoplysningerRequest, ejerskabMedStamoplysningerResponse } from "./types";
+import { ejerskabMedStamoplysningerRequest, ejerskabMedStamoplysningerResponse } from "./models";
+import { HandelsoplysningerRequest, HandelsoplysningerResponse } from "./models";
 
 export class EJF extends Service {
   static Register = "EJERFORTEGNELSE";
@@ -23,6 +24,10 @@ export class EJF extends Service {
     );
   }
 
+  async handelsoplysning(params: HandelsoplysningerRequest): Promise<HandelsoplysningerResponse> {
+    return await this.Request<HandelsoplysningerResponse>(EJF.Methods.Handelsoplysninger, params);
+  }
+
   static get Services(): ServiceObject {
     return Object.freeze({
       Ejerfortegnelsen: "Ejerfortegnelsen",
@@ -38,9 +43,16 @@ export class EJF extends Service {
         service: EJF.Services.Ejerfortegnelsen,
         method: "EjerskabMedStamoplysninger",
       },
+      Handelsoplysninger: {
+        zone: "cert5",
+        service: EJF.Services.Ejerfortegnelsen,
+        method: "Handelsoplysning",
+      },
     });
   }
 }
+
+//https://s5-certservices.datafordeler.dk/EJERFORTEGNELSE/Ejerfortegnelsen/1/rest/Handelsoplysning?HandelsOplysningsId=3e0d8e9e-02f0-8147-8040-3ac62410966f
 
 /**  Experimenting - not in use */
 // interface DarServiceObject extends ServiceObject {

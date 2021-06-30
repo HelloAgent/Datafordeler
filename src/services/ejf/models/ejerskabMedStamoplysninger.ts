@@ -1,4 +1,4 @@
-import { Types } from "../sharedTypes";
+import { Types } from "../../sharedTypes";
 
 export interface ejerskabMedStamoplysningerRequest {
   BFEnr?: string;
