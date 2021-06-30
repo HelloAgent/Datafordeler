@@ -1,8 +1,8 @@
 import { Service } from "../../core";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
 import {
-  ejerskabMedStamoplysningerRequest,
-  ejerskabMedStamoplysningerResponse,
+  EjerskabMedStamoplysningerRequest,
+  EjerskabMedStamoplysningerResponse,
   HandelsoplysningerRequest,
   HandelsoplysningerResponse,
   EjerskifteRequest,
@@ -24,9 +24,9 @@ export class EJF extends Service {
    * @return {array} Returns array of addresses
    */
   async ejerskabMedStamoplysninger(
-    params: ejerskabMedStamoplysningerRequest
-  ): Promise<ejerskabMedStamoplysningerResponse> {
-    return await this.Request<ejerskabMedStamoplysningerResponse>(
+    params: EjerskabMedStamoplysningerRequest
+  ): Promise<EjerskabMedStamoplysningerResponse> {
+    return await this.Request<EjerskabMedStamoplysningerResponse>(
       EJF.Methods.EjerskabMedStamoplysninger,
       params
     );

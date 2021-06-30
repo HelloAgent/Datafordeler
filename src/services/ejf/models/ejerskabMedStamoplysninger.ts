@@ -1,21 +1,21 @@
 import { Types } from "../../sharedTypes";
 
-export interface ejerskabMedStamoplysningerRequest {
+export interface EjerskabMedStamoplysningerRequest {
   BFEnr?: string;
   Ejerskabsid?: Types.id_lokalId;
   Virkningstid?: Date;
   Status?: "gældnede" | "tilbagerullet" | "historisk";
 }
 
-export interface beskyttelser {
+export interface Beskyttelser {
   Beskyttelse: {
     beskyttelsestype: string;
   };
 }
 
-export interface ejendePerson {
+export interface EjendePerson {
   Person: {
-    Beskyttelser?: beskyttelser[];
+    Beskyttelser?: Beskyttelser[];
     CprAdresse?: {
       cprKommunekode: string;
       cprKommunenavn: string;
@@ -40,7 +40,7 @@ export interface ejendePerson {
     statusdatoUsikkerhedsmarkering: boolean;
   };
 }
-export interface ejendeVirksomhed {
+export interface EjendeVirksomhed {
   entityType: string;
   attributes: {
     registreringFra: string;
@@ -72,8 +72,8 @@ export interface Ejerskab {
       features: [];
     };
     behandlingsID: string;
-    ejendePerson?: ejendePerson;
-    ejendeVirksomhed?: ejendeVirksomhed;
+    ejendePerson?: EjendePerson;
+    ejendeVirksomhed?: EjendeVirksomhed;
     ejerforholdskode: string;
     ejeroplysninger: {
       type: string;
@@ -97,6 +97,6 @@ export interface Ejerskab {
   type: string;
 }
 
-export interface ejerskabMedStamoplysningerResponse {
+export interface EjerskabMedStamoplysningerResponse {
   features: Ejerskab[];
 }
