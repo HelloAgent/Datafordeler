@@ -36,6 +36,7 @@ export interface Ejerskifte {
     anmeldelsesdato: string;
     overdragelsesmaade: string;
     bestemtFastEjendomBFENr: number;
+    ejerskabsskifte?: string[];
     handelsoplysningerLokalId: string;
   };
   type: "Feature";
