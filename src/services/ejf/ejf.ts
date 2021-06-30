@@ -1,4 +1,4 @@
-import { Service } from "../../core/";
+import { Service } from "../../core";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
 import {
   ejerskabMedStamoplysningerRequest,
