@@ -4,7 +4,7 @@ export interface ejerskabMedStamoplysningerRequest {
   BFEnr?: string;
   Ejerskabsid?: Types.id_lokalId;
   Virkningstid?: Date;
-  Status?: string;
+  Status?: "gældnede" | "tilbagerullet" | "historisk";
 }
 
 export interface beskyttelser {
