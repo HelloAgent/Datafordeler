@@ -39,8 +39,9 @@ export interface Handelsoplysninger {
     kontantKoebesum: number;
     samletKoebesum: number;
     valutakode: string;
-    bygningerOmfattet: null;
-    skoedetekst: string;
+    bygningerOmfattet?: null;
+    skoedetekst?: string;
+    ejerskifte?: string[];
   };
   type: "Feature";
 }
