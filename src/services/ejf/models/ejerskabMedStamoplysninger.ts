@@ -66,39 +66,42 @@ export declare namespace EjerskabMedStamoplysninger {
   }
 
   export interface Ejerskab {
-    properties: {
-      bestemtFastEjendomBFENr: number;
-      administratoroplysninger: {
-        type: string;
-        features: [];
-      };
-      behandlingsID: string;
-      ejendePerson?: EjendePerson;
-      ejendeVirksomhed?: EjendeVirksomhed;
-      ejerforholdskode: string;
-      ejeroplysninger: {
-        type: string;
-        features: [];
-      };
-      ejetFoer01071998: boolean;
-      faktiskEjerandel_naevner: number;
-      faktiskEjerandel_taeller: number;
-      forretningshaendelse: string;
-      forretningsomraade: string;
-      forretningsproces: string;
-      id_lokalId: string;
-      id_namespace: string;
-      primaerKontakt: boolean;
-      registreringFra: string;
-      registreringsaktoer: string;
-      status: string;
-      virkningFra: string;
-      virkningsaktoer: string;
+    bestemtFastEjendomBFENr: number;
+    administratoroplysninger: {
+      type: string;
+      features: [];
     };
-    type: string;
+    behandlingsID: string;
+    ejendePerson?: EjendePerson;
+    ejendeVirksomhed?: EjendeVirksomhed;
+    ejerforholdskode: string;
+    ejeroplysninger: {
+      type: string;
+      features: [];
+    };
+    ejetFoer01071998: boolean;
+    faktiskEjerandel_naevner: number;
+    faktiskEjerandel_taeller: number;
+    forretningshaendelse: string;
+    forretningsomraade: string;
+    forretningsproces: string;
+    id_lokalId: string;
+    id_namespace: string;
+    primaerKontakt: boolean;
+    registreringFra: string;
+    registreringsaktoer: string;
+    status: string;
+    virkningFra: string;
+    virkningsaktoer: string;
+  }
+
+  export interface EjerskabsFeature {
+    properties: Ejerskab;
+    type: "Feature";
   }
 
   export interface Response {
-    features: Ejerskab[];
+    features: EjerskabsFeature[];
+    type: "FeatureCollection";
   }
 }

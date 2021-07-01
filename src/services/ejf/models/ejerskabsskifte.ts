@@ -64,32 +64,34 @@ export declare namespace Ejerskabsskifte {
     | "Opdatering fra Skifte- eller Fogedret";
 
   export interface Ejerskabsskifte {
-    properties: {
-      id_namespace: string;
-      id_lokalId: string;
-      behandlingsID: string;
-      forretningshaendelse: Forretningshaendelse;
-      forretningsomraade: "54.15";
-      forretningsproces: Forretningsproces;
-      status: "gældende" | "tilbagerullet" | "historisk";
-      registreringFra: string;
-      registreringTil: string | null;
-      registreringsaktoer: string;
-      virkningFra: string;
-      virkningTil: string | null;
-      virkningsaktoer: string;
-      afstaaetAndel_taeller: number | null;
-      afstaaetAndel_naevner: number | null;
-      modtagetAndel_taeller: number | null;
-      modtagetAndel_naevner: number | null;
-      modtagendeEjerobjektLokalId: string | null;
-      afgivendeEjerobjektLokalId: string | null;
-    };
+    id_namespace: string;
+    id_lokalId: string;
+    behandlingsID: string;
+    forretningshaendelse: Forretningshaendelse;
+    forretningsomraade: "54.15";
+    forretningsproces: Forretningsproces;
+    status: "gældende" | "tilbagerullet" | "historisk";
+    registreringFra: string;
+    registreringTil: string | null;
+    registreringsaktoer: string;
+    virkningFra: string;
+    virkningTil: string | null;
+    virkningsaktoer: string;
+    afstaaetAndel_taeller: number | null;
+    afstaaetAndel_naevner: number | null;
+    modtagetAndel_taeller: number | null;
+    modtagetAndel_naevner: number | null;
+    modtagendeEjerobjektLokalId: string | null;
+    afgivendeEjerobjektLokalId: string | null;
+  }
+
+  export interface EjerskabsskifteFeature {
+    properties: Ejerskabsskifte;
     type: "Feature";
   }
 
   export interface Response {
-    features: Ejerskabsskifte[];
+    features: EjerskabsskifteFeature[];
     type: "FeatureCollection";
   }
 }

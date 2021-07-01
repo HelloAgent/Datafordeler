@@ -74,37 +74,39 @@ export declare namespace Ejerskifte {
     | "Ikke oplyst";
 
   export interface Ejerskifte {
-    properties: {
-      id_namespace: string;
-      id_lokalId: string;
-      behandlingsID: string;
-      forretningshaendelse: Forretningshaendelse;
-      forretningsomraade: "54.15";
-      forretningsproces: Forretningsproces;
-      status: "gældende" | "tilbagerullet" | "historisk";
-      registreringFra: string;
-      registreringTil: string | null;
-      registreringsaktoer: string;
-      virkningFra: string;
-      virkningTil: string | null;
-      virkningsaktoer: string;
+    id_namespace: string;
+    id_lokalId: string;
+    behandlingsID: string;
+    forretningshaendelse: Forretningshaendelse;
+    forretningsomraade: "54.15";
+    forretningsproces: Forretningsproces;
+    status: "gældende" | "tilbagerullet" | "historisk";
+    registreringFra: string;
+    registreringTil: string | null;
+    registreringsaktoer: string;
+    virkningFra: string;
+    virkningTil: string | null;
+    virkningsaktoer: string;
 
-      betinget: boolean | null;
-      bilagsbankRef?: string[]; //Er angivet i schema men er ikke set nogen steder
-      fristDato: string | null;
-      overtagelsesdato: string;
-      anmeldelsesdato: string | null;
-      anmeldelsesidentifikator: string | null;
-      overdragelsesmaade: Overdragelsesmaade | null;
-      bestemtFastEjendomBFENr: number;
-      ejerskabsskifte: string[];
-      handelsoplysningerLokalId: string | null;
-    };
+    betinget: boolean | null;
+    bilagsbankRef?: string[]; //Er angivet i schema men er ikke set nogen steder
+    fristDato: string | null;
+    overtagelsesdato: string;
+    anmeldelsesdato: string | null;
+    anmeldelsesidentifikator: string | null;
+    overdragelsesmaade: Overdragelsesmaade | null;
+    bestemtFastEjendomBFENr: number;
+    ejerskabsskifte: string[];
+    handelsoplysningerLokalId: string | null;
+  }
+
+  export interface EjerskifteFeature {
+    properties: Ejerskifte;
     type: "Feature";
   }
 
   export interface Response {
-    features: Ejerskifte[];
+    features: EjerskifteFeature[];
     type: "FeatureCollection";
   }
 }

@@ -61,38 +61,40 @@ export declare namespace Handelsoplysninger {
     | "Opdatering fra Skifte- eller Fogedret";
 
   export interface Handelsoplysninger {
-    properties: {
-      id_namespace: string;
-      id_lokalId: string;
-      behandlingsID: string;
-      forretningshaendelse: Forretningshaendelse;
-      forretningsomraade: "54.15";
-      forretningsproces: Forretningsprocess;
-      status: "gældnede" | "tilbagerullet" | "historisk";
-      registreringFra: string;
-      registreringTil: string | null;
-      registreringsaktoer: string;
-      virkningFra: string;
-      virkningTil: string | null;
-      virkningsaktoer: string;
-      afstaaelsesdato: string | null;
-      betalingsforpligtelsesdato: string | null;
-      bygningerOmfattet: string | null;
-      loesoeresum: number | null;
-      samletKoebesum: number | null;
-      skoedetekst: string | null;
-      koebsaftaleDato: string | null;
-      valutakode: string | null;
-      kontantKoebesum: number | null;
-      entreprisesum: number | null;
-      husdyrbesaetningsum: number | null;
-      ejerskifte: string[];
-    };
+    id_namespace: string;
+    id_lokalId: string;
+    behandlingsID: string;
+    forretningshaendelse: Forretningshaendelse;
+    forretningsomraade: "54.15";
+    forretningsproces: Forretningsprocess;
+    status: "gældnede" | "tilbagerullet" | "historisk";
+    registreringFra: string;
+    registreringTil: string | null;
+    registreringsaktoer: string;
+    virkningFra: string;
+    virkningTil: string | null;
+    virkningsaktoer: string;
+    afstaaelsesdato: string | null;
+    betalingsforpligtelsesdato: string | null;
+    bygningerOmfattet: string | null;
+    loesoeresum: number | null;
+    samletKoebesum: number | null;
+    skoedetekst: string | null;
+    koebsaftaleDato: string | null;
+    valutakode: string | null;
+    kontantKoebesum: number | null;
+    entreprisesum: number | null;
+    husdyrbesaetningsum: number | null;
+    ejerskifte: string[];
+  }
+
+  export interface HandelsoplysningerFeature {
+    properties: Handelsoplysninger;
     type: "Feature";
   }
 
   export interface Response {
-    features: Handelsoplysninger[];
+    features: HandelsoplysningerFeature[];
     type: "FeatureCollection";
   }
 }
