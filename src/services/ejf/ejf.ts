@@ -1,14 +1,10 @@
 import { Service } from "../../core";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
 import {
-  EjerskabMedStamoplysningerRequest,
-  EjerskabMedStamoplysningerResponse,
-  HandelsoplysningerRequest,
-  HandelsoplysningerResponse,
-  EjerskifteRequest,
-  EjerskifteResponse,
-  EjerskabsskifteRequest,
-  EjerskabsskifteResponse,
+  EjerskabMedStamoplysninger,
+  Handelsoplysninger,
+  Ejerskifte,
+  Ejerskabsskifte,
 } from "./models";
 
 export class EJF extends Service {
@@ -24,24 +20,24 @@ export class EJF extends Service {
    * @return {array} Returns array of addresses
    */
   async ejerskabMedStamoplysninger(
-    params: EjerskabMedStamoplysningerRequest
-  ): Promise<EjerskabMedStamoplysningerResponse> {
-    return await this.Request<EjerskabMedStamoplysningerResponse>(
+    params: EjerskabMedStamoplysninger.Request
+  ): Promise<EjerskabMedStamoplysninger.Response> {
+    return await this.Request<EjerskabMedStamoplysninger.Response>(
       EJF.Methods.EjerskabMedStamoplysninger,
       params
     );
   }
 
-  async handelsoplysning(params: HandelsoplysningerRequest): Promise<HandelsoplysningerResponse> {
-    return await this.Request<HandelsoplysningerResponse>(EJF.Methods.Handelsoplysninger, params);
+  async handelsoplysning(params: Handelsoplysninger.Request): Promise<Handelsoplysninger.Response> {
+    return await this.Request<Handelsoplysninger.Response>(EJF.Methods.Handelsoplysninger, params);
   }
 
-  async ejerskifte(params: EjerskifteRequest): Promise<EjerskifteResponse> {
-    return await this.Request<EjerskifteResponse>(EJF.Methods.Ejerskifte, params);
+  async ejerskifte(params: Ejerskifte.Request): Promise<Ejerskifte.Response> {
+    return await this.Request<Ejerskifte.Response>(EJF.Methods.Ejerskifte, params);
   }
 
-  async ejerskabsskifte(params: EjerskabsskifteRequest): Promise<EjerskabsskifteResponse> {
-    return await this.Request<EjerskabsskifteResponse>(EJF.Methods.Ejerskabsskifte, params);
+  async ejerskabsskifte(params: Ejerskabsskifte.Request): Promise<Ejerskabsskifte.Response> {
+    return await this.Request<Ejerskabsskifte.Response>(EJF.Methods.Ejerskabsskifte, params);
   }
 
   static get Services(): ServiceObject {
