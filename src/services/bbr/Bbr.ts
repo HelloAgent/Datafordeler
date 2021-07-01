@@ -1,6 +1,8 @@
 import { Service } from "../../core";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
 import {
+  EnhedRequest,
+  EnhedResponse,
   BygningRequest,
   BygningResponse,
   EjendomsrelationRequest,
@@ -20,6 +22,10 @@ export class BBR extends Service {
    * @return {array} Returns array of addresses
    */
 
+  async enhed(params: EnhedRequest): Promise<EnhedResponse> {
+    return await this.Request<EnhedResponse>(BBR.Methods.Enhed, params);
+  }
+
   async bygning(params: BygningRequest): Promise<BygningResponse> {
     return await this.Request<BygningResponse>(BBR.Methods.Bygning, params);
   }
@@ -36,6 +42,11 @@ export class BBR extends Service {
 
   static get Methods(): MethodObject {
     return Object.freeze({
+      Enhed: {
+        zone: "public_protected",
+        service: BBR.Services.BBRPublic,
+        method: "enhed",
+      },
       Bygning: {
         zone: "public_protected",
         service: BBR.Services.BBRPublic,

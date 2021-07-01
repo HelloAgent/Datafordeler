@@ -1,11 +1,11 @@
+//Regex for matching code comments: /\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/
+
+// Make it possible to insert arrays of Id etc. that will be called concacenated like <id123>|<id456>
+
 /**
  * Obligatoriske parametre:
   Et ID på enten Bygning, Grund, Enhed, TekniskAnlæg, BBRSag eller Ejendomsrelation og et interval for enten registreringstid, virkningstid eller DAF opdateringstid.
  */
-
-//Regex for matching code comments: /\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/
-
-// Make it possible to insert arrays of Id etc. that will be called concacenated like <id123>|<id456>
 export interface BygningRequest {
   Id?: string; //can be array!
   VirkningFra?: Date;
