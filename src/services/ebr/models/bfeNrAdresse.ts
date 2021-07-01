@@ -1,7 +1,7 @@
 export declare namespace BFEnrAdresse {
   export interface Request {
-    AdresseId?: string; //string eller list! lokalid UUID for DAR AdresseId
-    HusnummerId?: string; //string eller list! lokalid UUID for DAR AdresseId
+    AdresseId?: string | string[]; //string eller list! lokalid UUID for DAR AdresseId
+    HusnummerId?: string | string[]; //string eller list! lokalid UUID for DAR AdresseId
     Registreringstid?: Date; //default Now
     Virkningstid?: Date; //default Now
     Status?: Status;
