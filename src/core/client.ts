@@ -1,6 +1,6 @@
 import { Agent } from "https";
 import { readFileSync } from "fs";
-import { EJF, DAR, Haendelser } from "../services";
+import { EJF, DAR, BBR, Haendelser } from "../services";
 import { clientInit, certificateOptions } from "./types";
 
 /**
@@ -60,8 +60,22 @@ export class Client {
     return new DAR(this.Auth);
   }
 
+  /**
+   * Create a new Ejerfortegnelse client
+   * @params none
+   * @return EJF client
+   */
   EJF() {
     return new EJF(this.Auth);
+  }
+
+  /**
+   * Create a new Bbr client
+   * @params none
+   * @return BBR client
+   */
+  BBR() {
+    return new BBR(this.Auth);
   }
 
   /**
