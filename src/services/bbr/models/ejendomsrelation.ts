@@ -12,6 +12,9 @@ export interface EjendomsrelationRequest {
   Forretningshaendelse?: string;
   Kommunekode?: string;
   MedDybde?: boolean;
+  DAFTimestampFra?: Date;
+  DAFTimestampTil?: Date;
+  BFENummer?: number; //SFE, BPFG (bygning på fremmed grund), ejerlejlighed
   BPFG?: number; //MU BygningPåFremmedGrund ID
   Ejerforholdskode?: string;
   Ejerlejlighed?: number; //MU Ejerlejlighed ID
