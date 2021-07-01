@@ -1,7 +1,11 @@
 //Regex for matching code comments: /\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/
-
 // Make it possible to insert arrays of Id etc. that will be called concacenated like <id123>|<id456>
 
+import { Ejerlejlighed } from "./ejerlejlighed";
+import { FordelingsarealList } from "./fordelingsareal";
+import { EtageList } from "./etage";
+import { OpgangList } from "./opgang";
+import { BygningPaaFremmedGrundList } from "./bygningPaaFremmedGrund";
 /**
  * Obligatoriske parametre:
   Et ID på enten Bygning, Grund, Enhed, TekniskAnlæg, BBRSag eller Ejendomsrelation og et interval for enten registreringstid, virkningstid eller DAF opdateringstid.
@@ -39,255 +43,8 @@ export interface BygningRequest {
   KunNyesteIPeriode?: boolean;
 }
 
-interface B {
-  datafordelerOpdateringstid: string;
-  byg007Bygningsnummer: number;
-  byg021BygningensAnvendelse: string | null;
-  byg024AntalLejlighederMedKøkken: number | null;
-  byg025AntalLejlighederUdenKøkken: number | null;
-  byg026Opførelsesår: 1954;
-  byg027OmTilbygningsår: 1984;
-  byg032YdervæggensMateriale: "1";
-  byg033Tagdækningsmateriale: "5";
-  byg037KildeTilBygningensMaterialer: "2";
-  byg038SamletBygningsareal: 120;
-  byg039BygningensSamledeBoligAreal: 122;
-  byg041BebyggetAreal: 120;
-  byg053BygningsarealerKilde: "2";
-  byg054AntalEtager: 1;
-  byg056Varmeinstallation: "2";
-  byg057Opvarmningsmiddel: "7";
-  byg094Revisionsdato: "2017-08-28T11:20:35.724018+02:00";
-  byg133KildeTilKoordinatsæt: "K";
-  byg134KvalitetAfKoordinatsæt: "1";
-  byg135SupplerendeOplysningOmKoordinatsæt: "31";
-  byg136PlaceringPåSøterritorie: "0";
-  byg404Koordinat: "POINT(716559.2 6188503.13)";
-  byg406Koordinatsystem: "5";
-  forretningshændelse: "Bygning";
-  forretningsområde: "54.15.05.05";
-  forretningsproces: "25";
-  grund: "47a81dcb-eba9-4603-8a13-21cb901892f2";
-  husnummer: "0a3f507d-523b-32b8-e044-0003ba298018";
-  id_lokalId: "e1d1dba2-be87-46ca-85f7-a672cc5ad741";
-  id_namespace: "http://data.gov.dk/bbr/bygning";
-  jordstykke: "2467057";
-  kommunekode: "0173";
-  registreringFra: "2017-08-28T11:20:35.724018+02:00";
-  registreringsaktør: "BBR";
-  status: "6";
-  virkningFra: "2017-08-28T11:20:35.724018+02:00";
-  virkningsaktør: "EksterntSystem";
-  etageList: [
-    {
-      id_lokalId: "79c628db-854e-4d7a-bbc9-6758d1ace0cb";
-      etage: {
-        datafordelerOpdateringstid: "2021-04-03T23:46:58.449665+02:00";
-        bygning: "e1d1dba2-be87-46ca-85f7-a672cc5ad741";
-        eta006BygningensEtagebetegnelse: "kl";
-        eta020SamletArealAfEtage: 62;
-        eta022Kælderareal: 62;
-        eta025Etagetype: "2";
-        forretningshændelse: "Bygning";
-        forretningsområde: "54.15.05.05";
-        forretningsproces: "0";
-        id_lokalId: "79c628db-854e-4d7a-bbc9-6758d1ace0cb";
-        id_namespace: "http://data.gov.dk/bbr/etage";
-        kommunekode: "0173";
-        registreringFra: "2020-06-12T18:24:45.000022+02:00";
-        registreringsaktør: "BBR";
-        status: "6";
-        virkningFra: "2020-06-12T18:24:45.000022+02:00";
-        virkningsaktør: "BBR21";
-      };
-    },
-    {
-      id_lokalId: "bb79eb31-e609-4ec4-9365-91f5140c411b";
-      etage: {
-        datafordelerOpdateringstid: "2021-04-03T23:14:55.288997+02:00";
-        bygning: "e1d1dba2-be87-46ca-85f7-a672cc5ad741";
-        eta006BygningensEtagebetegnelse: "st";
-        eta025Etagetype: "0";
-        forretningshændelse: "Bygning";
-        forretningsområde: "54.15.05.05";
-        forretningsproces: "0";
-        id_lokalId: "bb79eb31-e609-4ec4-9365-91f5140c411b";
-        id_namespace: "http://data.gov.dk/bbr/etage";
-        kommunekode: "0173";
-        registreringFra: "2017-06-02T14:29:37.000000+02:00";
-        registreringsaktør: "BBR";
-        status: "6";
-        virkningFra: "2000-02-05T20:57:22.000000+01:00";
-        virkningsaktør: "Konvertering2017";
-      };
-    }
-  ];
-  opgangList: [
-    {
-      id_lokalId: "8bc64d44-96c6-472d-9e23-60f361af36c4";
-      opgang: {
-        datafordelerOpdateringstid: "2021-04-04T02:19:41.527393+02:00";
-        adgangFraHusnummer: "0a3f507d-523b-32b8-e044-0003ba298018";
-        bygning: "e1d1dba2-be87-46ca-85f7-a672cc5ad741";
-        forretningshændelse: "Bygning";
-        forretningsområde: "54.15.05.05";
-        forretningsproces: "0";
-        id_lokalId: "8bc64d44-96c6-472d-9e23-60f361af36c4";
-        id_namespace: "http://data.gov.dk/bbr/opgang";
-        kommunekode: "0173";
-        opg020Elevator: "0";
-        registreringFra: "2018-09-14T18:25:55.086667+02:00";
-        registreringsaktør: "BBR";
-        status: "6";
-        virkningFra: "2018-09-14T18:25:55.086667+02:00";
-        virkningsaktør: "BBR";
-      };
-    }
-  ];
-}
-
-export type DatafordelerOpdateringstid = string;
-
-export interface Etage {
-  id_lokalId: string | null;
-  etage?: {
-    datafordelerOpdateringstid?: DatafordelerOpdateringstid;
-    bygning?: string | null;
-    eta006BygningensEtagebetegnelse?: string | null;
-    eta020SamletArealAfEtage?: number | null;
-    eta021ArealAfUdnyttetDelAfTagetage?: number | null;
-    eta022Kælderareal?: number | null;
-    eta023ArealAfLovligBeboelseIKælder?: number | null;
-    eta024EtagensAdgangsareal?: number | null;
-    eta025Etagetype?: string | null;
-    eta026ErhvervIKælder?: number | null;
-    eta500Notatlinjer?: string | null;
-    forretningshændelse?: string | null;
-    forretningsområde?: string | null;
-    forretningsproces?: string | null;
-    id_lokalId?: string | null;
-    id_namespace?: string | null;
-    kommunekode?: string | null;
-    registreringFra?: string | null;
-    registreringsaktør?: string | null;
-    registreringTil?: string | null;
-    status?: string | null;
-    virkningFra?: string | null;
-    virkningsaktør?: string | null;
-    virkningTil?: string | null;
-  };
-}
-
-export interface Opgang {
-  id_lokalId: string | null;
-  opgang?: {
-    datafordelerOpdateringstid?: DatafordelerOpdateringstid;
-    adgangFraHusnummer?: string | null;
-    bygning?: string | null;
-    forretningshændelse?: string | null;
-    forretningsområde?: string | null;
-    forretningsproces?: string | null;
-    id_lokalId?: string | null;
-    id_namespace?: string | null;
-    kommunekode?: string | null;
-    opg020Elevator?: string | null;
-    opg021HusnummerFunktion?: string | null;
-    opg500Notatlinjer?: string | null;
-    registreringFra?: string | null;
-    registreringsaktør?: string | null;
-    registreringTil?: string | null;
-    status?: string | null;
-    virkningFra?: string | null;
-    virkningsaktør?: string | null;
-    virkningTil?: string | null;
-  };
-}
-
-export interface Fordelingsareal {
-  id_lokalId: string | null;
-  fordelingsareal?: {
-    datafordelerOpdateringstid?: DatafordelerOpdateringstid;
-    bygning?: string | null;
-    for002Fordelingsarealnummer?: number | null;
-    for003ArealTilFordeling?: number | null;
-    for004FordelingsNøgle?: string | null;
-    for005Navn?: string | null;
-    for006Rest?: number | null;
-    for500Notatlinjer?: string | null;
-    forretningshændelse?: string | null;
-    forretningsområde?: string | null;
-    forretningsproces?: string | null;
-    id_lokalId?: string | null;
-    id_namespace?: string | null;
-    kommunekode?: string | null;
-    registreringFra?: string | null;
-    registreringsaktør?: string | null;
-    registreringTil?: string | null;
-    status?: string | null;
-    virkningFra?: string | null;
-    virkningsaktør?: string | null;
-    virkningTil?: string | null;
-  };
-}
-
-export interface Ejerlejlighed {
-  datafordelerOpdateringstid?: DatafordelerOpdateringstid;
-  bfeNummer?: number | null;
-  bygningPåFremmedGrund?: string | null;
-  ejendommensEjerforholdskode?: string | null;
-  ejendomsnummer?: number | null;
-  ejendomstype?: string | null;
-  ejerlejlighed?: string | null;
-  ejerlejlighedsnummer?: number | null;
-  forretningshændelse?: string | null;
-  forretningsområde?: string | null;
-  forretningsproces?: string | null;
-  id_lokalId: string | null;
-  id_namespace?: string | null;
-  kommunekode?: string | null;
-  registreringFra?: string | null;
-  registreringsaktør?: string | null;
-  registreringTil?: string | null;
-  samletFastEjendom?: string | null;
-  status?: string | null;
-  tinglystAreal?: number | null;
-  virkningFra?: string | null;
-  virkningsaktør?: string | null;
-  virkningTil?: string | null;
-  vurderingsejendomsnummer?: number | null;
-}
-
-export interface BygningPaaFremmedGrund {
-  id_lokalId: string | null;
-  bygningPåFremmedGrund?: {
-    datafordelerOpdateringstid?: DatafordelerOpdateringstid;
-    bfeNummer?: number | null;
-    bygningPåFremmedGrund?: string | null;
-    ejendommensEjerforholdskode?: string | null;
-    ejendomsnummer?: number | null;
-    ejendomstype?: string | null;
-    ejerlejlighed?: string | null;
-    ejerlejlighedsnummer?: number | null;
-    forretningshændelse?: string | null;
-    forretningsområde?: string | null;
-    forretningsproces?: string | null;
-    id_lokalId?: string | null;
-    id_namespace?: string | null;
-    kommunekode?: string | null;
-    registreringFra?: string | null;
-    registreringsaktør?: string | null;
-    registreringTil?: string | null;
-    samletFastEjendom?: string | null;
-    status?: string | null;
-    tinglystAreal?: number | null;
-    virkningFra?: string | null;
-    virkningsaktør?: string | null;
-    virkningTil?: string | null;
-    vurderingsejendomsnummer?: number | null;
-  };
-}
 export interface Bygning {
-  datafordelerOpdateringstid?: DatafordelerOpdateringstid;
+  datafordelerOpdateringstid?: string;
   byg007Bygningsnummer?: number | null;
   byg021BygningensAnvendelse?: string | null;
   byg024AntalLejlighederMedKøkken?: number | null;
@@ -377,13 +134,12 @@ export interface Bygning {
   virkningFra?: string | null;
   virkningsaktør?: string | null;
   virkningTil?: string | null;
-
-  //Objects
-  etageList?: Etage[];
-  opgangList?: Opgang[];
-  fordelingsarealList?: Fordelingsareal[];
+  //Nested objects
+  etageList?: EtageList;
+  opgangList?: OpgangList;
+  fordelingsarealList?: FordelingsarealList;
   ejerlejlighed?: Ejerlejlighed;
-  bygningPåFremmedGrundList?: BygningPaaFremmedGrund[];
+  bygningPåFremmedGrundList?: BygningPaaFremmedGrundList;
 }
 
 export type BygningResponse = Bygning[];

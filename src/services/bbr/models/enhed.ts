@@ -1,3 +1,6 @@
+import { EjerlejlighedList } from "./ejerlejlighed";
+import { FordelingsarealList } from "./fordelingsareal";
+
 export interface EnhedRequest {
   Id?: string; //can be array!
   VirkningFra?: Date;
@@ -25,62 +28,6 @@ export interface EnhedRequest {
   PeriodeaendringFra?: Date;
   PeriodeaendringTil?: Date;
   KunNyesteIPeriode?: boolean;
-}
-export interface Fordelingsareal {
-  id_lokalId: string | null;
-  fordelingsareal?: {
-    datafordelerOpdateringstid?: string;
-    bygning?: string | null;
-    for002Fordelingsarealnummer?: number | null;
-    for003ArealTilFordeling?: number | null;
-    for004FordelingsNøgle?: string | null;
-    for005Navn?: string | null;
-    for006Rest?: number | null;
-    for500Notatlinjer?: string | null;
-    forretningshændelse?: string | null;
-    forretningsområde?: string | null;
-    forretningsproces?: string | null;
-    id_lokalId?: string | null;
-    id_namespace?: string | null;
-    kommunekode?: string | null;
-    registreringFra?: string | null;
-    registreringsaktør?: string | null;
-    registreringTil?: string | null;
-    status?: string | null;
-    virkningFra?: string | null;
-    virkningsaktør?: string | null;
-    virkningTil?: string | null;
-  };
-}
-
-export interface Ejerlejlighed {
-  id_lokalId: string | null;
-  ejerlejlighed?: {
-    datafordelerOpdateringstid?: string;
-    bfeNummer?: number | null;
-    bygningPåFremmedGrund?: string | null;
-    ejendommensEjerforholdskode?: string | null;
-    ejendomsnummer?: number | null;
-    ejendomstype?: string | null;
-    ejerlejlighed?: string | null;
-    ejerlejlighedsnummer?: number | null;
-    forretningshændelse?: string | null;
-    forretningsområde?: string | null;
-    forretningsproces?: string | null;
-    id_lokalId?: string | null;
-    id_namespace?: string | null;
-    kommunekode?: string | null;
-    registreringFra?: string | null;
-    registreringsaktør?: string | null;
-    registreringTil?: string | null;
-    samletFastEjendom?: string | null;
-    status?: string | null;
-    tinglystAreal?: number | null;
-    virkningFra?: string | null;
-    virkningsaktør?: string | null;
-    virkningTil?: string | null;
-    vurderingsejendomsnummer?: number | null;
-  };
 }
 
 export interface Enhed {
@@ -148,8 +95,8 @@ export interface Enhed {
   virkningFra?: string | null;
   virkningsaktør?: string | null;
   virkningTil?: string | null;
-  fordelingsarealList?: Fordelingsareal[];
-  ejerlejlighedList?: Ejerlejlighed[];
+  fordelingsarealList?: FordelingsarealList;
+  ejerlejlighedList?: EjerlejlighedList;
 }
 
 export type EnhedResponse = Enhed[];
