@@ -1,6 +1,6 @@
 import { Agent } from "https";
 import { readFileSync } from "fs";
-import { EJF, DAR, BBR, Haendelser } from "../services";
+import { EJF, DAR, BBR, EBR, Haendelser } from "../services";
 import { clientInit, certificateOptions } from "./types";
 
 /**
@@ -76,6 +76,15 @@ export class Client {
    */
   BBR() {
     return new BBR(this.Auth);
+  }
+
+  /**
+   * Create a new EjendomsbeliggenhedsRegister client
+   * @params none
+   * @return EBR client
+   */
+  EBR() {
+    return new EBR(this.Auth);
   }
 
   /**

@@ -3,6 +3,7 @@ import { clientInit, ServiceObject, MethodObject } from "../../core/types";
 import { BFEnrAdresse } from "./models";
 
 //To do: Make it possible to call EBR with a cert at https://certservices.datafordeler.dk/EBR/Ejendomsbeliggenhed
+//https://services.datafordeler.dk/EBR/Ejendomsbeliggenhed/1/REST/BFEnrAdresse
 
 export class EBR extends Service {
   static Register = "EBR";
@@ -41,5 +42,3 @@ export class EBR extends Service {
     });
   }
 }
-
-//https://services.datafordeler.dk/EBR/Ejendomsbeliggenhed/1/REST/BFEnrAdresse
