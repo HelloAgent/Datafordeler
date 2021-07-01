@@ -1,4 +1,4 @@
-export declare namespace BfenrAdresse {
+export declare namespace BFEnrAdresse {
   export interface Request {
     AdresseId?: string; //string eller list! lokalid UUID for DAR AdresseId
     HusnummerId?: string; //string eller list! lokalid UUID for DAR AdresseId
@@ -42,13 +42,13 @@ export declare namespace BfenrAdresse {
     registreringsaktoer: string;
   }
 
-  export interface BfenrAdresseFeature {
+  export interface BFEnrAdresseFeature {
     type: "Feature";
     properties: BFEnrAdresse;
   }
 
   export interface Response {
     type: "FeatureCollection";
-    features: BfenrAdresseFeature[];
+    features: BFEnrAdresseFeature[];
   }
 }

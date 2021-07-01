@@ -37,7 +37,7 @@
           "properties": {
             "type": "object",
             "required": [
-			  "objectid",
+              "objectid",
               "id_namespace",
               "id_lokalId",
               "bestemtFastEjendomBFENr",

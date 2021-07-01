@@ -115,7 +115,11 @@ export class Service {
   private createQueryString(parameters: Parameters): string {
     //Add validation of parameters object before init
     return Object.keys(parameters)
-      .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(parameters[key])}`)
+      .map((key) => {
+        const valueIsArray = Array.isArray(parameters[key]);
+        const value = valueIsArray ? parameters[key].join("|") : parameters[key];
+        return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+      })
       .join("&");
   }
 }
