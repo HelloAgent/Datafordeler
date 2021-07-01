@@ -24,7 +24,7 @@ export interface EnhedRequest {
   TekniskAnlaeg?: string; //BBR teknisk anlæg Id UUID
   Ejendomsrelation?: string; //BBR ejd.relation ID
   AdresseIdentificerer?: string; //Dar adresse Id
-  Bygning: string; //BBR Bygning ID ARRAY
+  Bygning?: string; //BBR Bygning ID ARRAY
   PeriodeaendringFra?: Date;
   PeriodeaendringTil?: Date;
   KunNyesteIPeriode?: boolean;
