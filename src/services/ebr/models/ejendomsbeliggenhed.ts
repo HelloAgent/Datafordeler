@@ -47,8 +47,8 @@ export declare namespace EjendomsBeliggenhed {
 
   export interface EjendomsBeliggenhed extends EjendomsBeliggenhedBasis {
     Ejendomstype: string;
-    adresse: Adresse; // Dar Adress
-    husnummer: Husnummer; //Dar Husnummer
+    adresse: Adresse[]; // Dar Adress
+    husnummer: Husnummer[]; //Dar Husnummer
   }
 
   export interface EjendomsBeliggenhedSimpelFeature {
