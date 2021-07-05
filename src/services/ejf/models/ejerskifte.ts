@@ -87,7 +87,6 @@ export declare namespace Ejerskifte {
     virkningFra: string;
     virkningTil: string | null;
     virkningsaktoer: string;
-
     betinget: boolean | null;
     bilagsbankRef?: string[]; //Er angivet i schema men er ikke set nogen steder
     fristDato: string | null;
@@ -95,7 +94,6 @@ export declare namespace Ejerskifte {
     anmeldelsesdato: string | null;
     anmeldelsesidentifikator: string | null;
     overdragelsesmaade: Overdragelsesmaade | null;
-    bestemtFastEjendomBFENr: number;
     ejerskabsskifte: string[];
     handelsoplysningerLokalId: string | null;
   }
