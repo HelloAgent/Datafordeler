@@ -1,0 +1,106 @@
+0 silly argv {
+0 silly argv   _: [ 'version' ],
+0 silly argv   'conventional-commits': true,
+0 silly argv   conventionalCommits: true,
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': '/Users/simon/Projekter/Datafordeler/node_modules/.bin/lerna'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath /Users/simon/Projekter/Datafordeler
+3 info current version 0.0.1
+4 silly isAnythingCommitted
+5 verbose isAnythingCommitted 1
+6 silly getCurrentBranch
+7 verbose currentBranch simon/v2-demo
+8 silly remoteBranchExists
+9 silly isBehindUpstream
+10 silly isBehindUpstream simon/v2-demo is behind origin/simon/v2-demo by 0 commit(s) and ahead by 0
+11 silly hasTags
+12 verbose hasTags true
+13 silly git-describe.sync "v0.7.4-3-g98f4156" => {"lastTagName":"v0.7.4","lastVersion":"v0.7.4","refCount":"3","sha":"98f4156","isDirty":false}
+14 info Looking for changed packages since v0.7.4
+15 silly checking diff packages/core
+16 silly found diff in packages/core/package.json
+16 silly found diff in packages/core/src/index.ts
+16 silly found diff in packages/core/tsconfig.json
+17 verbose filtered diff [
+17 verbose filtered diff   'packages/core/package.json',
+17 verbose filtered diff   'packages/core/src/index.ts',
+17 verbose filtered diff   'packages/core/tsconfig.json'
+17 verbose filtered diff ]
+18 silly checking diff packages/service-bbr
+19 silly found diff in packages/service-bbr/package.json
+19 silly found diff in packages/service-bbr/src/index.ts
+19 silly found diff in packages/service-bbr/tsconfig.json
+20 verbose filtered diff [
+20 verbose filtered diff   'packages/service-bbr/package.json',
+20 verbose filtered diff   'packages/service-bbr/src/index.ts',
+20 verbose filtered diff   'packages/service-bbr/tsconfig.json'
+20 verbose filtered diff ]
+21 verbose updated datafordeler-core
+22 verbose updated datafordeler-bbr
+23 verbose git-describe undefined => "v0.7.4-3-g98f4156"
+24 silly git-describe parsed => {"lastTagName":"v0.7.4","lastVersion":"v0.7.4","refCount":"3","sha":"98f4156","isDirty":false}
+25 silly fixed for datafordeler-core at /Users/simon/Projekter/Datafordeler/packages/core
+26 verbose getChangelogConfig using preset "conventional-changelog-angular"
+27 silly npa Result {
+27 silly npa   type: 'tag',
+27 silly npa   registry: true,
+27 silly npa   where: undefined,
+27 silly npa   raw: 'conventional-changelog-angular',
+27 silly npa   name: 'conventional-changelog-angular',
+27 silly npa   escapedName: 'conventional-changelog-angular',
+27 silly npa   scope: undefined,
+27 silly npa   rawSpec: '',
+27 silly npa   saveSpec: null,
+27 silly npa   fetchSpec: 'latest',
+27 silly npa   gitRange: undefined,
+27 silly npa   gitCommittish: undefined,
+27 silly npa   hosted: undefined
+27 silly npa }
+28 verbose getChangelogConfig Attempting to resolve preset "conventional-changelog-angular"
+29 info getChangelogConfig Successfully resolved preset "conventional-changelog-angular"
+30 verbose fixed increment 0.0.1 by minor
+31 silly fixed for datafordeler-bbr at /Users/simon/Projekter/Datafordeler/packages/service-bbr
+32 verbose fixed increment 0.0.1 by minor
+33 info execute Skipping releases
+34 silly lifecycle No script for "preversion" in "datafordeler", continuing
+35 silly lifecycle No script for "preversion" in "datafordeler-core", continuing
+36 silly lifecycle No script for "preversion" in "datafordeler-bbr", continuing
+37 silly lifecycle No script for "version" in "datafordeler-core", continuing
+38 silly fixed for datafordeler-core at /Users/simon/Projekter/Datafordeler/packages/core
+39 silly lifecycle No script for "version" in "datafordeler-bbr", continuing
+40 silly fixed for datafordeler-bbr at /Users/simon/Projekter/Datafordeler/packages/service-bbr
+41 silly fixed writing new entry: "# [0.1.0](https://github.com/HelloAgent/Datafordeler/compare/v0.7.4...v0.1.0) (2021-09-27)\n\n\n### Features\n\n* added lerna ([cd2bbb0](https://github.com/HelloAgent/Datafordeler/commit/cd2bbb03efc1266c9c3d29ff82b6222ccb5ab358))\n\n\n\n"
+42 silly fixed writing new entry: "# [0.1.0](https://github.com/HelloAgent/Datafordeler/compare/v0.7.4...v0.1.0) (2021-09-27)\n\n\n### Features\n\n* added lerna ([98f4156](https://github.com/HelloAgent/Datafordeler/commit/98f4156c064a2b32706962380e34406280fd97f3))\n\n\n\n"
+43 verbose fixed wrote /Users/simon/Projekter/Datafordeler/packages/core/CHANGELOG.md
+44 verbose fixed wrote /Users/simon/Projekter/Datafordeler/packages/service-bbr/CHANGELOG.md
+45 silly root for datafordeler at /Users/simon/Projekter/Datafordeler
+46 silly root writing new entry: "# [0.1.0](https://github.com/HelloAgent/Datafordeler/compare/v0.7.4...v0.1.0) (2021-09-27)\n\n\n### Features\n\n* added lerna ([98f4156](https://github.com/HelloAgent/Datafordeler/commit/98f4156c064a2b32706962380e34406280fd97f3))\n* added lerna ([4b06bfe](https://github.com/HelloAgent/Datafordeler/commit/4b06bfea003b238d637514ae2e0a05e16579497a))\n* added lerna ([cd2bbb0](https://github.com/HelloAgent/Datafordeler/commit/cd2bbb03efc1266c9c3d29ff82b6222ccb5ab358))\n\n\n\n"
+47 verbose root wrote /Users/simon/Projekter/Datafordeler/CHANGELOG.md
+48 silly lifecycle "version" starting in "datafordeler"
+49 info lifecycle datafordeler@0.7.4~version: datafordeler@0.7.4
+50 verbose lifecycle datafordeler@0.7.4~version: unsafe-perm in lifecycle true
+51 verbose lifecycle datafordeler@0.7.4~version: PATH: /Users/simon/Projekter/Datafordeler/node_modules/npm-lifecycle/node-gyp-bin:/Users/simon/Projekter/Datafordeler/node_modules/.bin:/Users/simon/Projekter/Datafordeler/node_modules/.bin:/Users/simon/Projekter/node_modules/.bin:/Users/simon/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/Users/simon/Projekter/Datafordeler/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+52 verbose lifecycle datafordeler@0.7.4~version: CWD: /Users/simon/Projekter/Datafordeler
+53 silly lifecycle datafordeler@0.7.4~version: Args: [ '-c', 'git add -A src' ]
+54 silly lifecycle datafordeler@0.7.4~version: Returned: code: 0  signal: null
+55 silly lifecycle "version" finished in "datafordeler"
+56 silly gitAdd [
+56 silly gitAdd   'packages/core/package.json',
+56 silly gitAdd   'packages/service-bbr/package.json',
+56 silly gitAdd   'packages/core/CHANGELOG.md',
+56 silly gitAdd   'packages/service-bbr/CHANGELOG.md',
+56 silly gitAdd   'CHANGELOG.md',
+56 silly gitAdd   'lerna.json'
+56 silly gitAdd ]
+57 silly gitCommit chore(release): publish
+58 verbose git [ 'commit', '-m', 'chore(release): publish' ]
+59 silly gitTag v0.1.0
+60 verbose git [ 'tag', 'v0.1.0', '-m', 'v0.1.0' ]
+61 error Error: Command failed with exit code 128: git tag v0.1.0 -m v0.1.0
+61 error fatal: tag 'v0.1.0' already exists
+61 error     at makeError (/Users/simon/Projekter/Datafordeler/node_modules/execa/lib/error.js:60:11)
+61 error     at handlePromise (/Users/simon/Projekter/Datafordeler/node_modules/execa/index.js:118:26)
+61 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+61 error     at async Promise.all (index 0)
