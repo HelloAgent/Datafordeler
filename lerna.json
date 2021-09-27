@@ -1,12 +1,11 @@
 {
-    "version": "independent",
+    "version": "0.0.1",
     "npmClient": "yarn",
     "useWorkspaces": true,
     "command": {
         "publish": {
             "conventionalCommits": true,
-            "message": "chore(release): publish",
-            "allowBranch": "main"
+            "message": "chore(release): publish"
         }
     }
 }

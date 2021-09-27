@@ -1,0 +1,8 @@
+{
+  "name": "datafordeler-bbr",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "author": "Simon Saxtorph",
+  "license": "MIT",
+  "private": false
+}
