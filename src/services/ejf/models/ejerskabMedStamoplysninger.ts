@@ -5,7 +5,7 @@ export declare namespace EjerskabMedStamoplysninger {
     BFEnr?: string;
     Ejerskabsid?: Types.id_lokalId;
     Virkningstid?: Date;
-    Status?: "gældnede" | "tilbagerullet" | "historisk";
+    Status?: "gældende" | "tilbagerullet" | "historisk";
   }
 
   export interface Beskyttelser {
@@ -44,23 +44,31 @@ export declare namespace EjerskabMedStamoplysninger {
   export interface EjendeVirksomhed {
     entityType: string;
     attributes: {
-      registreringFra: string;
-      registreringsaktoer: string;
-      status: string;
-      virkningFra: string;
-      virkningsaktoer: string;
-      CVRNummer: number;
-      reklamebeskyttelse: boolean;
-      navn: string;
-      beliggenhedsadresse: {
-        "CVRAdresse.vejkode": string;
-        "CVRAdresse.husnummerFra": string;
-        "CVRAdresse.kommunekode": string;
-        "CVRAdresse.kommunenavn": string;
-        "CVRAdresse.postdistrikt": string;
-        "CVRAdresse.vejnavn": string;
-        "CVRAdresse.postnummer": string;
-        "CVRAdresse.landekode": string;
+      registreringFra?: string;
+      registreringTil?: string;
+      registreringsaktoer?: string;
+      status?: string;
+      virkningFra?: string;
+      virkningTil?: string;
+      virkningsaktoer?: string;
+      CVRNummer?: number;
+      reklamebeskyttelse?: boolean;
+      navn?: string;
+      beliggenhedsadresse?: {
+        "CVRAdresse.adresseFritekst"?: string;
+        "CVRAdresse.doerbetegnelse"?: string;
+        "CVRAdresse.etagebetegnelse"?: string;
+        "CVRAdresse.husnummerFra"?: string;
+        "CVRAdresse.husnummerTil"?: string;
+        "CVRAdresse.kommunekode"?: string;
+        "CVRAdresse.kommunenavn"?: string;
+        "CVRAdresse.landekode"?: string;
+        "CVRAdresse.postdistrikt"?: string;
+        "CVRAdresse.postnummer"?: string;
+        "CVRAdresse.supplerendeBynavn"?: string;
+        "CVRAdresse.vejkode"?: string;
+        "CVRAdresse.vejnavn"?: string;
+        coNavn?: string;
       };
     };
   }

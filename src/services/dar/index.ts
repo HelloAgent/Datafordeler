@@ -1,3 +1,3 @@
-export * from "./Dar";
+export * from "./dar";
 // Create proper namespaces before exporting types
 // export * from "./types"

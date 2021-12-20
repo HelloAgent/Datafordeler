@@ -1,2 +1,2 @@
-export * from "./Ebr"
-export * from "./models"
+export * from "./ebr";
+export * from "./models";
