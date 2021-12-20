@@ -1,2 +1,2 @@
-export * from "./Ejf"
-export * from "./models"
+export * from "./ejf";
+export * from "./models";
