@@ -5,7 +5,7 @@ export declare namespace EjerskabMedStamoplysninger {
     BFEnr?: string;
     Ejerskabsid?: Types.id_lokalId;
     Virkningstid?: Date;
-    Status?: "gældnede" | "tilbagerullet" | "historisk";
+    Status?: "gældende" | "tilbagerullet" | "historisk";
   }
 
   export interface Beskyttelser {
