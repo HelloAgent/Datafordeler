@@ -56,7 +56,10 @@ export class Service {
       });
     } catch (error) {
       // Further errorhandling
-      throw new Error(error.message);
+      if (error instanceof Error) {
+        throw error.message;
+      }
+      throw error;
     }
   }
 
