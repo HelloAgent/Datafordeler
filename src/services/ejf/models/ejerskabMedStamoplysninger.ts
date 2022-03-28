@@ -44,11 +44,11 @@ export declare namespace EjerskabMedStamoplysninger {
   export interface EjendeVirksomhed {
     entityType: string;
     attributes: {
-      registreringFra?: string;
+      registreringFra: string;
       registreringTil?: string;
-      registreringsaktoer?: string;
-      status?: string;
-      virkningFra?: string;
+      registreringsaktoer: string;
+      status: string;
+      virkningFra: string;
       virkningTil?: string;
       virkningsaktoer?: string;
       CVRNummer?: number;
@@ -73,23 +73,101 @@ export declare namespace EjerskabMedStamoplysninger {
     };
   }
 
+  export interface ProduktionsEnhed {
+    entityType: string;
+    attributes: {
+      registreringFra: string;
+      registreringsaktoer: string;
+      status: string;
+      virkningFra: string;
+      virkningsaktoer: string;
+      pNummer: number;
+      reklamebeskyttelse: boolean;
+      navn: string;
+      beliggenhedsadresse: {
+        "CVRAdresse.vejkode": string;
+        "CVRAdresse.husnummerFra": string;
+        "CVRAdresse.etagebetegnelse": string;
+        "CVRAdresse.doerbetegnelse": string;
+        "CVRAdresse.kommunekode": string;
+        "CVRAdresse.kommunenavn": string;
+        "CVRAdresse.postdistrikt": string;
+        "CVRAdresse.vejnavn": string;
+        "CVRAdresse.husnummerTil": string;
+        "CVRAdresse.postnummer": string;
+        "CVRAdresse.supplerendeBynavn": string;
+        "CVRAdresse.adresseFritekst": string;
+        "CVRAdresse.landekode": string;
+        coNavn: string;
+      };
+    };
+  }
+
+  export interface Feature<T> {
+    type: string;
+    features: T[];
+  }
+
+  export interface AdministratorType {
+    id_namespace: string;
+    id_lokalId: string;
+    behandlingsID: string;
+    forretningshaendelse: string;
+    forretningsomraade: string;
+    forretningsproces: string;
+    status: string;
+    registreringFra: string;
+    registreringTil: string | null;
+    registreringsaktoer: string;
+    virkningFra: string;
+    virkningTil: string | null;
+    virkningsaktoer: string;
+    navn: string;
+    fiktivtPVnummer: number;
+    adresse: string | null;
+    kommuneinddelingKommunekode: string;
+    alternativAdresse: {
+      adresselinje1: string;
+      landeKodeNumerisk: string;
+      adresselinje2: string;
+      adresselinje3: string;
+      adresselinje4: string;
+      adresselinje5: string;
+      adresselinje6: string;
+      adresselinje7: string;
+      adresselinje8: string;
+      adresselinje9: string;
+      adresselinje10: string;
+    };
+  }
+
+  export type Administrator = AdministratorType;
+  export type Administratoroplysninger = Feature<Administrator>;
+
+  export type Ejeroplysning = AdministratorType;
+  export type Ejeroplysninger = Feature<Ejeroplysning>;
+
+  export type AdministrerendePerson = EjendePerson;
+  export type AdministrerendeVirksomhed = EjendeVirksomhed;
+
   export interface Ejerskab {
     bestemtFastEjendomBFENr: number;
-    administratoroplysninger: {
-      type: string;
-      features: [];
-    };
+    DARadresse?: unknown;
+    administratoroplysninger?: Administratoroplysninger;
+    administrerendePerson?: AdministrerendePerson;
+    administrerendeProduktionsenhed?: ProduktionsEnhed;
+    administrerendeVirksomhed?: AdministrerendeVirksomhed;
+    begraensning?: boolean | null;
     behandlingsID: string;
     ejendePerson?: EjendePerson;
     ejendeVirksomhed?: EjendeVirksomhed;
     ejerforholdskode: string;
-    ejeroplysninger: {
-      type: string;
-      features: [];
-    };
+    ejeroplysninger?: Ejeroplysninger;
     ejetFoer01071998: boolean;
     faktiskEjerandel_naevner: number;
     faktiskEjerandel_taeller: number;
+    tinglystEjerandel_naevner: number | null;
+    tinglystEjerandel_taeller: number | null;
     forretningshaendelse: string;
     forretningsomraade: string;
     forretningsproces: string;
