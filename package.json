@@ -1,6 +1,6 @@
 {
   "name": "datafordeler",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "Unofficial SDK for Datafordeler API",
   "main": "lib/datafordeler.js",
   "types": "lib/datafordeler.d.ts",
