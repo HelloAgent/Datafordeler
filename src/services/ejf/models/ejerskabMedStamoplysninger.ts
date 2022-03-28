@@ -14,24 +14,44 @@ export declare namespace EjerskabMedStamoplysninger {
     };
   }
 
+  export interface CprAdresse {
+    bygningsnummer: string;
+    bynavn: string;
+    cprKommunekode: string;
+    cprKommunenavn: string;
+    cprVejkode: string;
+    darAdresseId: string;
+    etage?: string;
+    husnummer: string;
+    postdistrikt: string;
+    sidedoer?: string;
+    postnummer: string;
+    vejadresseringsnavn: string;
+  }
+
+  export interface Udenlandsadresse {
+    adresselinie1: string;
+    adresselinie2: string;
+    adresselinie3: string;
+    adresselinie4: string;
+    adresselinie5: string;
+  }
+  export interface UdrejseIndrejse {
+    Udenlandsadresse: Udenlandsadresse;
+    cprLandUdrejse: string;
+    cprLandekodeUdrejse: string;
+  }
+
   export interface EjendePerson {
     Person: {
+      Adresseoplysninger?: { adresseringsnavn?: string };
       Beskyttelser?: Beskyttelser[];
-      CprAdresse?: {
-        cprKommunekode: string;
-        cprKommunenavn: string;
-        cprVejkode: string;
-        husnummer: string;
-        etage?: string;
-        sidedoer?: string;
-        postdistrikt: string;
-        postnummer: string;
-        vejadresseringsnavn: string;
-      };
-      Navn: {
+      CprAdresse?: CprAdresse;
+      Navn?: {
         adresseringsnavn: string;
       };
-      Standardadresse: string;
+      Standardadresse?: string;
+      UdrejseIndrejse?: UdrejseIndrejse;
       foedselsdato: string;
       foedselsdatoUsikkerhedsmarkering: boolean;
       id: string;
