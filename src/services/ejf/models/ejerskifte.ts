@@ -77,6 +77,7 @@ export declare namespace Ejerskifte {
     id_namespace: string;
     id_lokalId: string;
     behandlingsID: string;
+    bfeNummer: string;
     forretningshaendelse: Forretningshaendelse;
     forretningsomraade: "54.15";
     forretningsproces: Forretningsproces;

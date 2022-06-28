@@ -29,6 +29,7 @@ export interface MethodInfo {
   zone: Zone;
   service: Service;
   method: Metode;
+  version?: Version; // We can input version as part of the method to overwrite version number in cases needed.
 }
 
 export interface MethodObject {
@@ -78,7 +79,7 @@ export enum Endpoints {
 
 export type Register = "DAR" | "BBR" | "EJERFORTEGNELSE" | "EBR" | "system";
 export type Service = string;
-export type Version = "1" | "1.0.0";
+export type Version = "1" | "1.0.0" | "2.0.0";
 export type Servicetype = "rest" | "custom";
 export type Metode = string;
 export type Parameters = { [k: string]: any };

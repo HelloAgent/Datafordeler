@@ -35,9 +35,15 @@ export class Service {
     this.version = version || "1";
   }
 
+  protected set apiVersion(version: Version) {
+    this.version = version;
+  }
+
   protected async Request<T>(opt: MethodInfo, params: Parameters): Promise<T> {
     let url = this.buildUrl(opt, params);
     let config: fetchRequestInit = {};
+
+    console.log(url);
 
     if (opt.zone === "public_protected") {
       this.validateAuth();
@@ -92,7 +98,7 @@ export class Service {
     const endpoint = this.getEndpoint(opt.zone);
     const register = this.register;
     const service = opt.service;
-    const version = this.version; // Version = "1";
+    const version = opt.version ?? this.version;
     const serviceType = this.serviceType;
     const method = opt.method;
 

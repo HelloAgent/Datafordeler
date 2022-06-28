@@ -64,6 +64,7 @@ export class EJF extends Service {
         zone: "cert5",
         service: EJF.Services.Ejerfortegnelsen,
         method: "Ejerskifte",
+        version: "2.0.0", // Added version manuallly as Ejerskifte uses 2.0.0 and other methods in EJF uses 1.
       },
       Ejerskabsskifte: {
         zone: "cert5",
