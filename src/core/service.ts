@@ -43,8 +43,6 @@ export class Service {
     let url = this.buildUrl(opt, params);
     let config: fetchRequestInit = {};
 
-    console.log(url);
-
     if (opt.zone === "public_protected") {
       this.validateAuth();
       url = this.addAuthToUrl(url);
