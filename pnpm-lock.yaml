@@ -54,7 +54,7 @@ importers:
         specifier: ^5.4.2
         version: 5.4.3
 
-  clients/datafordeler-legacy:
+  clients/client-datafordeler-legacy:
     dependencies:
       node-fetch:
         specifier: ^2.6.1
