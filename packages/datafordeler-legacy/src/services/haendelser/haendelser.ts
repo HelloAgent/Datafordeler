@@ -1,4 +1,4 @@
-import { Service } from "../../core/";
+import { Service } from "../../core";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
 import { Request, Response } from "./types";
 
@@ -15,10 +15,11 @@ export class Haendelser extends Service {
    * @return {array} Returns array of addresses
    */
   async getPublicEvents(params: Request): Promise<Response> {
-    return await this.Request<Response>(Haendelser.Methods.public, params);
+    return this.Request<Response>(Haendelser.Methods.public, params);
   }
+  
   async getPrivateEvents(params: Request): Promise<Response> {
-    return await this.Request<Response>(Haendelser.Methods.protected, params);
+    return this.Request<Response>(Haendelser.Methods.protected, params);
   }
 
   static get Services(): ServiceObject {
