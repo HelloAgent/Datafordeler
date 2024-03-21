@@ -90,6 +90,12 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
 
+  packages/core:
+    devDependencies:
+      '@datafordeler/config':
+        specifier: workspace:*
+        version: link:../config
+
   packages/datafordeler-legacy:
     dependencies:
       node-fetch:
