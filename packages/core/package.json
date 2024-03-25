@@ -28,5 +28,8 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "undici": "^6.10.1"
   }
 }
