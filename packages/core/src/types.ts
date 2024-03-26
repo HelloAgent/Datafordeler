@@ -1,14 +1,4 @@
-/* eslint-disable @typescript-eslint/no-duplicate-enum-values */
-
-/**
- * Endpoints for the client to call.
- */
-export enum Endpoint {
-  PUBLIC = 'services.datafordeler.dk',
-  PUBLIC_PROTECTED = 'services.datafordeler.dk',
-  CERT0 = 'certservices.datafordeler.dk',
-  CERT5 = 's5-certservices.datafordeler.dk',
-}
+import type { Endpoint } from './Endpoint';
 
 /**
  * Values that can be passed as parameters to the request.
@@ -67,4 +57,3 @@ export interface RequestParams<T> {
    */
   params: Parameters<T>;
 }
-
