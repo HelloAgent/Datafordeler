@@ -1,0 +1,25 @@
+{
+  "name": "@datafordeler/types",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/helloagent/datafordeler",
+    "directory": "packages/types"
+  },
+  "bugs": {
+    "url": "https://github.com/helloagent/datafordeler/issues"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "tsc --noEmit && jest",
+    "test:watch": "jest --watch",
+    "benchmark": "npx ts-node benchmark/index.ts"
+  },
+  "devDependencies": {
+    "@datafordeler/config": "workspace:*"
+  }
+}
