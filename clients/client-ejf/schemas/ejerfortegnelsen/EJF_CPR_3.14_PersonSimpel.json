@@ -1,0 +1,252 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "PersonStamoplysninger",
+    "id": "http://cpr.dk/daf/PersonStamoplysninger/v1.5",
+    "properties": {
+        "Person": {
+            "description": "EAID_88677603_1144_48ed_B41E_90321AC84A84",
+            "properties": {
+                "Adresseoplysninger": {
+                    "description": "EAID_730BF9DA_9B85_4d13_8BE2_7D49D0F326FD",
+                    "properties": {
+                        "adresseringsnavn": {
+                            "description": "EAID_741EF37B_4051_4519_9679_BBE002387552",
+                            "title": "conavn",
+                            "type": "string"
+                        }
+                    },
+                    "title": "Adresseoplysninger",
+                    "type": "object"
+                },
+                "Beskyttelser": {
+                    "items": {
+                        "properties": {
+                            "Beskyttelse": {
+                                "description": "EAID_1C8B099A_4D09_4c75_8B36_F8B92F853D6D",
+                                "properties": {
+                                    "beskyttelsestype": {
+                                        "description": "EAID_dst0DF442_9282_4181_B43D_23B02F422804",
+                                        "enum": [
+                                            "lokal_vejviser",
+                                            "markedsfoering",
+                                            "navne_og_adresse",
+											"kreditadvarsel"
+                                        ],
+                                        "title": "beskyttelsestype",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "beskyttelsestype"
+                                ],
+                                "title": "Beskyttelse",
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "CprAdresse": {
+                    "description": "EAID_5B1E3DAB_0235_4b7b_9EE5_2C5F8B8A17F8",
+                    "properties": {
+                        "bygningsnummer": {
+                            "description": "EAID_ACD32207_32F0_4915_AAA8_9E2788B44F2F",
+                            "title": "bygningsnummer",
+                            "type": "string"
+                        },
+                        "bynavn": {
+                            "description": "EAID_B5548113_C452_4341_8E8F_CF25F0D4C303",
+                            "title": "bynavn",
+                            "type": "string"
+                        },
+                        "cprKommunekode": {
+                            "description": "EAID_CFBC5E5D_1439_41ba_B8AB_356A1859A89F",
+                            "title": "cprKommunekode",
+                            "type": "string"
+                        },
+                        "cprKommunenavn": {
+                            "description": "EAID_726EF7E6_C1A9_451b_B96E_F8089B1F5737",
+                            "title": "cprKommunenavn",
+                            "type": "string"
+                        },
+                        "cprVejkode": {
+                            "description": "EAID_D813A2D9_DEE3_4173_8CD1_8870F48BDE80",
+                            "title": "cprVejkode",
+                            "type": "string"
+                        },
+                        "darAdresseId": {
+                            "description": "EAID_0B2FDA44_B0BA_46c7_B1E5_12720402B077",
+                            "title": "darAdresseId",
+                            "type": "string"
+                        },
+                        "etage": {
+                            "description": "EAID_F7EC8E87_F0CC_497c_8CBA_540BF38A0841",
+                            "title": "etage",
+                            "type": "string"
+                        },
+                        "husnummer": {
+                            "description": "EAID_83469B46_64B3_49f1_8A47_357349B12725",
+                            "title": "husnummer",
+                            "type": "string"
+                        },
+                        "postdistrikt": {
+                            "description": "EAID_220BE81E_5B14_406c_B503_BD96ABEB559A",
+                            "title": "postdistrikt",
+                            "type": "string"
+                        },
+                        "postnummer": {
+                            "description": "EAID_2E49BFE4_0E7D_47e1_934F_4A2BEF38D14E",
+                            "title": "postnummer",
+                            "type": "string"
+                        },
+                        "sidedoer": {
+                            "description": "EAID_542068CC_8B0B_41de_845D_63E39479BA22",
+                            "title": "sidedoer",
+                            "type": "string"
+                        },
+                        "vejadresseringsnavn": {
+                            "description": "EAID_F35B588E_8604_45be_88EE_D88095DA8AE1",
+                            "title": "vejadresseringsnavn",
+                            "type": "string"
+                        }
+                    },
+                    "title": "CprAdresse",
+                    "type": "object"
+                },
+                "Navn": {
+                    "description": "EAID_20C79015_D907_485a_98A4_0517A9899FC2",
+                    "properties": {
+                        "adresseringsnavn": {
+                            "description": "EAID_2B7D329F_7E3B_4bce_85BC_2B084619649D",
+                            "title": "adresseringsnavn",
+                            "type": "string"
+                        }
+                    },
+                    "title": "Navn",
+                    "type": "object"
+                },
+                "Standardadresse": {
+                    "description": "Sammensat af: vejadresseringsnavn husnummer, etage, sidedoer bygningsnummer",
+                    "title": "Standardadresse",
+                    "type": "string"
+                },
+                "UdrejseIndrejse": {
+                    "description": "EAID_EF1C0CBC_3539_467f_8B44_2AA54A4C1B03",
+                    "properties": {
+                        "Udenlandsadresse": {
+                            "description": "EAID_264167B9_E694_4f62_A268_0CE927CEF721",
+                            "properties": {
+                                "adresselinie1": {
+                                    "description": "EAID_65467DBA_54ED_4da7_8F09_3646D0052892",
+                                    "title": "adresselinie1",
+                                    "type": "string"
+                                },
+                                "adresselinie2": {
+                                    "description": "EAID_9F3B7E21_B625_4f58_890D_D3EAFDB84112",
+                                    "title": "adresselinie2",
+                                    "type": "string"
+                                },
+                                "adresselinie3": {
+                                    "description": "EAID_730F4C3D_8B73_4bdc_9B62_BB758FF03018",
+                                    "title": "adresselinie3",
+                                    "type": "string"
+                                },
+                                "adresselinie4": {
+                                    "description": "EAID_3B60F849_84EE_4774_A3A3_8AD836836C84",
+                                    "title": "adresselinie4",
+                                    "type": "string"
+                                },
+                                "adresselinie5": {
+                                    "description": "EAID_A791BBA5_8145_4f31_A1E0_9E6813148B82",
+                                    "title": "adresselinie5",
+                                    "type": "string"
+                                }
+                            },
+                            "title": "Udenlandsadresse",
+                            "type": "object"
+                        },
+                        "cprLandUdrejse": {
+                            "description": "EAID_13FA5170_102B_42cc_8AD5_ED692015DBA3",
+                            "title": "cprLandUdrejse",
+                            "type": "string"
+                        },
+                        "cprLandekodeUdrejse": {
+                            "description": "EAID_DA761AC7_7D23_42be_88DE_D8766666D055",
+                            "title": "cprLandekodeUdrejse",
+                            "type": "string"
+                        }
+                    },
+                    "title": "UdrejseIndrejse",
+                    "type": "object"
+                },
+                "foedselsdato": {
+                    "description": "EAID_73A30E1A_3B25_4e2a_A0A0_3CFA34BBB97B",
+                    "format": "date-time",
+                    "title": "foedselsdato",
+                    "type": "string"
+                },
+                "foedselsdatoUsikkerhedsmarkering": {
+                    "description": "EAID_01234969_FFF0_4963_873C_711C364B53A7",
+                    "title": "foedselsdatoUsikkerhedsmarkering",
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "EAID_9AB90AE0_9F85_4164_9B25_8EB2139D65A5",
+                    "title": "id",
+                    "type": "string"
+                },
+                "koen": {
+                    "description": "EAID_dstF7A403_40CF_47c0_B8E8_819BC58A1DC4",
+                    "enum": [
+                        "kvinde",
+                        "mand"
+                    ],
+                    "title": "koen",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "EAID_dstB8BFA9_D6E2_43e8_AF38_A6C1F0174C5A",
+                    "enum": [
+                        "annulleret",
+                        "bopael_i_danmark",
+                        "bopael_i_danmark_hoej_vejkode",
+                        "bopael_i_groenland",
+                        "bopael_i_groenland_hoej_vejkode",
+                        "doed",
+                        "ej_bopael",
+                        "forsvundet",
+                        "nedlagt_person",
+                        "udrejst"
+                    ],
+                    "title": "status",
+                    "type": "string"
+                },
+                "statusdato": {
+                    "description": "EAID_1CB4F47F_E13B_4440_9297_8F25FEC71C49",
+                    "format": "date-time",
+                    "title": "statusdato",
+                    "type": "string"
+                },
+                "statusdatoUsikkerhedsmarkering": {
+                    "description": "EAID_EFF81ED0_3AE0_4535_B0B5_AC4F29FDD5A7",
+                    "title": "statusdatoUsikkerhedsmarkering",
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "foedselsdato",
+                "foedselsdatoUsikkerhedsmarkering",
+                "koen",
+                "id",
+                "statusdato",
+                "statusdatoUsikkerhedsmarkering",
+                "status"
+            ],
+            "title": "Person",
+            "type": "object"
+        }
+    },
+    "title": "PersonStamoplysninger",
+    "type": "object"
+}
