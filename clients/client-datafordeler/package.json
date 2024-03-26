@@ -16,7 +16,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HelloAgent/Datafordeler.git"
+    "url": "git+https://github.com/HelloAgent/Datafordeler.git",
+    "directory": "clients/client-datafordeler"
   },
   "author": "HelloAgent",
   "license": "ISC",
