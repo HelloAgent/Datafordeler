@@ -1,9 +1,7 @@
 import { RequestInit, fetch } from 'undici';
 
 import { Auth, AuthConfig } from './Auth';
-import { Endpoint, Parameters, RequestParams } from './types';
-
-export type { AuthConfig, CredentialsConfig, AgentConfig } from './Auth';
+import type { RequestParams } from './types';
 
 export type CoreConfig = {
   readonly service: string;
@@ -50,26 +48,6 @@ export abstract class Client<ClientConfig extends Config & AuthConfig> {
     }
   }
 
-  private createQueryString<T>(params: Parameters<T>, withCredentials = false) {
-    const parameters = new URLSearchParams();
-
-    Object.entries(params).forEach(([key, value]) => {
-      if (Array.isArray(value)) {
-        parameters.append(key, value.join('|'));
-      } else {
-        parameters.append(key, String(value));
-      }
-    });
-
-    if (withCredentials) {
-      const { username, password } = this.#auth.getCredentials();
-      parameters.append('username', username);
-      parameters.append('password', password);
-    }
-
-    return parameters.toString();
-  }
-
   /**
    * Constructs a URL for the request in the format:
    *
@@ -79,10 +57,28 @@ export abstract class Client<ClientConfig extends Config & AuthConfig> {
    *
    * `https://services.datafordeler.dk/DAR/DAR/1/REST/adresse?Id=d6c48dac-2a8e-4ede-849b-3a86c4e5a258`
    */
-  private buildUrl<T>(req: RequestParams<T>): string {
-    const withCredentials = req.endpoint === Endpoint.PUBLIC_PROTECTED;
-    const parameters = this.createQueryString(req.params, withCredentials);
-    return `https://${req.endpoint}/${this.config.service}/${req.service}/${req.version ?? this.config.serviceVersion}/${this.config.serviceType}/${req.method}?${parameters}`;
+  protected buildUrl<T>(req: RequestParams<T>): URL {
+    const url = req.endpoint.getUrl();
+
+    const pathName = `${this.config.service}/${req.service}/${req.version ?? this.config.serviceVersion}/${this.config.serviceType}/${req.method}`;
+
+    url.pathname = pathName;
+
+    Object.entries(req.params).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        url.searchParams.append(key, value.join('|'));
+      } else {
+        url.searchParams.append(key, String(value));
+      }
+    });
+
+    if (req.endpoint.withCredentials) {
+      const { username, password } = this.#auth.getCredentials();
+      url.searchParams.append('username', username);
+      url.searchParams.append('password', password);
+    }
+
+    return url;
   }
 
   protected async request<T, R>(req: RequestParams<T>): Promise<R> {
@@ -97,11 +93,7 @@ export abstract class Client<ClientConfig extends Config & AuthConfig> {
       },
     };
 
-    if (req.endpoint === Endpoint.PUBLIC_PROTECTED) {
-      this.#auth.getCredentials();
-    }
-
-    if (req.endpoint === Endpoint.CERT0 || req.endpoint === Endpoint.CERT5) {
+    if (req.endpoint.withAgent) {
       init.dispatcher = this.#auth.getAgent();
     }
 
