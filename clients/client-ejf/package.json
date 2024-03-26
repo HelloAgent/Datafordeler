@@ -1,0 +1,39 @@
+{
+  "name": "@datafordeler/ejf",
+  "version": "0.0.0",
+  "description": "Client for EJF (Ejerfortegnelse)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/helloagent/datafordeler",
+    "directory": "clients/client-ejf"
+  },
+  "bugs": {
+    "url": "https://github.com/helloagent/datafordeler/issues"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "tsc --noEmit && vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "tsc --noEmit && vitest run -c vitest.e2e.config.mts",
+    "benchmark": "npx ts-node benchmark/index.ts"
+  },
+  "devDependencies": {
+    "@datafordeler/config": "workspace:*",
+    "@datafordeler/types": "workspace:*",
+    "dotenv": "^16.4.5",
+    "vitest": "^1.4.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@datafordeler/core": "workspace:*"
+  }
+}
