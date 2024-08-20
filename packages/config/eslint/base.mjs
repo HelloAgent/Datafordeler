@@ -6,6 +6,7 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
 
   {
+    ignores: ['**/dist'],
     rules: {
       // Disallow using "ISomeInterface" as a type name
       '@typescript-eslint/naming-convention': [
