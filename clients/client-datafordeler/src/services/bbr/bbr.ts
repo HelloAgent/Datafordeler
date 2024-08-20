@@ -1,19 +1,19 @@
-import { Service } from "../../core";
-import { clientInit, ServiceObject, MethodObject } from "../../core/types";
+import { Service } from '../../core';
+import { MethodObject, ServiceObject, clientInit } from '../../core/types';
 import {
-  EnhedRequest,
-  EnhedResponse,
   BygningRequest,
   BygningResponse,
   EjendomsrelationRequest,
   EjendomsrelationResponse,
-} from "./models";
+  EnhedRequest,
+  EnhedResponse,
+} from './models';
 
 export class BBR extends Service {
-  static Register = "BBR";
+  static Register = 'BBR';
 
   constructor(config: clientInit = {}) {
-    super(config, "BBR", "rest");
+    super(config, 'BBR', 'rest');
   }
 
   /**
@@ -30,32 +30,37 @@ export class BBR extends Service {
     return await this.Request<BygningResponse>(BBR.Methods.Bygning, params);
   }
 
-  async ejendomsrelation(params: EjendomsrelationRequest): Promise<EjendomsrelationResponse> {
-    return await this.Request<EjendomsrelationResponse>(BBR.Methods.Ejendomsrelation, params);
+  async ejendomsrelation(
+    params: EjendomsrelationRequest,
+  ): Promise<EjendomsrelationResponse> {
+    return await this.Request<EjendomsrelationResponse>(
+      BBR.Methods.Ejendomsrelation,
+      params,
+    );
   }
 
   static get Services(): ServiceObject {
     return Object.freeze({
-      BBRPublic: "BBRPublic",
+      BBRPublic: 'BBRPublic',
     });
   }
 
   static get Methods(): MethodObject {
     return Object.freeze({
       Enhed: {
-        zone: "public_protected",
+        zone: 'public_protected',
         service: BBR.Services.BBRPublic,
-        method: "enhed",
+        method: 'enhed',
       },
       Bygning: {
-        zone: "public_protected",
+        zone: 'public_protected',
         service: BBR.Services.BBRPublic,
-        method: "bygning",
+        method: 'bygning',
       },
       Ejendomsrelation: {
-        zone: "public_protected",
+        zone: 'public_protected',
         service: BBR.Services.BBRPublic,
-        method: "ejendomsrelation",
+        method: 'ejendomsrelation',
       },
     });
   }

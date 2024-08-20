@@ -1,11 +1,11 @@
-import { Types } from "../../sharedTypes";
+import { Types } from '../../sharedTypes';
 
 export declare namespace EjerskabMedStamoplysninger {
   export interface Request {
     BFEnr?: string;
     Ejerskabsid?: Types.id_lokalId;
     Virkningstid?: Date;
-    Status?: "gældende" | "tilbagerullet" | "historisk";
+    Status?: 'gældende' | 'tilbagerullet' | 'historisk';
   }
 
   export interface Beskyttelser {
@@ -75,19 +75,19 @@ export declare namespace EjerskabMedStamoplysninger {
       reklamebeskyttelse?: boolean;
       navn?: string;
       beliggenhedsadresse?: {
-        "CVRAdresse.adresseFritekst"?: string;
-        "CVRAdresse.doerbetegnelse"?: string;
-        "CVRAdresse.etagebetegnelse"?: string;
-        "CVRAdresse.husnummerFra"?: string;
-        "CVRAdresse.husnummerTil"?: string;
-        "CVRAdresse.kommunekode"?: string;
-        "CVRAdresse.kommunenavn"?: string;
-        "CVRAdresse.landekode"?: string;
-        "CVRAdresse.postdistrikt"?: string;
-        "CVRAdresse.postnummer"?: string;
-        "CVRAdresse.supplerendeBynavn"?: string;
-        "CVRAdresse.vejkode"?: string;
-        "CVRAdresse.vejnavn"?: string;
+        'CVRAdresse.adresseFritekst'?: string;
+        'CVRAdresse.doerbetegnelse'?: string;
+        'CVRAdresse.etagebetegnelse'?: string;
+        'CVRAdresse.husnummerFra'?: string;
+        'CVRAdresse.husnummerTil'?: string;
+        'CVRAdresse.kommunekode'?: string;
+        'CVRAdresse.kommunenavn'?: string;
+        'CVRAdresse.landekode'?: string;
+        'CVRAdresse.postdistrikt'?: string;
+        'CVRAdresse.postnummer'?: string;
+        'CVRAdresse.supplerendeBynavn'?: string;
+        'CVRAdresse.vejkode'?: string;
+        'CVRAdresse.vejnavn'?: string;
         coNavn?: string;
       };
     };
@@ -105,19 +105,19 @@ export declare namespace EjerskabMedStamoplysninger {
       reklamebeskyttelse: boolean;
       navn: string;
       beliggenhedsadresse: {
-        "CVRAdresse.vejkode": string;
-        "CVRAdresse.husnummerFra": string;
-        "CVRAdresse.etagebetegnelse": string;
-        "CVRAdresse.doerbetegnelse": string;
-        "CVRAdresse.kommunekode": string;
-        "CVRAdresse.kommunenavn": string;
-        "CVRAdresse.postdistrikt": string;
-        "CVRAdresse.vejnavn": string;
-        "CVRAdresse.husnummerTil": string;
-        "CVRAdresse.postnummer": string;
-        "CVRAdresse.supplerendeBynavn": string;
-        "CVRAdresse.adresseFritekst": string;
-        "CVRAdresse.landekode": string;
+        'CVRAdresse.vejkode': string;
+        'CVRAdresse.husnummerFra': string;
+        'CVRAdresse.etagebetegnelse': string;
+        'CVRAdresse.doerbetegnelse': string;
+        'CVRAdresse.kommunekode': string;
+        'CVRAdresse.kommunenavn': string;
+        'CVRAdresse.postdistrikt': string;
+        'CVRAdresse.vejnavn': string;
+        'CVRAdresse.husnummerTil': string;
+        'CVRAdresse.postnummer': string;
+        'CVRAdresse.supplerendeBynavn': string;
+        'CVRAdresse.adresseFritekst': string;
+        'CVRAdresse.landekode': string;
         coNavn: string;
       };
     };
@@ -203,11 +203,11 @@ export declare namespace EjerskabMedStamoplysninger {
 
   export interface EjerskabsFeature {
     properties: Ejerskab;
-    type: "Feature";
+    type: 'Feature';
   }
 
   export interface Response {
     features: EjerskabsFeature[];
-    type: "FeatureCollection";
+    type: 'FeatureCollection';
   }
 }

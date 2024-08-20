@@ -1,17 +1,17 @@
-import { Agent } from "https";
-import fetch from "node-fetch";
+import { Agent } from 'https';
+import fetch from 'node-fetch';
 
 import {
-  MethodInfo,
-  clientInit,
-  Servicetype,
-  Parameters,
-  Zone,
   Endpoint,
+  MethodInfo,
+  Parameters,
   Register,
+  Servicetype,
   Version,
+  Zone,
+  clientInit,
   fetchRequestInit,
-} from "./types";
+} from './types';
 
 export class Service {
   #agent?: Agent;
@@ -25,14 +25,14 @@ export class Service {
     config: clientInit = {},
     register: Register,
     serviceType: Servicetype,
-    version?: Version
+    version?: Version,
   ) {
-    this.#username = config?.username || "";
-    this.#password = config?.password || "";
+    this.#username = config?.username || '';
+    this.#password = config?.password || '';
     this.#agent = config?.agent;
     this.register = register;
     this.serviceType = serviceType;
-    this.version = version || "1";
+    this.version = version || '1';
   }
 
   protected set apiVersion(version: Version) {
@@ -43,12 +43,12 @@ export class Service {
     let url = this.buildUrl(opt, params);
     let config: fetchRequestInit = {};
 
-    if (opt.zone === "public_protected") {
+    if (opt.zone === 'public_protected') {
       this.validateAuth();
       url = this.addAuthToUrl(url);
     }
 
-    if (opt.zone === "cert0" || opt.zone === "cert5") {
+    if (opt.zone === 'cert0' || opt.zone === 'cert5') {
       this.validateAgent(opt.zone);
       config.agent = this.#agent;
     }
@@ -70,7 +70,7 @@ export class Service {
   private validateAgent(zone: string) {
     if (!this.#agent)
       throw new Error(
-        `This endpoint is proctected (zone ${zone}) and no agent/certificate was initiated.\nUse the createAgent method on the client or insert an https-agent on client creation.`
+        `This endpoint is proctected (zone ${zone}) and no agent/certificate was initiated.\nUse the createAgent method on the client or insert an https-agent on client creation.`,
       );
     //Further validation
     return true;
@@ -79,7 +79,7 @@ export class Service {
   private validateAuth(): boolean {
     if (!this.#username && !this.#password)
       throw new Error(
-        "This endpoint is protected. You need to insert username and password for your Datafordeler-account."
+        'This endpoint is protected. You need to insert username and password for your Datafordeler-account.',
       );
     // Further validation
     return true;
@@ -111,11 +111,11 @@ export class Service {
 
   /** Returns correct endpoint to be used in Request() */
   private getEndpoint(zone: Zone): Endpoint {
-    if (zone === "public") return "services.datafordeler.dk";
-    if (zone === "public_protected") return "services.datafordeler.dk";
-    if (zone === "cert0") return "certservices.datafordeler.dk";
-    if (zone === "cert5") return "s5-certservices.datafordeler.dk";
-    throw new Error("Wrong zone, could not parse a correct endpoint");
+    if (zone === 'public') return 'services.datafordeler.dk';
+    if (zone === 'public_protected') return 'services.datafordeler.dk';
+    if (zone === 'cert0') return 'certservices.datafordeler.dk';
+    if (zone === 'cert5') return 's5-certservices.datafordeler.dk';
+    throw new Error('Wrong zone, could not parse a correct endpoint');
   }
 
   /** Takes an object {key: "value"} and creates a url string */
@@ -124,9 +124,11 @@ export class Service {
     return Object.keys(parameters)
       .map((key) => {
         const valueIsArray = Array.isArray(parameters[key]);
-        const value = valueIsArray ? parameters[key].join("|") : parameters[key];
+        const value = valueIsArray
+          ? parameters[key].join('|')
+          : parameters[key];
         return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
       })
-      .join("&");
+      .join('&');
   }
 }

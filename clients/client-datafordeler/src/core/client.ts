@@ -1,7 +1,8 @@
-import { Agent } from "https";
-import { readFileSync } from "fs";
-import { EJF, DAR, BBR, EBR, Haendelser } from "../services";
-import { clientInit, certificateOptions } from "./types";
+import { readFileSync } from 'fs';
+import { Agent } from 'https';
+
+import { BBR, DAR, EBR, EJF, Haendelser } from '../services';
+import { certificateOptions, clientInit } from './types';
 
 /**
  * Initializes a Datafordeler client that can be configured with credentials
@@ -17,8 +18,8 @@ export class Client {
   #password?: string;
 
   constructor(config?: clientInit) {
-    this.#username = config?.username || "";
-    this.#password = config?.password || "";
+    this.#username = config?.username || '';
+    this.#password = config?.password || '';
     this.#agent = config?.agent;
   }
 
@@ -36,7 +37,7 @@ export class Client {
     // Consier to add requestCert: true
     let agent = new Agent({ passphrase: opt.passphrase });
     if (!opt.certBuffer && !opt.localFilePath) {
-      throw new Error("buffer or localFilePath needs to be defined");
+      throw new Error('buffer or localFilePath needs to be defined');
     }
     if (opt.certBuffer) agent.options.pfx = opt.certBuffer;
     if (opt.localFilePath) agent.options.pfx = readFileSync(opt.localFilePath);

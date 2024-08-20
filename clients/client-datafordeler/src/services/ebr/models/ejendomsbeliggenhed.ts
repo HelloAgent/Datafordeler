@@ -1,4 +1,4 @@
-import { Husnummer, adresseResponse as Adresse } from "../../dar/types";
+import { adresseResponse as Adresse, Husnummer } from '../../dar/types';
 
 export declare namespace EjendomsBeliggenhed {
   export interface Request {
@@ -9,14 +9,17 @@ export declare namespace EjendomsBeliggenhed {
     Status?: Status;
   }
 
-  export type Status = "gældende" | "historisk";
+  export type Status = 'gældende' | 'historisk';
   export type Forretningshaendelse =
-    | "adresseændring"
-    | "ejendomsforandring"
-    | "ejerhenvendelse"
-    | "konverteretFraESR";
+    | 'adresseændring'
+    | 'ejendomsforandring'
+    | 'ejerhenvendelse'
+    | 'konverteretFraESR';
 
-  export type Forretningsproces = "automatiskBeregnet" | "manueltOpdateret" | "konverteretFraESR";
+  export type Forretningsproces =
+    | 'automatiskBeregnet'
+    | 'manueltOpdateret'
+    | 'konverteretFraESR';
 
   export interface EjendomsBeliggenhedBasis {
     id_namespace: string;
@@ -30,7 +33,7 @@ export declare namespace EjendomsBeliggenhed {
     kommuneinddelingKommunekode: string;
     status: Status;
     forretningshaendelse: Forretningshaendelse;
-    forretningsomraade: "52.20.05";
+    forretningsomraade: '52.20.05';
     forretningsproces: Forretningsproces;
     virkningFra: string;
     virkningTil: string | null;
@@ -52,22 +55,22 @@ export declare namespace EjendomsBeliggenhed {
   }
 
   export interface EjendomsBeliggenhedSimpelFeature {
-    type: "Feature";
+    type: 'Feature';
     properties: EjendomsBeliggenhedSimpel;
   }
 
   export interface ResponseSimpel {
-    type: "FeatureCollection";
+    type: 'FeatureCollection';
     features: EjendomsBeliggenhedSimpelFeature[];
   }
 
   export interface EjendomsBeliggenhedFeature {
-    type: "Feature";
+    type: 'Feature';
     properties: EjendomsBeliggenhed;
   }
 
   export interface ResponseFull {
-    type: "FeatureCollection";
+    type: 'FeatureCollection';
     features: EjendomsBeliggenhedFeature[];
   }
 }

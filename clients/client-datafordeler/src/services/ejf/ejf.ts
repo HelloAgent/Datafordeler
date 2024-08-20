@@ -1,17 +1,17 @@
-import { Service } from "../../core";
-import { clientInit, ServiceObject, MethodObject } from "../../core/types";
+import { Service } from '../../core';
+import { MethodObject, ServiceObject, clientInit } from '../../core/types';
 import {
   EjerskabMedStamoplysninger,
-  Handelsoplysninger,
-  Ejerskifte,
   Ejerskabsskifte,
-} from "./models";
+  Ejerskifte,
+  Handelsoplysninger,
+} from './models';
 
 export class EJF extends Service {
-  static Register = "EJERFORTEGNELSE";
+  static Register = 'EJERFORTEGNELSE';
 
   constructor(config: clientInit = {}) {
-    super(config, "EJERFORTEGNELSE", "rest");
+    super(config, 'EJERFORTEGNELSE', 'rest');
   }
 
   /**
@@ -20,56 +20,69 @@ export class EJF extends Service {
    * @return {array} Returns array of addresses
    */
   async ejerskabMedStamoplysninger(
-    params: EjerskabMedStamoplysninger.Request
+    params: EjerskabMedStamoplysninger.Request,
   ): Promise<EjerskabMedStamoplysninger.Response> {
     return await this.Request<EjerskabMedStamoplysninger.Response>(
       EJF.Methods.EjerskabMedStamoplysninger,
-      params
+      params,
     );
   }
 
-  async handelsoplysning(params: Handelsoplysninger.Request): Promise<Handelsoplysninger.Response> {
-    return await this.Request<Handelsoplysninger.Response>(EJF.Methods.Handelsoplysninger, params);
+  async handelsoplysning(
+    params: Handelsoplysninger.Request,
+  ): Promise<Handelsoplysninger.Response> {
+    return await this.Request<Handelsoplysninger.Response>(
+      EJF.Methods.Handelsoplysninger,
+      params,
+    );
   }
 
   async ejerskifte(params: Ejerskifte.Request): Promise<Ejerskifte.Response> {
-    return await this.Request<Ejerskifte.Response>(EJF.Methods.Ejerskifte, params);
+    return await this.Request<Ejerskifte.Response>(
+      EJF.Methods.Ejerskifte,
+      params,
+    );
   }
 
-  async ejerskabsskifte(params: Ejerskabsskifte.Request): Promise<Ejerskabsskifte.Response> {
-    return await this.Request<Ejerskabsskifte.Response>(EJF.Methods.Ejerskabsskifte, params);
+  async ejerskabsskifte(
+    params: Ejerskabsskifte.Request,
+  ): Promise<Ejerskabsskifte.Response> {
+    return await this.Request<Ejerskabsskifte.Response>(
+      EJF.Methods.Ejerskabsskifte,
+      params,
+    );
   }
 
   static get Services(): ServiceObject {
     return Object.freeze({
-      Ejerfortegnelsen: "Ejerfortegnelsen",
-      EjerfortegnelsenFortrolig: " EjerfortegnelsenFortrolig",
-      EjerfortegnelsenFortroligBeskyttet: "EjerfortegnelsenFortroligBeskyttet",
+      Ejerfortegnelsen: 'Ejerfortegnelsen',
+      EjerfortegnelsenFortrolig: ' EjerfortegnelsenFortrolig',
+      EjerfortegnelsenFortroligBeskyttet: 'EjerfortegnelsenFortroligBeskyttet',
     });
   }
 
   static get Methods(): MethodObject {
     return Object.freeze({
       EjerskabMedStamoplysninger: {
-        zone: "cert5",
+        zone: 'cert5',
         service: EJF.Services.Ejerfortegnelsen,
-        method: "EjerskabMedStamoplysninger",
+        method: 'EjerskabMedStamoplysninger',
       },
       Handelsoplysninger: {
-        zone: "cert5",
+        zone: 'cert5',
         service: EJF.Services.Ejerfortegnelsen,
-        method: "Handelsoplysning",
+        method: 'Handelsoplysning',
       },
       Ejerskifte: {
-        zone: "cert5",
+        zone: 'cert5',
         service: EJF.Services.Ejerfortegnelsen,
-        method: "Ejerskifte",
-        version: "2.0.0", // Added version manuallly as Ejerskifte uses 2.0.0 and other methods in EJF uses 1.
+        method: 'Ejerskifte',
+        version: '2.0.0', // Added version manuallly as Ejerskifte uses 2.0.0 and other methods in EJF uses 1.
       },
       Ejerskabsskifte: {
-        zone: "cert5",
+        zone: 'cert5',
         service: EJF.Services.Ejerfortegnelsen,
-        method: "Ejerskabsskifte",
+        method: 'Ejerskabsskifte',
       },
     });
   }

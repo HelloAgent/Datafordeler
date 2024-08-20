@@ -1,4 +1,4 @@
-import { Types } from "../sharedTypes";
+import { Types } from '../sharedTypes';
 
 export type Id = string;
 export type Bygning = string;
@@ -146,7 +146,7 @@ export interface Husnummer {
           virkningFra: string;
           virkningsaktør: string;
         };
-      }
+      },
     ];
   };
   postnummer: Postnummer;

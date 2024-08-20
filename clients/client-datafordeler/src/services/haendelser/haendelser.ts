@@ -1,12 +1,12 @@
-import { Service } from "../../core";
-import { clientInit, ServiceObject, MethodObject } from "../../core/types";
-import { Request, Response } from "./types";
+import { Service } from '../../core';
+import { MethodObject, ServiceObject, clientInit } from '../../core/types';
+import { Request, Response } from './types';
 
 export class Haendelser extends Service {
-  static Register = "system";
+  static Register = 'system';
 
   constructor(config: clientInit) {
-    super(config, "system", "custom", "1.0.0");
+    super(config, 'system', 'custom', '1.0.0');
   }
 
   /**
@@ -17,28 +17,28 @@ export class Haendelser extends Service {
   async getPublicEvents(params: Request): Promise<Response> {
     return this.Request<Response>(Haendelser.Methods.public, params);
   }
-  
+
   async getPrivateEvents(params: Request): Promise<Response> {
     return this.Request<Response>(Haendelser.Methods.protected, params);
   }
 
   static get Services(): ServiceObject {
     return Object.freeze({
-      EventMessages: "EventMessages",
+      EventMessages: 'EventMessages',
     });
   }
 
   static get Methods(): MethodObject {
     return Object.freeze({
       public: {
-        zone: "public_protected",
+        zone: 'public_protected',
         service: Haendelser.Services.EventMessages,
-        method: "",
+        method: '',
       },
       protected: {
-        zone: "cert5",
+        zone: 'cert5',
         service: Haendelser.Services.EventMessages,
-        method: "",
+        method: '',
       },
     });
   }

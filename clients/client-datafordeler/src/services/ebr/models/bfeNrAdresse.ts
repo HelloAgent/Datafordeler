@@ -7,15 +7,21 @@ export declare namespace BFEnrAdresse {
     Status?: Status;
   }
 
-  export type Ejendomstype = "BygningPaaFremmedGrund" | "Ejerlejlighed" | "SamletFastEjendom";
-  export type Status = "gældende" | "historisk";
+  export type Ejendomstype =
+    | 'BygningPaaFremmedGrund'
+    | 'Ejerlejlighed'
+    | 'SamletFastEjendom';
+  export type Status = 'gældende' | 'historisk';
   export type Forretningshaendelse =
-    | "adresseændring"
-    | "ejendomsforandring"
-    | "ejerhenvendelse"
-    | "konverteretFraESR";
+    | 'adresseændring'
+    | 'ejendomsforandring'
+    | 'ejerhenvendelse'
+    | 'konverteretFraESR';
 
-  export type Forretningsproces = "automatiskBeregnet" | "manueltOpdateret" | "konverteretFraESR";
+  export type Forretningsproces =
+    | 'automatiskBeregnet'
+    | 'manueltOpdateret'
+    | 'konverteretFraESR';
 
   export interface BFEnrAdresse {
     id_namespace: string;
@@ -32,7 +38,7 @@ export declare namespace BFEnrAdresse {
     husnummerLokalId: string | null;
     status: Status;
     forretningshaendelse: Forretningshaendelse;
-    forretningsomraade: "52.20.05";
+    forretningsomraade: '52.20.05';
     forretningsproces: Forretningsproces;
     virkningFra: string;
     virkningTil: string | null;
@@ -43,12 +49,12 @@ export declare namespace BFEnrAdresse {
   }
 
   export interface BFEnrAdresseFeature {
-    type: "Feature";
+    type: 'Feature';
     properties: BFEnrAdresse;
   }
 
   export interface Response {
-    type: "FeatureCollection";
+    type: 'FeatureCollection';
     features: BFEnrAdresseFeature[];
   }
 }

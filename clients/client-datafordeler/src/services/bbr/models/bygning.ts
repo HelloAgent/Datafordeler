@@ -1,36 +1,36 @@
 //Regex for matching code comments: /\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/
 // Make it possible to insert arrays of Id etc. that will be called concacenated like <id123>|<id456>
+import { BygningPaaFremmedGrundList } from './bygningPaaFremmedGrund';
+import { Ejerlejlighed } from './ejerlejlighed';
+import { EtageList } from './etage';
+import { FordelingsarealList } from './fordelingsareal';
+import { OpgangList } from './opgang';
 
-import { Ejerlejlighed } from "./ejerlejlighed";
-import { FordelingsarealList } from "./fordelingsareal";
-import { EtageList } from "./etage";
-import { OpgangList } from "./opgang";
-import { BygningPaaFremmedGrundList } from "./bygningPaaFremmedGrund";
 /**
  * Obligatoriske parametre:
   Et ID på enten Bygning, Grund, Enhed, TekniskAnlæg, BBRSag eller Ejendomsrelation og et interval for enten registreringstid, virkningstid eller DAF opdateringstid.
  */
 
 export type Status =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "11"
-  | "12"
-  | "13"
-  | "14"
-  | "15"
-  | "16"
-  | "17"
-  | "18"
-  | "19";
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | '13'
+  | '14'
+  | '15'
+  | '16'
+  | '17'
+  | '18'
+  | '19';
 
 export interface BygningRequest {
   Id?: string | string[]; //can be array!
@@ -121,7 +121,9 @@ export interface Bygning {
   byg126TilladelseTilUdtræden?: string | null;
   byg127DatoForTilladelseTilUdtræden?: string | null;
   byg128TilladelseTilAlternativBortskaffelseEllerAfledning?: string | null;
-  byg129DatoForTilladelseTilAlternativBortskaffelseEllerAfledning?: string | null;
+  byg129DatoForTilladelseTilAlternativBortskaffelseEllerAfledning?:
+    | string
+    | null;
   byg130ArealAfUdvendigEfterisolering?: number | null;
   byg131DispensationFritagelseIftKollektivVarmeforsyning?: string | null;
   byg132DatoForDispensationFritagelseIftKollektivVarmeforsyning?: string | null;

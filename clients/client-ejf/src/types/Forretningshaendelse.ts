@@ -38,4 +38,3 @@ export type Forretningshaendelse =
   | 'SkifteretsattestÆgtefælle'
   | 'Påtegning adkomst'
   | 'Ukendt - konverteret fra ESR';
-

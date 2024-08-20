@@ -1,5 +1,5 @@
-import { EjerlejlighedList } from "./ejerlejlighed";
-import { FordelingsarealList } from "./fordelingsareal";
+import { EjerlejlighedList } from './ejerlejlighed';
+import { FordelingsarealList } from './fordelingsareal';
 
 export interface EnhedRequest {
   Id?: string; //can be array!

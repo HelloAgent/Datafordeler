@@ -20,7 +20,7 @@ interface Message {
         Beskedkuvert: {
           Filtreringsdata: {
             beskedtype: string; //"EjerskabDelete";
-            beskedansvarligAktør: "";
+            beskedansvarligAktør: '';
             RelateretObjekt: [
               {
                 objektID: string; //"11111111";
@@ -29,7 +29,7 @@ interface Message {
               {
                 objektID: string; //cprnr e.g. "0101801234" (01-01-1980-1234);
                 objekttype: string; //"ejendePersonPersonNr";
-              }
+              },
             ];
             Objektregistrering: [
               {
@@ -45,9 +45,9 @@ interface Message {
                 Stedbestemmelse: {
                   stedbestemmelseReference: string; //"http://data.gov.dk/dagi/kommune#0706";
                 };
-              }
+              },
             ];
-            tværgåendeProces: "Manuel opdatering";
+            tværgåendeProces: 'Manuel opdatering';
           };
           Leveranceinformation: {
             dannelsestidspunkt: string; //"2020-09-29T07:46:57.0134940+02:00";
@@ -63,7 +63,7 @@ interface Message {
               attributes: { [k: string]: string | number };
             };
             Objektreference?: unknown;
-          }
+          },
         ];
       };
     };

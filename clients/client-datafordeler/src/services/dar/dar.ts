@@ -1,12 +1,12 @@
-import { Service } from "../../core";
-import { clientInit, ServiceObject, MethodObject } from "../../core/types";
-import { adresseRequest, adresseResponse, adresse } from "./types";
+import { Service } from '../../core';
+import { MethodObject, ServiceObject, clientInit } from '../../core/types';
+import { adresse, adresseRequest, adresseResponse } from './types';
 
 export class DAR extends Service {
-  static Register = "DAR";
+  static Register = 'DAR';
 
   constructor(config: clientInit = {}) {
-    super(config, "DAR", "rest");
+    super(config, 'DAR', 'rest');
   }
 
   /**
@@ -20,17 +20,17 @@ export class DAR extends Service {
 
   static get Services(): ServiceObject {
     return Object.freeze({
-      DAR: "DAR",
-      DAR_BFE_Public: "DAR_BFE_Public",
+      DAR: 'DAR',
+      DAR_BFE_Public: 'DAR_BFE_Public',
     });
   }
 
   static get Methods(): MethodObject {
     return Object.freeze({
       adresse: {
-        zone: "public",
+        zone: 'public',
         service: DAR.Services.DAR,
-        method: "adresse",
+        method: 'adresse',
       },
     });
   }

@@ -1,2 +1,2 @@
-export * from "./bfeNrAdresse";
-export * from "./ejendomsbeliggenhed";
+export * from './bfeNrAdresse';
+export * from './ejendomsbeliggenhed';

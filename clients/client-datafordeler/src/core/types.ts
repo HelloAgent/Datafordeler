@@ -1,4 +1,4 @@
-import { Agent } from "https";
+import { Agent } from 'https';
 
 export interface BasicAuth {
   username: string;
@@ -65,22 +65,22 @@ export type KeyValue<T, U> = {
   value: U;
 };
 
-export type Zone = "public" | "public_protected" | "cert0" | "cert5";
+export type Zone = 'public' | 'public_protected' | 'cert0' | 'cert5';
 export type Endpoint =
-  | "services.datafordeler.dk"
-  | "certservices.datafordeler.dk"
-  | "s5-certservices.datafordeler.dk";
+  | 'services.datafordeler.dk'
+  | 'certservices.datafordeler.dk'
+  | 's5-certservices.datafordeler.dk';
 
 export enum Endpoints {
-  PUBLIC = "services.datafordeler.dk",
-  CERT0 = "certservices.datafordeler.dk",
-  CERT5 = "s5-certservices.datafordeler.dk",
+  PUBLIC = 'services.datafordeler.dk',
+  CERT0 = 'certservices.datafordeler.dk',
+  CERT5 = 's5-certservices.datafordeler.dk',
 }
 
-export type Register = "DAR" | "BBR" | "EJERFORTEGNELSE" | "EBR" | "system";
+export type Register = 'DAR' | 'BBR' | 'EJERFORTEGNELSE' | 'EBR' | 'system';
 export type Service = string;
-export type Version = "1" | "1.0.0" | "2.0.0";
-export type Servicetype = "rest" | "custom";
+export type Version = '1' | '1.0.0' | '2.0.0';
+export type Servicetype = 'rest' | 'custom';
 export type Metode = string;
 export type Parameters = { [k: string]: any };
 
