@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved, import/no-extraneous-dependencies */
 import { config } from 'dotenv';
 import { defineConfig } from 'vitest/config';
 
