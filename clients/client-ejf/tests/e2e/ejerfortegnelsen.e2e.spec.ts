@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { EJF } from '../../src/EJFClient';
 import { getCredentials } from './getCredentials';
 
-describe('EjerskabMedStamoplysninger', () => {
+describe('Ejerfortegnelsen', () => {
   let ejf: EJF;
   const { path, passphrase } = getCredentials();
 
@@ -11,7 +11,7 @@ describe('EjerskabMedStamoplysninger', () => {
     ejf = new EJF({ agentConfig: { passphrase, localFilePath: path } });
   });
 
-  it('should fetch an owner', async () => {
+  it('should fetch EjerskabMedStamoplysninger', async () => {
     const res = await ejf.EjerskabMedStamoplysninger({
       BFEnr: '6011585',
       Status: 'gældende',
@@ -23,17 +23,8 @@ describe('EjerskabMedStamoplysninger', () => {
     expect(properties?.ejendeVirksomhed).toBeDefined();
     expect(properties?.ejendePerson).toBeUndefined();
   });
-});
 
-describe('Ejerskabsskifte', () => {
-  let ejf: EJF;
-  const { path, passphrase } = getCredentials();
-
-  beforeEach(() => {
-    ejf = new EJF({ agentConfig: { passphrase, localFilePath: path } });
-  });
-
-  it('should fetch an ejerskabsskifte', async () => {
+  it('should fetch Ejerskabsskifte', async () => {
     const res = await ejf.Ejerskabsskifte({
       EjerskabsskifteId: 'ac364554-5d15-461d-9138-56430426ccaf',
     });
@@ -43,5 +34,16 @@ describe('Ejerskabsskifte', () => {
     expect(res.features).toHaveLength(1);
     expect(properties?.modtagetAndel_taeller).toBe(473690881);
     expect(properties?.modtagetAndel_naevner).toBe(9999990000);
+  });
+
+  it('should fetch EjendomsadministratorMedStamoplysninger', async () => {
+    const res = await ejf.EjendomsadministratorMedStamoplysninger({
+      BFEnr: '6019344',
+    });
+
+    const properties = res.features[0]?.properties;
+
+    expect(res.features).toHaveLength(1);
+    expect(properties?.bestemtFastEjendomBFENr).toBe('6019344');
   });
 });
