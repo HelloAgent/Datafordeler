@@ -1,39 +1,40 @@
 {
   "name": "@datafordeler/ejf",
+  "description": "Datafordeler SDK for Javascript Ejf Client (Ejerfortegnelsen) for Node.js",
   "version": "0.0.0",
-  "description": "Client for EJF (Ejerfortegnelse)",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "vitest run -c vitest.config.e2e.mts"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
+  "sideEffects": false,
+  "dependencies": {
+    "@datafordeler/core": "workspace:*",
+    "@datafordeler/types": "workspace:*"
+  },
+  "devDependencies": {
+    
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist/**"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/helloagent/datafordeler",
     "directory": "clients/client-ejf"
   },
-  "bugs": {
-    "url": "https://github.com/helloagent/datafordeler/issues"
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "test": "tsc --noEmit && vitest run",
-    "test:watch": "vitest",
-    "test:e2e": "tsc --noEmit && vitest run -c vitest.e2e.config.mts",
-    "benchmark": "npx ts-node benchmark/index.ts"
-  },
-  "devDependencies": {
-    "@datafordeler/config": "workspace:*",
-    "@datafordeler/types": "workspace:*",
-    "dotenv": "^16.4.5",
-    "vitest": "^1.4.0"
-  },
-  "files": [
-    "dist"
-  ],
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@datafordeler/core": "workspace:*"
   }
 }
