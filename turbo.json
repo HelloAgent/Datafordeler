@@ -13,14 +13,15 @@
       ]
     },
     "dev": {},
-    "test": {},
-    "test:watch": {
-      "cache": false
-    },
     "lint": {
       "dependsOn": [
         "^lint"
       ]
-    }
+    },
+    "test": {},
+    "test:watch": {
+      "cache": false
+    },
+    "test:e2e": {}
   }
 }
