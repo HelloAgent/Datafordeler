@@ -17,26 +17,80 @@ export type ForretningsOmraade<T extends string = string> = T;
 export type ForretningsProces<T extends string = string> = T;
 
 export interface Feature<T = Record<string, unknown>> {
-  properties: T;
   type: 'Feature';
+  properties: T;
 }
 
 export interface FeatureCollection<T = Record<string, unknown>> {
-  features: Feature<T>[];
   type: 'FeatureCollection';
+  features: Feature<T>[];
 }
 
 export interface DatafordelerItem {
+  /**
+   * Lokal identifikation
+   */
   id_lokalId: IdLokalId;
+
+  /**
+   * Identifikation af namespace
+   * @example "http://data.gov.dk/ejerfortegnelse"
+   */
   id_namespace: IdNamespace;
+
+  /**
+   * Forretningshændelse
+   * @example "Endeligt skøde"
+   */
   forretningshaendelse: ForretningsHaendelse;
+
+  /**
+   * Forretningsområde
+   * @example "54.15"
+   */
   forretningsomraade: ForretningsOmraade;
+
+  /**
+   * Forretningsproces
+   * @example "Hændelse fra Digital Tinglysning"
+   */
   forretningsproces: ForretningsProces;
+
+  /**
+   * Tidspunktet for objektets registrering
+   */
   registreringFra: RegistreringFra;
+
+  /**
+   * Registreringsaktøer
+   * @example "ERST"
+   */
   registreringsaktoer: Registreringsaktoer;
+
+  /**
+   * Tidspunktet hvor en ny registrering er foretaget på objektet, og hvor denne version ikke længere er den seneste
+   */
   registreringTil?: RegistreringTil;
+
+  /**
+   * Tidspunktet hvor objektets virkning starter
+   */
   virkningFra: VirkningFra;
+
+  /**
+   * Tidspunktet hvor objektets virkning ophører
+   */
   virkningTil?: VirkningTil;
+
+  /**
+   * Virkningsaktøer
+   * @example "ERST"
+   */
   virkningsaktoer: Virkningsaktoer;
+
+  /**
+   * Objektets status
+   * @example "gældende"
+   */
   status: Status;
 }
