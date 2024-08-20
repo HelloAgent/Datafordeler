@@ -1,4 +1,6 @@
-import { AuthConfig, Client, Config, RequestParams } from '../src';
+import { describe, expect, it } from 'vitest';
+
+import { AuthConfig, Client, ClientBaseConfig, RequestConfig } from '../src';
 import { Endpoint } from '../src/Endpoint';
 
 interface MockParams {
@@ -6,17 +8,13 @@ interface MockParams {
   ids?: string[];
 }
 
-class MockClass extends Client<Config & AuthConfig> {
-  constructor(props?: Config & AuthConfig) {
-    super({
-      service: 'testService',
-      serviceVersion: '1.0.0',
-      serviceType: 'REST',
-      ...props,
-    });
+type MockConfig = ClientBaseConfig & AuthConfig;
+class MockClass extends Client<MockConfig> {
+  constructor(props: MockConfig = {}) {
+    super('testService', props);
   }
 
-  mockBuildUrl(params: RequestParams<MockParams>) {
+  mockBuildUrl(params: RequestConfig<MockParams, unknown>) {
     return this.buildUrl(params);
   }
 
@@ -34,16 +32,11 @@ class MockClass extends Client<Config & AuthConfig> {
 
 describe('Core client', () => {
   it('should initialize a client with config', () => {
-    const client = new MockClass({ retries: 5, timeout: 1000 });
+    const client = new MockClass({ timeout: 1000 });
 
     expect(client).toEqual({
-      config: {
-        service: 'testService',
-        serviceVersion: '1.0.0',
-        serviceType: 'REST',
-        timeout: 1000,
-        retries: 5,
-      },
+      register: 'testService',
+      timeout: 1000,
     });
   });
 
@@ -57,8 +50,10 @@ describe('Core client', () => {
 
     const url = client.mockBuildUrl({
       endpoint: Endpoint.PUBLIC,
-      method: 'testMethod',
       service: 'testService',
+      version: '1.0.0',
+      serviceType: 'REST',
+      method: 'testMethod',
       params: { id: '1234x4321' },
     });
 
@@ -75,8 +70,10 @@ describe('Core client', () => {
 
     const url = client.mockBuildUrl({
       endpoint: Endpoint.PUBLIC_PROTECTED,
-      method: 'testMethod',
       service: 'testService',
+      version: '1.0.0',
+      serviceType: 'REST',
+      method: 'testMethod',
       params: { id: '1234x4321' },
     });
 
@@ -88,10 +85,12 @@ describe('Core client', () => {
 
     const params = {
       endpoint: Endpoint.PUBLIC_PROTECTED,
-      method: 'testMethod',
       service: 'testService',
+      version: '1.0.0',
+      serviceType: 'REST',
+      method: 'testMethod',
       params: { id: '1234x4321' },
-    };
+    } as never;
 
     expect(() => client.mockBuildUrl(params)).toThrow();
   });
@@ -106,8 +105,10 @@ describe('Core client', () => {
 
     const url = client.mockBuildUrl({
       endpoint: Endpoint.CERT0,
-      method: 'testMethod',
       service: 'testService',
+      version: '1.0.0',
+      serviceType: 'REST',
+      method: 'testMethod',
       params: { ids: ['123', '321'] },
     });
 
@@ -122,8 +123,10 @@ describe('Core client', () => {
 
     const url = client.mockBuildUrl({
       endpoint: Endpoint.CERT5,
-      method: 'testMethod',
       service: 'testService',
+      version: '1.0.0',
+      serviceType: 'REST',
+      method: 'testMethod',
       params: { ids: ['123', '321'] },
     });
 

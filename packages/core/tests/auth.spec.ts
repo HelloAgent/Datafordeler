@@ -1,4 +1,5 @@
 import { Agent } from 'undici';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 import { Auth } from '../src/Auth';
 

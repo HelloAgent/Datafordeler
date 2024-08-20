@@ -1,7 +1,86 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import type { Agent } from 'undici';
+
 import type { Endpoint } from './Endpoint';
 
+export type { Agent } from 'undici';
+
 /**
- * Values that can be passed as parameters to the request.
+ * Configuration when initializing an agent from a local certificate file.
+ */
+export interface AgentFromConfig {
+  /**
+   * The passphrase for the certificate
+   * @required
+   */
+  passphrase: string;
+
+  /**
+   * Path to the certificate file
+   * @required
+   */
+  localFilePath: string;
+
+  /**
+   * Whether to keep the connection alive
+   * @default true
+   */
+  keepAlive?: boolean;
+
+  /**
+   * Whether to reject unauthorized connections
+   * @default false
+   */
+  rejectUnauthorized?: boolean;
+}
+
+/**
+ * Represents the configuration options when using an agent.
+ */
+export interface AgentConfig {
+  /**
+   * An existing agent to use for the request
+   */
+  agent?: Agent;
+
+  /**
+   * Configuration for creating a new agent
+   */
+  agentConfig?: AgentFromConfig;
+}
+
+/**
+ * Interface for configuring credentials.
+ */
+export interface CredentialsConfig {
+  credentials?: {
+    /**
+     * A datafordeler username
+     */
+    username: string;
+
+    /**
+     * A datafordeler password
+     */
+    password: string;
+  };
+}
+
+/**
+ * Represents the authentication configuration.
+ */
+export type AuthConfig = AgentConfig & CredentialsConfig;
+
+/**
+ * Defines the configuration options for the base client.
+ */
+export type ClientBaseConfig = {
+  readonly timeout?: number;
+  // readonly retries?: number; // not implemented
+};
+
+/**
+ * Values that can be passed as parameters to a request.
  */
 export type ParameterValues =
   | string
@@ -22,12 +101,8 @@ export type Parameters<T> = {
  * The url structure is as follows:
  *
  * `endpoint/register/service/version/servicetype/method?param1=value1&param2=value2`
- *
- * register and serviceType are static properties of the client, and such only the endpoint, service and method is required.
- *
- * The version is set by the client as well, but can be overwriten in the request.
  */
-export interface RequestParams<T> {
+export interface RequestConfig<T, R> {
   /**
    * The endpoint to call
    * @example Endpoint.PUBLIC
@@ -41,10 +116,17 @@ export interface RequestParams<T> {
   service: string;
 
   /**
-   * Override the version applied in the client
-   * @example '1'
+   * Set the service version to call
+   * @default '1'
    */
   version?: string;
+
+  /**
+   * The type of service to call
+   *
+   * @default 'REST'
+   */
+  serviceType?: 'REST' | 'custom';
 
   /**
    * The method to call

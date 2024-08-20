@@ -1,27 +1,7 @@
 import { readFileSync } from 'fs';
 import { Agent } from 'undici';
 
-export interface CredentialsConfig {
-  credentials?: {
-    username: string;
-    password: string;
-  };
-}
-
-export interface AgentProps {
-  passphrase: string;
-  certBuffer?: Buffer;
-  localFilePath?: string;
-  keepAlive?: boolean;
-  rejectUnauthorized?: boolean;
-}
-
-export interface AgentConfig {
-  agent?: Agent;
-  agentConfig?: AgentProps;
-}
-
-export type AuthConfig = AgentConfig & CredentialsConfig;
+import type { AgentFromConfig } from './types';
 
 export class Auth {
   #agent?: Agent;
@@ -56,7 +36,7 @@ export class Auth {
     };
   }
 
-  public createAgent(props: AgentProps) {
+  public createAgent(props: AgentFromConfig) {
     if (this.#agent) {
       throw new Error(`Agent already exists`);
     }
@@ -72,16 +52,6 @@ export class Auth {
 
     if (props.localFilePath) {
       connect.pfx = readFileSync(props.localFilePath);
-    }
-
-    if (props.certBuffer) {
-      connect.pfx = props.certBuffer;
-    }
-
-    if (!props.certBuffer && !props.localFilePath) {
-      throw new Error(
-        `Either certBuffer or localFilePath must be provided when creating an agent`,
-      );
     }
 
     this.#agent = new Agent({ connect });
