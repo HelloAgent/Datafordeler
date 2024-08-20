@@ -1,34 +1,40 @@
 {
   "name": "datafordeler-monorepo",
+  "description": "Datafordeler SDK for Javascript Monorepo",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "lint": "eslint . --ext .ts,.tsx --max-warnings 0",
+    "lint": "turbo lint",
     "publish-packages": "turbo run build lint test && changeset version && changeset publish",
     "test:watch": "turbo run test:watch",
     "test": "turbo run test"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
+    "@changesets/cli": "^2.27.7",
     "@datafordeler/config": "workspace:*",
-    "@swc/core": "^1.4.8",
-    "@swc/jest": "^0.2.36",
+    "@swc/core": "^1.7.14",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "@types/benchmark": "^2.1.5",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.27",
-    "benchmark": "^2.1.4",
-    "jest": "^29.7.0",
-    "prettier": "^3.2.5",
+    "@types/node": "20.16.1",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.9.0",
+    "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "tsup": "^8.0.2",
-    "turbo": "^1.12.5",
-    "typescript": "^5.4.2"
+    "tsup": "^8.2.4",
+    "turbo": "^2.0.14",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
   },
   "packageManager": "pnpm@8.9.0",
   "engines": {
     "node": ">=18"
+  },
+  "files": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/helloagent/datafordeler"
   }
 }
