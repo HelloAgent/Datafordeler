@@ -165,7 +165,7 @@ export interface ProduktionenhedAttributes extends BaseAttributes {
 /**
  * CVR Virksomhed
  */
-export interface Virksomhed {
+export interface VirksomhedSimpel {
   entityType: 'Virksomhed';
   attributes: VirksomhedAttributes;
 }
@@ -173,7 +173,7 @@ export interface Virksomhed {
 /**
  * CVR Produktionenhed
  */
-export interface Produktionsenhed {
+export interface ProduktionsenhedSimpel {
   entityType: 'Produktionsenhed';
   attributes: ProduktionenhedAttributes;
 }
