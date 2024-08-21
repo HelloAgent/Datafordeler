@@ -19,6 +19,12 @@ describe('Ejerfortegnelsen', () => {
 
     const properties = res.features[0]?.properties;
 
+    if (properties?.ejendePerson?.Person?.Beskyttelser) {
+      const bs =
+        properties.ejendePerson.Person.Beskyttelser[0]?.Beskyttelse
+          ?.beskyttelsestype;
+    }
+
     expect(res.features).toHaveLength(1);
     expect(properties?.ejendeVirksomhed).toBeDefined();
     expect(properties?.ejendePerson).toBeUndefined();

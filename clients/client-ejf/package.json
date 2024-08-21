@@ -3,13 +3,17 @@
   "description": "Datafordeler SDK for Javascript Ejf Client (Ejerfortegnelsen) for Node.js",
   "version": "0.0.0",
   "scripts": {
-    "build": "tsup src/index.ts src/types/index.ts --format cjs,esm --dts",
+    "build": "tsup src/index.ts src/types/index.ts src/types/ejer*/*.ts --format cjs,esm --dts",
     "dev": "tsup src/index.ts src/types/index.ts --format cjs,esm --dts --watch",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "vitest run -c vitest.config.e2e.mts"
+    "test:e2e": "vitest run -c vitest.config.e2e.mts",
+    "generate-types": "cd schemas/ejerfortegnelsen && json2ts -i 'EJF_3.14_ejerskabmedstamoplysninger.json' -o ../../src/test-types/ejerskabMedStamoplysninger.ts --additionalProperties false",
+    "generate-all-types_": "cd schemas/ejerfortegnelsen && json2ts -i 'EJF_3.14_*.json' -o ../../src/test-types --additionalProperties false",
+    "generate-all-types": "json2ts -i './schemas/ejerfortegnelsen/EJF_3.*.json' -o ./src/types/generated --additionalProperties false --cwd schemas/ejerfortegnelsen",
+    "generate:types": "ts-node scripts/generate-types.ts"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -19,7 +23,10 @@
     "@datafordeler/core": "workspace:*",
     "@datafordeler/types": "workspace:*"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "glob": "^11.0.0",
+    "json-schema-to-typescript": "^15.0.0"
+  },
   "engines": {
     "node": ">=18.0.0"
   },
