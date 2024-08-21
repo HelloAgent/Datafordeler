@@ -16,7 +16,7 @@ export class EBR extends Client<EBRClientConfig> {
   private hasCredentials: boolean = false;
 
   constructor(props: EBRClientConfig) {
-    super('Ejendomsbeliggenhed', props);
+    super('EBR', props);
 
     if (props.agent || props.agentConfig) {
       this.hasAgent = true;
