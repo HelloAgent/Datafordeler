@@ -5,6 +5,62 @@
  */
 
 /**
+ * EAID_7E192906_4D37_4d13_9323_A66912833336
+ */
+export type Ejendomsadministrator = {
+  type: "FeatureCollection";
+  features: {
+    type?: "Feature";
+    properties?: {
+      behandlingsID: BehandlingsID;
+      forretningshaendelse: Forretningshaendelse;
+      forretningsomraade: Forretningsomraade;
+      forretningsproces: Forretningsproces;
+      id_namespace: IdNamespace;
+      id_lokalId: IdLokalId;
+      registreringFra: RegistreringFra;
+      registreringsaktoer: Registreringsaktoer;
+      registreringTil?: RegistreringTil;
+      status: Status;
+      virkningFra?: VirkningFra;
+      virkningsaktoer: Virkningsaktoer;
+      virkningTil?: VirkningTil;
+      personEllerVirksomhed?: PersonEllerVirksomhed;
+      person?: Person;
+      virksomhed?: Virksomhed;
+      produktionsenhed?: Produktionsenhed;
+      DARadresse?: DARadresse;
+      bestemtFastEjendomBFENr: BestemtFastEjendomBFENr;
+    };
+  }[];
+} & ({
+  type: "FeatureCollection";
+  features: {
+    type?: "Feature";
+    properties?: {
+      behandlingsID: BehandlingsID;
+      forretningshaendelse: Forretningshaendelse;
+      forretningsomraade: Forretningsomraade;
+      forretningsproces: Forretningsproces;
+      id_namespace: IdNamespace;
+      id_lokalId: IdLokalId;
+      registreringFra: RegistreringFra;
+      registreringsaktoer: Registreringsaktoer;
+      registreringTil?: RegistreringTil;
+      status: Status;
+      virkningFra?: VirkningFra;
+      virkningsaktoer: Virkningsaktoer;
+      virkningTil?: VirkningTil;
+      personEllerVirksomhed?: PersonEllerVirksomhed;
+      person?: Person;
+      virksomhed?: Virksomhed;
+      produktionsenhed?: Produktionsenhed;
+      DARadresse?: DARadresse;
+      bestemtFastEjendomBFENr: BestemtFastEjendomBFENr;
+    };
+  }[];
+} | null);
+/**
  * EAID_A7C68DBB_D219_40c4_84A4_8BCF63D9C26B
  */
 export type BehandlingsID = string;
@@ -663,37 +719,6 @@ export type Adressebetegnelse = string;
  */
 export type BestemtFastEjendomBFENr = string;
 
-/**
- * EAID_7E192906_4D37_4d13_9323_A66912833336
- */
-export interface Ejendomsadministrator {
-  type: "FeatureCollection";
-  features: {
-    type?: "Feature";
-    properties?: SIMON;
-  }[];
-}
-export interface SIMON {
-  behandlingsID: BehandlingsID;
-  forretningshaendelse: Forretningshaendelse;
-  forretningsomraade: Forretningsomraade;
-  forretningsproces: Forretningsproces;
-  id_namespace: IdNamespace;
-  id_lokalId: IdLokalId;
-  registreringFra: RegistreringFra;
-  registreringsaktoer: Registreringsaktoer;
-  registreringTil?: RegistreringTil;
-  status: Status;
-  virkningFra?: VirkningFra;
-  virkningsaktoer: Virkningsaktoer;
-  virkningTil?: VirkningTil;
-  personEllerVirksomhed?: PersonEllerVirksomhed;
-  person?: Person;
-  virksomhed?: Virksomhed;
-  produktionsenhed?: Produktionsenhed;
-  DARadresse?: DARadresse;
-  bestemtFastEjendomBFENr: BestemtFastEjendomBFENr;
-}
 /**
  * Anvendes når administrator er en person i CPR
  */
