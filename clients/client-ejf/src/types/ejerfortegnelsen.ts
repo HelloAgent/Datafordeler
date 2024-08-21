@@ -20,11 +20,6 @@ import type { Handelsoplysninger as Handelsoplysninger_ } from './generated/EJF_
 import type { PersonEllerVirksomhedsoplysning as PersonEllerVirksomhedsoplysning_ } from './generated/EJF_3.14_personellervirksomhedsoplysning';
 import type { Ejerskifte as Ejerskifte_ } from './generated/EJF_3.15_ejerskifte';
 
-export type {
-  Forretningshaendelse,
-  Forretningsproces,
-} from './generated/EJF_3.14_ejendomsadministratormedstamoplysninger';
-
 /**
  * EjendomsadministratorMedStamoplysninger
  */
@@ -59,9 +54,6 @@ export type EjerskabMedStamoplysningerResponse =
  */
 export type Ejerskabsskifte = ExtractProperties<Ejerskabsskifte_>;
 export type EjerskabsskifteRequest = {
-  /**
-   * Lokal id for et ejerskabsskifte
-   */
   EjerskabsskifteId?: IdLokalId;
   RegistreringstidFra?: RegistreringstidFra;
   RegistreringstidTil?: RegistreringstidTil;
@@ -69,12 +61,6 @@ export type EjerskabsskifteRequest = {
   VirkningstidFra?: VirkningstidFra;
   VirkningstidTil?: VirkningstidTil;
   Virkningstid?: Virkningstid;
-
-  /**
-   * Status jf. grunddatamodellens udfaldsrum for Ejerfortegnelsestatus
-   * @example gældende
-   * @default null
-   */
   Status?: Status;
 };
 
@@ -95,6 +81,7 @@ export type EjerskifteRequest = {
   Virkningstid?: Virkningstid;
   Status?: Status;
 };
+
 export type EjerskifteResponse = FeatureCollection<Ejerskifte>;
 
 /**
@@ -108,6 +95,7 @@ export type HandelsoplysningerRequest = {
   VirkningstidTil?: VirkningstidTil;
   Status?: Status;
 };
+
 export type HandelsoplysningerResponse = FeatureCollection<Handelsoplysninger>;
 
 /**
@@ -123,5 +111,6 @@ export type PersonEllerVirksomhedsoplysningRequest = {
   VirkningstidTil?: VirkningstidTil;
   Status?: Status;
 };
+
 export type PersonEllerVirksomhedsoplysningResponse =
   FeatureCollection<PersonEllerVirksomhedsoplysning>;
