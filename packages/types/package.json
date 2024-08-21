@@ -1,8 +1,7 @@
 {
   "name": "@datafordeler/types",
-  "description": "Shared types for all packages",
+  "description": "Datafordeler SDK for Javascript Shared Types",
   "version": "0.0.0",
-  "private": true,
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "typecheck": "tsc --noEmit",
@@ -23,5 +22,8 @@
     "type": "git",
     "url": "https://github.com/helloagent/datafordeler",
     "directory": "packages/types"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
