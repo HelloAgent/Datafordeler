@@ -17,6 +17,8 @@ import type {
   EjerskifteResponse,
   HandelsoplysningerRequest,
   HandelsoplysningerResponse,
+  PersonEllerVirksomhedsoplysningRequest,
+  PersonEllerVirksomhedsoplysningResponse,
 } from './types/ejerfortegnelsen';
 
 export type EJFClientConfig = ClientBaseConfig & AgentConfig;
@@ -114,6 +116,27 @@ export class EJF extends Client<EJFClientConfig> {
       .setVersion('1')
       .setServiceType('REST')
       .setMethod('Handelsoplysning')
+      .setParams(params)
+      .build();
+
+    return this.request(request);
+  }
+
+  /**
+   * PersonEllerVirksomhedsoplysning method using version 1
+   */
+  async PersonEllerVirksomhedsoplysning(
+    params: PersonEllerVirksomhedsoplysningRequest,
+  ) {
+    const request = new RequestBuilder<
+      PersonEllerVirksomhedsoplysningRequest,
+      PersonEllerVirksomhedsoplysningResponse
+    >()
+      .setEndpoint(Endpoint.CERT5)
+      .setService('Ejerfortegnelsen')
+      .setVersion('1')
+      .setServiceType('REST')
+      .setMethod('PersonEllerVirksomhedsoplysning')
       .setParams(params)
       .build();
 

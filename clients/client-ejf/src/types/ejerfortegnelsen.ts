@@ -1,4 +1,5 @@
 import type {
+  ExtractProperties,
   FeatureCollection,
   IdLokalId,
   Registreringstid,
@@ -10,12 +11,13 @@ import type {
 } from '@datafordeler/types';
 
 import type {
-  Ejendomsadministrator,
+  Ejendomsadministrator as Ejendomsadministrator_,
   Status,
 } from './generated/EJF_3.14_ejendomsadministratormedstamoplysninger';
-import type { Ejerskab } from './generated/EJF_3.14_ejerskabmedstamoplysninger';
+import type { Ejerskab as Ejerskab_ } from './generated/EJF_3.14_ejerskabmedstamoplysninger';
 import type { Ejerskabsskifte as Ejerskabsskifte_ } from './generated/EJF_3.14_ejerskabsskifte';
 import type { Handelsoplysninger as Handelsoplysninger_ } from './generated/EJF_3.14_handelsoplysning';
+import type { PersonEllerVirksomhedsoplysning as PersonEllerVirksomhedsoplysning_ } from './generated/EJF_3.14_personellervirksomhedsoplysning';
 import type { Ejerskifte as Ejerskifte_ } from './generated/EJF_3.15_ejerskifte';
 
 export type {
@@ -26,9 +28,8 @@ export type {
 /**
  * EjendomsadministratorMedStamoplysninger
  */
-export type EjendomsadministratorMedStamoplysninger = NonNullable<
-  Ejendomsadministrator['features'][0]['properties']
->;
+export type EjendomsadministratorMedStamoplysninger =
+  ExtractProperties<Ejendomsadministrator_>;
 
 export type EjendomsadministratorMedStamoplysningerRequest = {
   BFEnr?: string;
@@ -42,10 +43,7 @@ export type EjendomsadministratorMedStamoplysningerResponse =
 /**
  * EjerskabMedStamoplysninger
  */
-export type EjerskabMedStamoplysninger = NonNullable<
-  Ejerskab['features'][0]['properties']
->;
-
+export type EjerskabMedStamoplysninger = ExtractProperties<Ejerskab_>;
 export type EjerskabMedStamoplysningerRequest = {
   BFEnr?: string;
   Ejerskabsid?: IdLokalId;
@@ -59,10 +57,7 @@ export type EjerskabMedStamoplysningerResponse =
 /**
  *  Ejerskabsskifte
  */
-export type Ejerskabsskifte = NonNullable<
-  Ejerskabsskifte_['features'][0]['properties']
->;
-
+export type Ejerskabsskifte = ExtractProperties<Ejerskabsskifte_>;
 export type EjerskabsskifteRequest = {
   /**
    * Lokal id for et ejerskabsskifte
@@ -88,7 +83,7 @@ export type EjerskabsskifteResponse = FeatureCollection<Ejerskabsskifte>;
 /**
  * Ejerskifte
  */
-export type Ejerskifte = NonNullable<Ejerskifte_['features'][0]['properties']>;
+export type Ejerskifte = ExtractProperties<Ejerskifte_>;
 export type EjerskifteRequest = {
   BFEnr?: string;
   EjerskifteId?: IdLokalId;
@@ -105,9 +100,7 @@ export type EjerskifteResponse = FeatureCollection<Ejerskifte>;
 /**
  * Handelsoplysninger
  */
-export type Handelsoplysninger = NonNullable<
-  Handelsoplysninger_['features'][0]['properties']
->;
+export type Handelsoplysninger = ExtractProperties<Handelsoplysninger_>;
 export type HandelsoplysningerRequest = {
   BFEnr?: string;
   HandelsOplysningsId?: string;
@@ -116,3 +109,19 @@ export type HandelsoplysningerRequest = {
   Status?: Status;
 };
 export type HandelsoplysningerResponse = FeatureCollection<Handelsoplysninger>;
+
+/**
+ * PersonEllerVirksomhedsoplysning
+ */
+export type PersonEllerVirksomhedsoplysning =
+  ExtractProperties<PersonEllerVirksomhedsoplysning_>;
+
+export type PersonEllerVirksomhedsoplysningRequest = {
+  PVOId?: string;
+  FiktivtPVnummer?: string;
+  Registreringstid?: Registreringstid;
+  VirkningstidTil?: VirkningstidTil;
+  Status?: Status;
+};
+export type PersonEllerVirksomhedsoplysningResponse =
+  FeatureCollection<PersonEllerVirksomhedsoplysning>;
