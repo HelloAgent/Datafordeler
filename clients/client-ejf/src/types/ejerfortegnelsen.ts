@@ -1,20 +1,28 @@
-import type { Virkningstid } from '@datafordeler/types';
+import type {
+  FeatureCollection,
+  IdLokalId,
+  Registreringstid,
+  RegistreringstidFra,
+  RegistreringstidTil,
+  Virkningstid,
+  VirkningstidTil,
+} from '@datafordeler/types';
 
 import type {
   Ejendomsadministrator,
   Status,
 } from './generated/EJF_3.14_ejendomsadministratormedstamoplysninger';
 import type { Ejerskab } from './generated/EJF_3.14_ejerskabmedstamoplysninger';
+import type { Ejerskabsskifte as RefEjerskabsskifte } from './generated/EJF_3.14_ejerskabsskifte';
 
 export type { Forretningshaendelse } from './generated/EJF_3.14_ejendomsadministratormedstamoplysninger';
 
 /**
- * Ejendomsadministrator med stamoplysninger
+ * EjendomsadministratorMedStamoplysninger
  */
-
-// Rename and structure the exports for easier consumption
-export type EjendomsadministratorMedStamoplysninger =
-  Ejendomsadministrator['features'][0]['properties'];
+export type EjendomsadministratorMedStamoplysninger = NonNullable<
+  Ejendomsadministrator['features'][0]['properties']
+>;
 
 export type EjendomsadministratorMedStamoplysningerRequest = {
   BFEnr?: string;
@@ -23,9 +31,49 @@ export type EjendomsadministratorMedStamoplysningerRequest = {
 };
 
 export type EjendomsadministratorMedStamoplysningerResponse =
-  Ejendomsadministrator;
+  FeatureCollection<EjendomsadministratorMedStamoplysninger>;
 
 /**
  * EjerskabMedStamoplysninger
  */
-export type EjerskabMedStamoplysninger = Ejerskab['features'][0]['properties'];
+export type EjerskabMedStamoplysninger = NonNullable<
+  Ejerskab['features'][0]['properties']
+>;
+
+export type EjerskabMedStamoplysningerRequest = {
+  BFEnr?: string;
+  Ejerskabsid?: IdLokalId;
+  Virkningstid?: Virkningstid;
+  Status?: Status;
+};
+
+export type EjerskabMedStamoplysningerResponse =
+  FeatureCollection<EjerskabMedStamoplysninger>;
+
+/**
+ *  Ejerskabsskifte
+ */
+export type Ejerskabsskifte = NonNullable<
+  RefEjerskabsskifte['features'][0]['properties']
+>;
+
+export type EjerskabsskifteRequest = {
+  /**
+   * Lokal id for et ejerskabsskifte
+   */
+  EjerskabsskifteId?: IdLokalId;
+  RegistreringstidFra?: RegistreringstidFra;
+  RegistreringstidTil?: RegistreringstidTil;
+  Registreringstid?: Registreringstid;
+  VirkningstidTil?: VirkningstidTil;
+  Virkningstid?: Virkningstid;
+
+  /**
+   * Status jf. grunddatamodellens udfaldsrum for Ejerfortegnelsestatus
+   * @example gældende
+   * @default null
+   */
+  Status?: Status;
+};
+
+export type EjerskabsskifteResponse = FeatureCollection<Ejerskabsskifte>;

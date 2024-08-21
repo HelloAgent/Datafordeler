@@ -13,7 +13,7 @@ import type {
   EjerskabMedStamoplysningerResponse,
   EjerskabsskifteRequest,
   EjerskabsskifteResponse,
-} from './types';
+} from './types/ejerfortegnelsen';
 
 export type EJFClientConfig = ClientBaseConfig & AgentConfig;
 
