@@ -1,4 +1,3 @@
-import exp from 'constants';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { EBR } from '../../src/EBRClient';
