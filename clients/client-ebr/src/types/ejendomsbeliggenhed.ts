@@ -12,6 +12,11 @@ import type {
 } from './generated/EBR_2.9.1_BFEnrAdresse';
 import type { Ejendomsbeliggenhed as Ejendomsbeliggenhed_ } from './generated/EBR_2.9.1_ejendomsbeliggenhedDownload';
 
+export type {
+  Adresse,
+  Husnummer,
+} from './generated/EBR_2.9.1_ejendomsbeliggenhedDownload';
+
 /**
  * BFEnrAdresse
  */
@@ -36,6 +41,7 @@ export type BFEnrAdresseResponse = FeatureCollection<BFEnrAdresse>;
  * Ejendomsbeliggenhed
  */
 export type Ejendomsbeliggenhed = ExtractProperties<Ejendomsbeliggenhed_>;
+
 export type EjendomsbeliggenhedRequest = {
   /**
    * One or more ejendomsbeliggenhed id_lokalIds.
