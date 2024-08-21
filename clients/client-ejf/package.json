@@ -10,9 +10,6 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "vitest run -c vitest.config.e2e.mts",
-    "generate-types": "cd schemas/ejerfortegnelsen && json2ts -i 'EJF_3.14_ejerskabmedstamoplysninger.json' -o ../../src/test-types/ejerskabMedStamoplysninger.ts --additionalProperties false",
-    "generate-all-types_": "cd schemas/ejerfortegnelsen && json2ts -i 'EJF_3.14_*.json' -o ../../src/test-types --additionalProperties false",
-    "generate-all-types": "json2ts -i './schemas/ejerfortegnelsen/EJF_3.*.json' -o ./src/types/generated --additionalProperties false --cwd schemas/ejerfortegnelsen",
     "generate:types": "ts-node scripts/generate-types.ts"
   },
   "main": "./dist/index.js",
