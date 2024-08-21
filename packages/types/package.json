@@ -5,7 +5,10 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "test": "echo 'No tests'",
+    "test:watch": "echo 'No tests'",
+    "test:e2e": "echo 'No e2e tests'"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
