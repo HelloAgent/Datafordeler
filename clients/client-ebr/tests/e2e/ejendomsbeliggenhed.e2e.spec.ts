@@ -10,6 +10,9 @@ const CERT_PASSPHRASE = process.env.CERT_PASSPHRASE as string;
 // HusnummerId for Rådhuspladsen 1, 1550 København V
 const HusnummerId = '0a3f507a-ec01-32b8-e044-0003ba298018';
 
+// EBId for Rådhuspladsen 1, 1550 København V
+const EBId = 'e7958ac0-daab-43b6-a1bd-83b5627c1fec';
+
 describe('Ejerfortegnelsen', () => {
   let ebrWithAgent: EBR;
   let ebrWithCredentials: EBR;
@@ -34,6 +37,22 @@ describe('Ejerfortegnelsen', () => {
 
   it('should get BFEnrAdresse with credentials', async () => {
     const response = await ebrWithCredentials.BFEnrAdresse({ HusnummerId });
+
+    expect(response).toBeDefined();
+    expect(response.features).toHaveLength(1);
+    expect(response.features[0]?.properties).toBeDefined();
+  });
+
+  it('should get Ejendomsbeliggenhed with agent', async () => {
+    const response = await ebrWithAgent.Ejendomsbeliggenhed({ EBId });
+
+    expect(response).toBeDefined();
+    expect(response.features).toHaveLength(1);
+    expect(response.features[0]?.properties).toBeDefined();
+  });
+
+  it('should get Ejendomsbeliggenhed with credentials', async () => {
+    const response = await ebrWithCredentials.Ejendomsbeliggenhed({ EBId });
 
     expect(response).toBeDefined();
     expect(response.features).toHaveLength(1);
