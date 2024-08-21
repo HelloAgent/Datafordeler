@@ -1,0 +1,42 @@
+{
+  "name": "datafordeler",
+  "description": "Unofficial SDK for Datafordeler API",
+  "version": "0.11.1",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "prepare": "pnpm build",
+    "prepublishOnly": "pnpm test",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags",
+    "test": "vitest run",
+    "test:e2e": "vitest run -c vitest.config.e2e.mts"
+  },
+  "main": "dist/datafordeler.js",
+  "types": "dist/datafordeler.d.ts",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.8",
+    "dotenv": "^16.4.5",
+    "json-schema-to-typescript": "^15.0.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "files": [
+    "dist/**"
+  ],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HelloAgent/Datafordeler.git",
+    "directory": "clients/client-datafordeler"
+  },
+  "keywords": [
+    "SDK",
+    "Wrapper",
+    "Datafordeler"
+  ]
+}

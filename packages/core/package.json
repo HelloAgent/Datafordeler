@@ -1,0 +1,36 @@
+{
+  "name": "@datafordeler/core",
+  "description": "Datafordeler SDK for Javascript Core Client for Node.js",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "echo 'No e2e tests'"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
+  "sideEffects": false,
+  "dependencies": {
+    "undici": "^6.19.8"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist/**"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/helloagent/datafordeler",
+    "directory": "packages/core"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

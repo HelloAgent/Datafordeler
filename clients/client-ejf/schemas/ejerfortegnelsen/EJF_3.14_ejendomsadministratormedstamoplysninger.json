@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#", 
+  "title": "Ejendomsadministrator",
+  "description": "EAID_7E192906_4D37_4d13_9323_A66912833336",
+  "type": ["object","null"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "default":"FeatureCollection",
+      "enum": ["FeatureCollection"]
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "default":"Feature",
+            "enum": ["Feature"]
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "behandlingsID":{
+                "title":"behandlingsID",
+                "description":"EAID_A7C68DBB_D219_40c4_84A4_8BCF63D9C26B",
+                "type":"string"
+              },
+              "forretningshaendelse":{
+                "title":"forretningshaendelse",
+                "description":"EAID_EDB900B1_E09F_41af_9925_81793C8AD137",
+                "type":"string",
+                "enum": [
+                  "Ejerskifte tilbageført", 
+                  "Landsdækkende kørsel", 
+                  "Opdatering af ejendomsadministrator", 
+                  "Annulleret personnummer", 
+                  "Personnummer nedlagt pga. dobbeltregistrering", 
+                  "Person død", "Person udrejst", 
+                  "Person forsvundet", 
+                  "Opdatering af administrator for person eller virksomhed", 
+                  "Opdatering af ejer uden registreret CPR- eller CVR nummer", 
+                  "Ophør af en produktionsenhed", "Ophør af virksomhed", 
+                  "Skift af virksomhedsform", "Administrator af ejerskab", 
+                  "Ægtepagt adkomst", 
+                  "Aflysning af betinget skøde", 
+                  "Aflyst eller annulleret ejerskab", 
+                  "Anden adkomst", 
+                  "Auktionsskøde", 
+                  "Betinget bodeling", 
+                  "Betinget skøde", 
+                  "Bodeling", 
+                  "Ejendomsdom", 
+                  "Indberettet ejerskifte", 
+                  "Endelig indførsel adkomst", 
+                  "Endeligt skøde", 
+                  "Hævd", 
+                  "Kopieret ejerskab til ny ejendom", 
+                  "Meddelelse fast ejendom adkomst", 
+                  "Meddelelse om tvangsauktion", 
+                  "Navneændring", 
+                  "Opdatering af person- eller virksomhedsoplysninger", 
+                  "Opretning af ejerandele", 
+                  "Oprettet ejerskab af ny ejendom", 
+                  "Rettelse af ejerskab", 
+                  "Skifteretsattest", 
+                  "SkifteretsattestÆgtefælle",
+				  "Påtegning adkomst",
+                  "Ukendt - konverteret fra ESR"
+                ]
+              },
+              "forretningsomraade":{
+                "title":"forretningsomraade",
+                "description":"EAID_C2D4C015_3079_4907_A85B_B2A4D66188BE",
+                "type":"string",
+                "enum":["54.15"]
+              },
+              "forretningsproces":{
+                "title":"forretningsproces",
+                "description":"EAID_6E09BC0B_4FEB_4fe5_9D75_A0A0A1D121B7",
+                "type":"string",
+                "enum":["Konvertering fra ESR","Landsdækkende kørsel","Hændelse fra Digital Tinglysning","Manuel opdatering","Hændelse fra CPR","Hændelse fra CVR","Opdatering fra Matriklen","Opdatering fra Skifte- eller Fogedret"]
+              },
+              "id_namespace":{
+                "title":"id_namespace",
+                "description":"EAID_42EEFD36_07DE_48e5_AF47_A3302D9EDEF5.EAID_6CEB0356_5CBF_4159_B96B_A2489DD2DAC8",
+                "type":"string"
+              },
+              "id_lokalId":{
+                "title":"id_lokalId",
+                "description":"EAID_42EEFD36_07DE_48e5_AF47_A3302D9EDEF5.EAID_9AB90AE0_9F85_4164_9B25_8EB2139D65A5",
+                "type":"string"
+              },
+              "registreringFra":{
+                "title":"registreringFra",
+                "description":"EAID_76A43210_69E9_4a22_8D1F_A4CBCF5D362D",
+                "type":"string",
+                "format":"date-time"
+              },
+              "registreringsaktoer":{
+                "title":"registreringsaktoer",
+                "description":"EAID_F6836D58_7AD0_404b_920E_FD8764511D5A",
+                "type":"string"
+              },
+              "registreringTil":{
+                "title":"registreringTil",
+                "description":"EAID_E41A79F3_7D5D_4314_AA49_2610AFC92738",
+                "type":["string", "null"],
+                "format":"date-time"
+              },
+              "status":{
+                "title":"status",
+                "description":"EAID_5DF93B9F_50AA_49aa_9481_F04517799FFF",
+                "type":"string",
+                "enum":["gældende","tilbagerullet","historisk"]
+              },
+              "virkningFra":{
+                "title":"virkningFra",
+                "description":"EAID_DB0ADB0B_AEF4_4c51_846D_D3404DC85449",
+                "type":"string",
+                "format":"date-time"
+              },
+              "virkningsaktoer":{
+                "title":"virkningsaktoer",
+                "description":"EAID_96D2147C_1A0D_45cf_85B2_5C8F69EB084D",
+                "type":"string"
+              },
+              "virkningTil":{
+                "title":"virkningTil",
+                "description":"EAID_06091801_5AC6_4262_825D_0B4C2FA3D57C",
+                "type":["string", "null"],
+                "format":"date-time"
+              },
+              "personEllerVirksomhed": {
+                "title": "personEllerVirksomhed",
+                "description": "Anvendes, når administrator ikke er i CPR eller CVR",
+                "$ref":"personellervirksomhedsoplysning.json#"
+              },
+              "person":{
+                "title": "person",
+                "description": "Anvendes når administrator er en person i CPR",
+                "$ref":"CPR/PersonSimpel.json#"
+              },
+              "virksomhed":{
+                "title": "virksomhed",
+                "description": "Anvendes når administrator er en virksomhed i CVR",
+                "$ref":"CVR/VirksomhedSimpel.json#"
+              },
+              "produktionsenhed": {
+                "title": "produktionsenhed",
+                "description": "Anvendes når administrator er en produktionsenhed i CVR",
+                "$ref": "CVR/ProduktionsenhedSimpel.json#"
+              },
+              "DARadresse":{
+                "title": "DARadresse",
+                "description": "Denne anvendes hvis der er personEllerVirksomhed, person eller virksomhed indeholder en reference til en DAR adresse",
+                "$ref":"DAR/Adresse.json#"
+              },
+              "bestemtFastEjendomBFENr":{
+                "title":"bestemtFastEjendomBFENr",
+                "description":"EAID_dst831A8A_9D17_463c_96AE_199F42DCA267",
+                "type":"string"
+              }
+            },
+            "required": [
+              "behandlingsID","forretningshaendelse","forretningsomraade","forretningsproces",
+              "id_namespace","id_lokalId","registreringFra","registreringsaktoer",
+              "status","virkningsaktoer","bestemtFastEjendomBFENr"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "type",
+    "features"
+  ]
+}

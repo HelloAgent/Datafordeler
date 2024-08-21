@@ -1,0 +1,145 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "FIXME/default/ProduktionsenhedSimpel.json",
+	"title": "ProduktionsenhedSimpel",
+	"description": "EAID_7B57B46D_D857_4ec1_81B6_DCE8D393468C",
+	"type": "object",
+	"properties": {
+		"entityType": {
+			"title": "feature/object type",
+			"type": "string",
+			"default": "Produktionsenhed"
+		},
+		"attributes": {
+			"title": "feature attributes",
+			"type": "object",
+			"properties": {
+				"registreringFra": {
+					"title": "registreringFra",
+					"description": "EAID_1BEEC8C1_4BA3_46ff_861B_E46E0984DDB2",
+					"type": "string",
+					"format": "date-time"
+				},
+				"registreringsaktoer": {
+					"title": "registreringsaktoer",
+					"description": "EAID_CF2E7BAA_4C9F_4a96_877A_C5CEAA8C13F9",
+					"type": "string"
+				},
+				"registreringTil": {
+					"title": "registreringTil",
+					"description": "EAID_6C72E382_468E_4634_8880_4F67DCB93FF5",
+					"type": "string",
+					"format": "date-time"
+				},
+				"status": {
+					"title": "status",
+					"type": "string"
+				},
+				"virkningFra": {
+					"title": "virkningFra",
+					"type": "string",
+					"format": "date-time"
+				},
+				"virkningsaktoer": {
+					"title": "virkningsaktoer",
+					"type": "string"
+				},
+				"virkningTil": {
+					"title": "virkningTil",
+					"type": "string",
+					"format": "date-time"
+				},
+				"pNummer": {
+					"title": "pNummer",
+					"description": "EAID_C579CB46_0ED3_4bdf_BA0D_9F4C362BAA2F",
+					"type": "integer"
+				},
+				"reklamebeskyttelse": {
+					"description": "EAID_F2A643F4_61DC_4b33_B8E4_03D4F90C0108.EAID_657F68FA_4810_48dc_B118_59191B6F874B",
+					"type": "boolean"
+				},
+				"navn": {
+					"title": "beskrivelse",
+					"description": "EAID_049CB9E9_F315_4be4_95C9_FDE2BFC6A20C.EAID_144A417F_EA68_4352_A9CC_EFF3978E2D8F",
+					"type": "string"
+				},
+				"beliggenhedsadresse": {
+					"description": "EAID_FF2F21EC_1140_4cc7_B178_C5DE10D1EE78",
+					"type": "object",
+					"properties": {
+						"CVRAdresse.vejkode": {
+							"title": "CVRAdresse.vejkode",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_9512F445_32B7_4b72_83FE_83FDF36AC2D8",
+							"type": "string"
+						},
+						"CVRAdresse.husnummerFra": {
+							"title": "CVRAdresse.husnummerFra",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_561373D6_30BC_4e42_86F4_76B1D9B60E10",
+							"type": "string"
+						},
+						"CVRAdresse.etagebetegnelse": {
+							"title": "CVRAdresse.etagebetegnelse",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_EF69553F_A19E_4605_8EB4_4F61995B201D",
+							"type": "string"
+						},
+						"CVRAdresse.doerbetegnelse": {
+							"title": "CVRAdresse.doerbetegnelse",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_22C40CDE_4925_4dc9_BA4C_9E4AFA692D67",
+							"type": "string"
+						},
+						"CVRAdresse.kommunekode": {
+							"title": "CVRAdresse.kommunekode",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_3F9DE3E9_9D86_4722_B59E_09B95A75A9DA",
+							"type": "string"
+						},
+						"CVRAdresse.kommunenavn": {
+							"title": "CVRAdresse.kommunenavn",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_EAEDB565_367E_4a95_8CB8_EE9C308A6F4E",
+							"type": "string"
+						},
+						"CVRAdresse.postdistrikt": {
+							"title": "CVRAdresse.postdistrikt",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_8C2C9C6C_E45C_4278_97CC_41AE042337F8",
+							"type": "string"
+						},
+						"CVRAdresse.vejnavn": {
+							"title": "CVRAdresse.vejnavn",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_1F5BF752_E7DF_4e61_8DA1_39C86F8DC6DE",
+							"type": "string"
+						},
+						"CVRAdresse.husnummerTil": {
+							"title": "CVRAdresse.husnummerTil",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_126ABFBD_6A02_4454_B5F9_3DCEECE7B620",
+							"type": "string"
+						},
+						"CVRAdresse.postnummer": {
+							"title": "CVRAdresse.postnummer",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_5FC3AC5A_0DF5_459a_8A17_483105CF8B83",
+							"type": "string"
+						},
+						"CVRAdresse.supplerendeBynavn": {
+							"title": "CVRAdresse.supplerendeBynavn",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_591A2633_FC34_4381_9532_43D88644B500",
+							"type": "string"
+						},
+						"CVRAdresse.adresseFritekst": {
+							"title": "CVRAdresse.adresseFritekst",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_DBBF0C2A_3B2B_4ccd_9BCA_02765BA69D58",
+							"type": "string"
+						},
+						"CVRAdresse.landekode": {
+							"title": "CVRAdresse.landekode",
+							"description": "EAID_E52F02C1_A082_463e_9F55_E2CED8CDEA52.EAID_F4B6B4AF_D20F_43b1_B6C1_0185881B1F39",
+							"type": "string"
+						},
+						"coNavn": {
+							"title": "coNavn",
+							"description": "EAID_18DDA050_1B3F_434b_B300_E3371C0CDC2C",
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	}
+}
