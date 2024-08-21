@@ -5,6 +5,7 @@ import type {
   RegistreringstidFra,
   RegistreringstidTil,
   Virkningstid,
+  VirkningstidFra,
   VirkningstidTil,
 } from '@datafordeler/types';
 
@@ -13,9 +14,13 @@ import type {
   Status,
 } from './generated/EJF_3.14_ejendomsadministratormedstamoplysninger';
 import type { Ejerskab } from './generated/EJF_3.14_ejerskabmedstamoplysninger';
-import type { Ejerskabsskifte as RefEjerskabsskifte } from './generated/EJF_3.14_ejerskabsskifte';
+import type { Ejerskabsskifte as Ejerskabsskifte_ } from './generated/EJF_3.14_ejerskabsskifte';
+import type { Ejerskifte as Ejerskifte_ } from './generated/EJF_3.15_ejerskifte';
 
-export type { Forretningshaendelse } from './generated/EJF_3.14_ejendomsadministratormedstamoplysninger';
+export type {
+  Forretningshaendelse,
+  Forretningsproces,
+} from './generated/EJF_3.14_ejendomsadministratormedstamoplysninger';
 
 /**
  * EjendomsadministratorMedStamoplysninger
@@ -54,7 +59,7 @@ export type EjerskabMedStamoplysningerResponse =
  *  Ejerskabsskifte
  */
 export type Ejerskabsskifte = NonNullable<
-  RefEjerskabsskifte['features'][0]['properties']
+  Ejerskabsskifte_['features'][0]['properties']
 >;
 
 export type EjerskabsskifteRequest = {
@@ -65,6 +70,7 @@ export type EjerskabsskifteRequest = {
   RegistreringstidFra?: RegistreringstidFra;
   RegistreringstidTil?: RegistreringstidTil;
   Registreringstid?: Registreringstid;
+  VirkningstidFra?: VirkningstidFra;
   VirkningstidTil?: VirkningstidTil;
   Virkningstid?: Virkningstid;
 
@@ -77,3 +83,20 @@ export type EjerskabsskifteRequest = {
 };
 
 export type EjerskabsskifteResponse = FeatureCollection<Ejerskabsskifte>;
+
+/**
+ * Ejerskifte
+ */
+export type Ejerskifte = NonNullable<Ejerskifte_['features'][0]['properties']>;
+export type EjerskifteRequest = {
+  BFEnr?: string;
+  EjerskifteId?: IdLokalId;
+  RegistreringstidFra?: RegistreringstidFra;
+  RegistreringstidTil?: RegistreringstidTil;
+  Registreringstid?: Registreringstid;
+  VirkningstidFra?: VirkningstidFra;
+  VirkningstidTil?: VirkningstidTil;
+  Virkningstid?: Virkningstid;
+  Status?: Status;
+};
+export type EjerskifteResponse = FeatureCollection<Ejerskifte>;
