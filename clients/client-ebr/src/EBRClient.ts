@@ -6,7 +6,11 @@ import {
   RequestBuilder,
 } from '@datafordeler/core';
 
-import type { BFEnrAdresseRequest, BFEnrAdresseResponse } from './types';
+import type {
+  BFEnrAdresseRequest,
+  BFEnrAdresseResponse,
+  EjendomsbeliggenhedRequest,
+} from './types';
 
 export type EBRClientConfig = ClientBaseConfig & AuthConfig;
 
@@ -43,6 +47,35 @@ export class EBR extends Client<EBRClientConfig> {
       .setMethod('BFEnrAdresse')
       .setParams(params);
 
+    const config = this.setRequestBuilderEndpoint(request).build();
+
+    return this.request(config);
+  }
+
+  /**
+   * Ejendomsbeliggenhed method using version 1
+   *
+   * Request can be made with either an agent or credentials. If both are provided, agent will be used.
+   */
+  async Ejendomsbeliggenhed(params: EjendomsbeliggenhedRequest) {
+    const request = new RequestBuilder<
+      BFEnrAdresseRequest,
+      BFEnrAdresseResponse
+    >()
+      .setService('Ejendomsbeliggenhed')
+      .setVersion('1')
+      .setServiceType('REST')
+      .setMethod('Ejendomsbeliggenhed')
+      .setParams(params);
+
+    const config = this.setRequestBuilderEndpoint(request).build();
+
+    return this.request(config);
+  }
+
+  private setRequestBuilderEndpoint<Input, Output>(
+    request: RequestBuilder<Input, Output>,
+  ) {
     if (this.hasAgent) {
       request.setEndpoint(Endpoint.CERT0);
     } else if (this.hasCredentials) {
@@ -53,6 +86,6 @@ export class EBR extends Client<EBRClientConfig> {
       );
     }
 
-    return this.request(request.build());
+    return request;
   }
 }
