@@ -46,4 +46,14 @@ describe('Ejerfortegnelsen', () => {
     expect(res.features).toHaveLength(1);
     expect(properties?.bestemtFastEjendomBFENr).toBe('6019344');
   });
+
+  it('should fetch handelsoplysninger', async () => {
+    const res = await ejf.Handelsoplysninger({ BFEnr: '6011585' });
+
+    const props = res.features[0]?.properties;
+
+    expect(props?.ejerskifte).toHaveLength(1);
+    expect(props?.id_namespace).toBe('http://data.gov.dk/ejerfortegnelse');
+    expect(res.features).toHaveLength(1);
+  });
 });

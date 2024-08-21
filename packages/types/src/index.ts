@@ -37,6 +37,21 @@ export interface FeatureCollection<T = Record<string, unknown>> {
   features: Feature<T>[];
 }
 
+/* Helpers */
+
+/**
+ * Infers the type from the properties of a FeatureCollection.
+ *
+ * @example ExtractProperties<FeatureCollection<{ foo: string }>> // { foo: string }
+ */
+export type ExtractProperties<T> = T extends {
+  features: Array<{
+    properties?: infer P;
+  }>;
+}
+  ? P
+  : never;
+
 // export interface DatafordelerItem {
 //   /**
 //    * Lokal identifikation

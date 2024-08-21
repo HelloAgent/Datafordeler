@@ -13,7 +13,13 @@ import type {
   EjerskabMedStamoplysningerResponse,
   EjerskabsskifteRequest,
   EjerskabsskifteResponse,
-} from './types';
+  EjerskifteRequest,
+  EjerskifteResponse,
+  HandelsoplysningerRequest,
+  HandelsoplysningerResponse,
+  PersonEllerVirksomhedsoplysningRequest,
+  PersonEllerVirksomhedsoplysningResponse,
+} from './types/ejerfortegnelsen';
 
 export type EJFClientConfig = ClientBaseConfig & AgentConfig;
 
@@ -22,6 +28,30 @@ export class EJF extends Client<EJFClientConfig> {
     super('EJERFORTEGNELSE', props);
   }
 
+  /**
+   * EjendomsadministratorMedStamoplysninger method using version 1
+   */
+  async EjendomsadministratorMedStamoplysninger(
+    params: EjendomsadministratorMedStamoplysningerRequest,
+  ) {
+    const request = new RequestBuilder<
+      EjendomsadministratorMedStamoplysningerRequest,
+      EjendomsadministratorMedStamoplysningerResponse
+    >()
+      .setEndpoint(Endpoint.CERT5)
+      .setService('Ejerfortegnelsen')
+      .setVersion('1')
+      .setServiceType('REST')
+      .setMethod('EjendomsadministratorMedStamoplysninger')
+      .setParams(params)
+      .build();
+
+    return this.request(request);
+  }
+
+  /**
+   * EjerskabMedStamoplysninger method using version 1
+   */
   async EjerskabMedStamoplysninger(params: EjerskabMedStamoplysningerRequest) {
     const request = new RequestBuilder<
       EjerskabMedStamoplysningerRequest,
@@ -38,6 +68,9 @@ export class EJF extends Client<EJFClientConfig> {
     return this.request(request);
   }
 
+  /**
+   * Ejerskabsskifte method using version 1
+   */
   async Ejerskabsskifte(params: EjerskabsskifteRequest) {
     const request = new RequestBuilder<
       EjerskabsskifteRequest,
@@ -54,18 +87,56 @@ export class EJF extends Client<EJFClientConfig> {
     return this.request(request);
   }
 
-  async EjendomsadministratorMedStamoplysninger(
-    params: EjendomsadministratorMedStamoplysningerRequest,
-  ) {
+  /**
+   * Ejerskifte method using version 2.0.0
+   */
+  async Ejerskifte(params: EjerskifteRequest) {
+    const request = new RequestBuilder<EjerskifteRequest, EjerskifteResponse>()
+      .setEndpoint(Endpoint.CERT5)
+      .setService('Ejerfortegnelsen')
+      .setVersion('2.0.0')
+      .setServiceType('REST')
+      .setMethod('Ejerskifte')
+      .setParams(params)
+      .build();
+
+    return this.request(request);
+  }
+
+  /**
+   * Handelsoplysninger method using version 1
+   */
+  async Handelsoplysninger(params: HandelsoplysningerRequest) {
     const request = new RequestBuilder<
-      EjendomsadministratorMedStamoplysningerRequest,
-      EjendomsadministratorMedStamoplysningerResponse
+      HandelsoplysningerRequest,
+      HandelsoplysningerResponse
     >()
       .setEndpoint(Endpoint.CERT5)
       .setService('Ejerfortegnelsen')
       .setVersion('1')
       .setServiceType('REST')
-      .setMethod('EjendomsadministratorMedStamoplysninger')
+      .setMethod('Handelsoplysning')
+      .setParams(params)
+      .build();
+
+    return this.request(request);
+  }
+
+  /**
+   * PersonEllerVirksomhedsoplysning method using version 1
+   */
+  async PersonEllerVirksomhedsoplysning(
+    params: PersonEllerVirksomhedsoplysningRequest,
+  ) {
+    const request = new RequestBuilder<
+      PersonEllerVirksomhedsoplysningRequest,
+      PersonEllerVirksomhedsoplysningResponse
+    >()
+      .setEndpoint(Endpoint.CERT5)
+      .setService('Ejerfortegnelsen')
+      .setVersion('1')
+      .setServiceType('REST')
+      .setMethod('PersonEllerVirksomhedsoplysning')
       .setParams(params)
       .build();
 
