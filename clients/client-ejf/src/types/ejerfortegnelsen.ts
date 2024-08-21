@@ -15,6 +15,7 @@ import type {
 } from './generated/EJF_3.14_ejendomsadministratormedstamoplysninger';
 import type { Ejerskab } from './generated/EJF_3.14_ejerskabmedstamoplysninger';
 import type { Ejerskabsskifte as Ejerskabsskifte_ } from './generated/EJF_3.14_ejerskabsskifte';
+import type { Handelsoplysninger as Handelsoplysninger_ } from './generated/EJF_3.14_handelsoplysning';
 import type { Ejerskifte as Ejerskifte_ } from './generated/EJF_3.15_ejerskifte';
 
 export type {
@@ -100,3 +101,18 @@ export type EjerskifteRequest = {
   Status?: Status;
 };
 export type EjerskifteResponse = FeatureCollection<Ejerskifte>;
+
+/**
+ * Handelsoplysninger
+ */
+export type Handelsoplysninger = NonNullable<
+  Handelsoplysninger_['features'][0]['properties']
+>;
+export type HandelsoplysningerRequest = {
+  BFEnr?: string;
+  HandelsOplysningsId?: string;
+  Registreringstid?: Registreringstid;
+  VirkningstidTil?: VirkningstidTil;
+  Status?: Status;
+};
+export type HandelsoplysningerResponse = FeatureCollection<Handelsoplysninger>;
