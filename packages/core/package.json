@@ -1,7 +1,7 @@
 {
   "name": "@datafordeler/core",
   "description": "Datafordeler SDK for Javascript Core Client for Node.js",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",

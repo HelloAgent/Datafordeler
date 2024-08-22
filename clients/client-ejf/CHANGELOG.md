@@ -1,5 +1,12 @@
 # @datafordeler/ejf
 
+## 0.2.2
+
+### Patch Changes
+
+- @datafordeler/core@0.2.2
+- @datafordeler/types@0.2.2
+
 ## 0.2.1
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @datafordeler/ebr
 
+## 0.2.2
+
+### Patch Changes
+
+- 749336b: Fixed Adresse and Husnummer types to be a singular variant
+  - @datafordeler/core@0.2.2
+  - @datafordeler/types@0.2.2
+
 ## 0.2.1
 
 ### Patch Changes

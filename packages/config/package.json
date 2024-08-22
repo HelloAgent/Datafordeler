@@ -1,7 +1,7 @@
 {
   "name": "@datafordeler/config",
   "description": "Shared config for all packages",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "devDependencies": {
     "@eslint/js": "^9.9.0",
