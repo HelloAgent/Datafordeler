@@ -36,8 +36,6 @@ export class EBR extends Client<EBRClientConfig> {
 
   /**
    * BFEnrAdresse method using version 1
-   *
-   * Request can be made with either an agent or credentials. If both are provided, agent will be used.
    */
   public async BFEnrAdresse(params: BFEnrAdresseRequest) {
     const request = new RequestBuilder<
@@ -57,8 +55,6 @@ export class EBR extends Client<EBRClientConfig> {
 
   /**
    * Ejendomsbeliggenhed method using version 1
-   *
-   * Request can be made with either an agent or credentials. If both are provided, agent will be used.
    */
   public async Ejendomsbeliggenhed(params: EjendomsbeliggenhedRequest) {
     const request = new RequestBuilder<
@@ -98,12 +94,15 @@ export class EBR extends Client<EBRClientConfig> {
   }
 
   /**
-   * Get the endpoint for the request builder based on the authentication configuration
+   * Get the endpoint for the request builder based on the authentication configuration.
+   *
+   * All requests in the service can be called with either credentials or agent/agent configuration. If both are provided, the agent/agent configuration will be used.
    */
   private getRequestBuilderEndpoint() {
     if (this.hasAgent) {
       return Endpoint.CERT0;
     }
+
     if (this.hasCredentials) {
       return Endpoint.PUBLIC_PROTECTED;
     }
