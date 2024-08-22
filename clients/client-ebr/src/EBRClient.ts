@@ -39,7 +39,7 @@ export class EBR extends Client<EBRClientConfig> {
    *
    * Request can be made with either an agent or credentials. If both are provided, agent will be used.
    */
-  async BFEnrAdresse(params: BFEnrAdresseRequest) {
+  public async BFEnrAdresse(params: BFEnrAdresseRequest) {
     const request = new RequestBuilder<
       BFEnrAdresseRequest,
       BFEnrAdresseResponse
@@ -60,7 +60,7 @@ export class EBR extends Client<EBRClientConfig> {
    *
    * Request can be made with either an agent or credentials. If both are provided, agent will be used.
    */
-  async Ejendomsbeliggenhed(params: EjendomsbeliggenhedRequest) {
+  public async Ejendomsbeliggenhed(params: EjendomsbeliggenhedRequest) {
     const request = new RequestBuilder<
       EjendomsbeliggenhedRequest,
       EjendomsbeliggenhedResponse
@@ -79,7 +79,9 @@ export class EBR extends Client<EBRClientConfig> {
   /**
    * EjendomsbeliggenhedSimpel method using version 1
    */
-  async EjendomsbeliggenhedSimpel(params: EjendomsbeliggenhedSimpelRequest) {
+  public async EjendomsbeliggenhedSimpel(
+    params: EjendomsbeliggenhedSimpelRequest,
+  ) {
     const request = new RequestBuilder<
       EjendomsbeliggenhedSimpelRequest,
       EjendomsbeliggenhedSimpelResponse
