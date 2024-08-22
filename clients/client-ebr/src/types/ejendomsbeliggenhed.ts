@@ -15,12 +15,21 @@ import type {
   Status,
 } from './generated/EBR_2.9.1_BFEnrAdresse';
 import type { Ejendomsbeliggenhed as Ejendomsbeliggenhed_ } from './generated/EBR_2.9.1_ejendomsbeliggenhedDownload';
+import type {
+  Adresse as AdresseList,
+  Husnummer as HusnummerList,
+} from './generated/EBR_2.9.1_ejendomsbeliggenhedDownload';
 import type { Ejendomsbeliggenhed as EjendomsbeliggenhedSimpel_ } from './generated/EBR_2.9.1_ejendomsbeliggenhedSimpelDownload';
 
-export type {
-  Adresse,
-  Husnummer,
-} from './generated/EBR_2.9.1_ejendomsbeliggenhedDownload';
+/**
+ * Represents a single Adresse object.
+ */
+export type Adresse = AdresseList[number];
+
+/**
+ * Represents a single Husnummer object.
+ */
+export type Husnummer = HusnummerList[number];
 
 /**
  * BFEnrAdresse
