@@ -3,7 +3,11 @@ import type {
   FeatureCollection,
   IdLokalId,
   Registreringstid,
+  RegistreringstidFra,
+  RegistreringstidTil,
   Virkningstid,
+  VirkningstidFra,
+  VirkningstidTil,
 } from '@datafordeler/types';
 
 import type {
@@ -11,6 +15,7 @@ import type {
   Status,
 } from './generated/EBR_2.9.1_BFEnrAdresse';
 import type { Ejendomsbeliggenhed as Ejendomsbeliggenhed_ } from './generated/EBR_2.9.1_ejendomsbeliggenhedDownload';
+import type { Ejendomsbeliggenhed as EjendomsbeliggenhedSimpel_ } from './generated/EBR_2.9.1_ejendomsbeliggenhedSimpelDownload';
 
 export type {
   Adresse,
@@ -58,3 +63,29 @@ export type EjendomsbeliggenhedRequest = {
 };
 export type EjendomsbeliggenhedResponse =
   FeatureCollection<Ejendomsbeliggenhed>;
+
+/**
+ * EjendomsbeliggenhedSimpel
+ */
+export type EjendomsbeliggenhedSimpel =
+  ExtractProperties<EjendomsbeliggenhedSimpel_>;
+export type EjendomsbeliggenhedSimpelRequest = {
+  /**
+   * One or more ejendomsbeliggenhed id_lokalIds.
+   */
+  EBId?: IdLokalId | IdLokalId[];
+
+  /**
+   * One or more BFE numbers.
+   */
+  BFEnr?: number | number[];
+  RegistreringstidFra?: RegistreringstidFra;
+  RegistreringstidTil?: RegistreringstidTil;
+  VirkningstidFra?: VirkningstidFra;
+  VirkningstidTil?: VirkningstidTil;
+  Registreringstid?: Registreringstid;
+  Virkningstid?: Virkningstid;
+  Status?: Status;
+};
+export type EjendomsbeliggenhedSimpelResponse =
+  FeatureCollection<EjendomsbeliggenhedSimpel>;
