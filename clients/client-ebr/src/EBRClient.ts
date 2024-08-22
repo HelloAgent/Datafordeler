@@ -11,6 +11,8 @@ import type {
   BFEnrAdresseResponse,
   EjendomsbeliggenhedRequest,
   EjendomsbeliggenhedResponse,
+  EjendomsbeliggenhedSimpelRequest,
+  EjendomsbeliggenhedSimpelResponse,
 } from './types';
 
 export type EBRClientConfig = ClientBaseConfig & AuthConfig;
@@ -68,6 +70,25 @@ export class EBR extends Client<EBRClientConfig> {
       .setVersion('1')
       .setServiceType('REST')
       .setMethod('Ejendomsbeliggenhed')
+      .setParams(params)
+      .build();
+
+    return this.request(request);
+  }
+
+  /**
+   * EjendomsbeliggenhedSimpel method using version 1
+   */
+  async EjendomsbeliggenhedSimpel(params: EjendomsbeliggenhedSimpelRequest) {
+    const request = new RequestBuilder<
+      EjendomsbeliggenhedSimpelRequest,
+      EjendomsbeliggenhedSimpelResponse
+    >()
+      .setEndpoint(this.getRequestBuilderEndpoint())
+      .setService('Ejendomsbeliggenhed')
+      .setVersion('1')
+      .setServiceType('REST')
+      .setMethod('EjendomsbeliggenhedSimpel')
       .setParams(params)
       .build();
 
