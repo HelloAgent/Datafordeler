@@ -1,4 +1,4 @@
-# @datafordeler/ejf
+# @datafordeler/ebr
 
 ## Overview
 
