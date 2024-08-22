@@ -10,6 +10,7 @@ import type {
   BFEnrAdresseRequest,
   BFEnrAdresseResponse,
   EjendomsbeliggenhedRequest,
+  EjendomsbeliggenhedResponse,
 } from './types';
 
 export type EBRClientConfig = ClientBaseConfig & AuthConfig;
@@ -41,15 +42,15 @@ export class EBR extends Client<EBRClientConfig> {
       BFEnrAdresseRequest,
       BFEnrAdresseResponse
     >()
+      .setEndpoint(this.getRequestBuilderEndpoint())
       .setService('Ejendomsbeliggenhed')
       .setVersion('1')
       .setServiceType('REST')
       .setMethod('BFEnrAdresse')
-      .setParams(params);
+      .setParams(params)
+      .build();
 
-    const config = this.setRequestBuilderEndpoint(request).build();
-
-    return this.request(config);
+    return this.request(request);
   }
 
   /**
@@ -59,33 +60,33 @@ export class EBR extends Client<EBRClientConfig> {
    */
   async Ejendomsbeliggenhed(params: EjendomsbeliggenhedRequest) {
     const request = new RequestBuilder<
-      BFEnrAdresseRequest,
-      BFEnrAdresseResponse
+      EjendomsbeliggenhedRequest,
+      EjendomsbeliggenhedResponse
     >()
+      .setEndpoint(this.getRequestBuilderEndpoint())
       .setService('Ejendomsbeliggenhed')
       .setVersion('1')
       .setServiceType('REST')
       .setMethod('Ejendomsbeliggenhed')
-      .setParams(params);
+      .setParams(params)
+      .build();
 
-    const config = this.setRequestBuilderEndpoint(request).build();
-
-    return this.request(config);
+    return this.request(request);
   }
 
-  private setRequestBuilderEndpoint<Input, Output>(
-    request: RequestBuilder<Input, Output>,
-  ) {
+  /**
+   * Get the endpoint for the request builder based on the authentication configuration
+   */
+  private getRequestBuilderEndpoint() {
     if (this.hasAgent) {
-      request.setEndpoint(Endpoint.CERT0);
-    } else if (this.hasCredentials) {
-      request.setEndpoint(Endpoint.PUBLIC_PROTECTED);
-    } else {
-      throw new Error(
-        'No authentication configuration set. Please provide either agent/agent configuration or credentials.',
-      );
+      return Endpoint.CERT0;
+    }
+    if (this.hasCredentials) {
+      return Endpoint.PUBLIC_PROTECTED;
     }
 
-    return request;
+    throw new Error(
+      'No authentication configuration set. Please provide either agent/agent configuration or credentials.',
+    );
   }
 }
