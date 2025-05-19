@@ -48,6 +48,19 @@ importers:
         specifier: ^2.0.5
         version: 2.0.5(@types/node@20.16.1)
 
+  clients/client-bbr:
+    dependencies:
+      '@datafordeler/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@datafordeler/types':
+        specifier: workspace:*
+        version: link:../../packages/types
+    devDependencies:
+      '@datafordeler/typegen':
+        specifier: workspace:*
+        version: link:../../packages/typegen
+
   clients/client-datafordeler:
     dependencies:
       node-fetch:
