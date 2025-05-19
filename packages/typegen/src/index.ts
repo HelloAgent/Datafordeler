@@ -3,7 +3,6 @@ import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import * as glob from 'glob';
 import { compileFromFile } from 'json-schema-to-typescript';
 
-
 export interface GenerateTypesOptions {
   sourcePattern: string;
   targetDir: string;
