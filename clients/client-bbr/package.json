@@ -1,0 +1,42 @@
+{
+  "name": "@datafordeler/bbr",
+  "description": "Datafordeler SDK for Javascript BBR Client for Node.js",
+  "version": "0.3.0",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "vitest run -c vitest.config.e2e.mts",
+    "typegen": "datafordeler-typegen './schemas/BBR_*.json' './src/types/generated' './schemas/references'"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
+  "sideEffects": false,
+  "dependencies": {
+    "@datafordeler/core": "workspace:*",
+    "@datafordeler/types": "workspace:*"
+  },
+  "devDependencies": {
+    "@datafordeler/typegen": "workspace:*"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist/**",
+    "dist/types/**"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/helloagent/datafordeler",
+    "directory": "clients/client-ebr"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
