@@ -1,5 +1,16 @@
 # @datafordeler/ebr
 
+## 0.3.0
+
+### Minor Changes
+
+- Added package for internal typegen generation from json schemas provided by datafordeler
+
+### Patch Changes
+
+- @datafordeler/core@0.3.0
+- @datafordeler/types@0.3.0
+
 ## 0.2.2
 
 ### Patch Changes
