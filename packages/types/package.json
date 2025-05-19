@@ -1,7 +1,7 @@
 {
   "name": "@datafordeler/types",
   "description": "Datafordeler SDK for Javascript Shared Types",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "typecheck": "tsc --noEmit",

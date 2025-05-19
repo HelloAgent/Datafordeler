@@ -1,7 +1,7 @@
 {
   "name": "@datafordeler/ejf",
   "description": "Datafordeler SDK for Javascript Ejf Client (Ejerfortegnelsen) for Node.js",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",

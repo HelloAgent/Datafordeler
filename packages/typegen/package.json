@@ -1,7 +1,7 @@
 {
     "name": "@datafordeler/typegen",
     "description": "Internal type generation for Datafordeler SDK",
-    "version": "0.2.2",
+    "version": "0.3.0",
     "bin": {
         "datafordeler-typegen": "dist/index.js"
     },
