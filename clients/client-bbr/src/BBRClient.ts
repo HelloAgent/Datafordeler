@@ -8,6 +8,9 @@ import {
 
 import { Livscyklus } from './livscyklus';
 import type {
+  BBRBygningRequest,
+  BBRBygningResponse,
+  BBRBygningResponseUdenDybde,
   BBRSagRequest,
   BBRSagResponse,
   BBRSagResponseUdenDybde,
@@ -68,7 +71,44 @@ export class BBR extends Client<BBRClientConfig> {
       .setParams(normalizedParams)
       .build();
 
-    console.log(request);
+    return this.request(request);
+  }
+
+  /**
+   * BBR Bygning method using version 1
+   *
+   * https://confluence.sdfi.dk/pages/viewpage.action?pageId=16056582#REST(BBR)-Metode-bygning
+   */
+
+  // Overloads the method to allow for different return types based on the MedDybde parameter
+  public async Bygning(
+    params: BBRBygningRequest & { MedDybde: false },
+  ): Promise<BBRBygningResponseUdenDybde>;
+
+  public async Bygning(
+    params: BBRBygningRequest & { MedDybde?: true },
+  ): Promise<BBRBygningResponse>;
+
+  public async Bygning(
+    params: BBRBygningRequest,
+  ): Promise<BBRBygningResponse | BBRBygningResponseUdenDybde>;
+
+  public async Bygning(
+    params: BBRBygningRequest,
+  ): Promise<BBRBygningResponse | BBRBygningResponseUdenDybde> {
+    const normalizedParams = this.normalizeStatusParam(params);
+
+    const request = new RequestBuilder<
+      BBRBygningRequest,
+      BBRBygningResponse | BBRBygningResponseUdenDybde
+    >()
+      .setEndpoint(this.getRequestBuilderEndpoint())
+      .setService('BBRPublic')
+      .setVersion('1')
+      .setServiceType('REST')
+      .setMethod('bygning')
+      .setParams(normalizedParams)
+      .build();
 
     return this.request(request);
   }
