@@ -1,7 +1,7 @@
 {
   "name": "@datafordeler/bbr",
   "description": "Datafordeler SDK for Javascript BBR Client for Node.js",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
