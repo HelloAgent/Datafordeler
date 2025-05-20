@@ -16,6 +16,9 @@ import type {
   BygningResponseUdenDybde,
   EjendomsrelationRequest,
   EjendomsrelationResponse,
+  EnhedRequest,
+  EnhedResponse,
+  EnhedResponseUdenDybde,
 } from './types';
 
 export type BBRClientConfig = ClientBaseConfig & AuthConfig;
@@ -39,7 +42,6 @@ export class BBR extends Client<BBRClientConfig> {
 
   /**
    * BBRSag method using version 1
-   *
    * https://confluence.sdfi.dk/pages/viewpage.action?pageId=16056582#REST(BBR)-Metode-bbrsag
    */
 
@@ -78,7 +80,6 @@ export class BBR extends Client<BBRClientConfig> {
 
   /**
    * BBR Bygning method using version 1
-   *
    * https://confluence.sdfi.dk/pages/viewpage.action?pageId=16056582#REST(BBR)-Metode-bygning
    */
 
@@ -115,6 +116,10 @@ export class BBR extends Client<BBRClientConfig> {
     return this.request(request);
   }
 
+  /**
+   * BBR Ejendomsrelation method using version 1
+   * https://confluence.sdfi.dk/pages/viewpage.action?pageId=16056582#REST(BBR)-Metode-ejendomsrelation
+   */
   public async Ejendomsrelation(
     params: EjendomsrelationRequest,
   ): Promise<EjendomsrelationResponse> {
@@ -129,6 +134,44 @@ export class BBR extends Client<BBRClientConfig> {
       .setVersion('1')
       .setServiceType('REST')
       .setMethod('ejendomsrelation')
+      .setParams(normalizedParams)
+      .build();
+
+    return this.request(request);
+  }
+
+  /**
+   * BBR Enhed method using version 1
+   * https://confluence.sdfi.dk/pages/viewpage.action?pageId=16056582#REST(BBR)-Metode-enhed
+   */
+
+  // Overloads the method to allow for different return types based on the MedDybde parameter
+  public async Enhed(
+    params: EnhedRequest & { MedDybde: false },
+  ): Promise<EnhedResponseUdenDybde>;
+
+  public async Enhed(
+    params: EnhedRequest & { MedDybde?: true },
+  ): Promise<EnhedResponse>;
+
+  public async Enhed(
+    params: EnhedRequest,
+  ): Promise<EnhedResponse | EnhedResponseUdenDybde>;
+
+  public async Enhed(
+    params: EnhedRequest,
+  ): Promise<EnhedResponse | EnhedResponseUdenDybde> {
+    const normalizedParams = this.normalizeStatusParam(params);
+
+    const request = new RequestBuilder<
+      EnhedRequest,
+      EnhedResponse | EnhedResponseUdenDybde
+    >()
+      .setEndpoint(this.getRequestBuilderEndpoint())
+      .setService('BBRPublic')
+      .setVersion('1')
+      .setServiceType('REST')
+      .setMethod('enhed')
       .setParams(normalizedParams)
       .build();
 
