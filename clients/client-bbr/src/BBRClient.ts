@@ -19,6 +19,9 @@ import type {
   EnhedRequest,
   EnhedResponse,
   EnhedResponseUdenDybde,
+  GrundRequest,
+  GrundResponse,
+  GrundResponseUdenDybde,
 } from './types';
 
 export type BBRClientConfig = ClientBaseConfig & AuthConfig;
@@ -172,6 +175,45 @@ export class BBR extends Client<BBRClientConfig> {
       .setVersion('1')
       .setServiceType('REST')
       .setMethod('enhed')
+      .setParams(normalizedParams)
+      .build();
+
+    return this.request(request);
+  }
+
+  /**
+   * BBR Grund method using version 1
+   * https://confluence.sdfi.dk/pages/viewpage.action?pageId=16056582#REST(BBR)-Metode-grund
+   */
+
+  // Overloads the method to allow for different return types based on the MedDybde parameter
+
+  public async Grund(
+    params: GrundRequest & { MedDybde: false },
+  ): Promise<GrundResponseUdenDybde>;
+
+  public async Grund(
+    params: GrundRequest & { MedDybde?: true },
+  ): Promise<GrundResponse>;
+
+  public async Grund(
+    params: GrundRequest,
+  ): Promise<GrundResponse | GrundResponseUdenDybde>;
+
+  public async Grund(
+    params: GrundRequest,
+  ): Promise<GrundResponse | GrundResponseUdenDybde> {
+    const normalizedParams = this.normalizeStatusParam(params);
+
+    const request = new RequestBuilder<
+      GrundRequest,
+      GrundResponse | GrundResponseUdenDybde
+    >()
+      .setEndpoint(this.getRequestBuilderEndpoint())
+      .setService('BBRPublic')
+      .setVersion('1')
+      .setServiceType('REST')
+      .setMethod('grund')
       .setParams(normalizedParams)
       .build();
 
