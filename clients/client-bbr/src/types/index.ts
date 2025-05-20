@@ -9,7 +9,8 @@ import type {
 
 import type { Livscyklus } from '../livscyklus';
 import type { BBR_244_BBRSag as BBRSag_ } from './generated/BBR_2.4.4_BBRSag.schema';
-import type { BBR_244_Bygning as BBRBygning_ } from './generated/BBR_2.4.4_Bygning.schema';
+import type { BBR_244_Bygning as Bygning_ } from './generated/BBR_2.4.4_Bygning.schema';
+import type { BBR_244_EjendomsRelation as Ejendomsrelation_ } from './generated/BBR_2.4.4_EjendomsRelation.schema';
 
 /* BBR Sag */
 export type BBRSag = BBRSag_[number];
@@ -66,9 +67,9 @@ export type BBRSagResponse = Array<BBRSag>;
 export type BBRSagResponseUdenDybde = Array<BBRSagUdenDybde>;
 
 /* BBR Bygning */
-export type BBRBygning = BBRBygning_[number];
-export type BBRBygningUdenDybde = Omit<
-  BBRBygning,
+export type Bygning = Bygning_[number];
+export type BygningUdenDybde = Omit<
+  Bygning,
   | 'etageList'
   | 'opgangList'
   | 'fordelingsarealList'
@@ -80,7 +81,7 @@ export type BBRBygningUdenDybde = Omit<
   bygningPåFremmedGrundList?: { id_lokalId?: IdLokalId }[];
 };
 
-export type BBRBygningRequest = {
+export type BygningRequest = {
   /**
    * Identifikation af bygværkselementet igennem hele dets livscyklus
    */
@@ -211,5 +212,115 @@ export type BBRBygningRequest = {
   KunNyesteIPeriode?: boolean;
 };
 
-export type BBRBygningResponse = Array<BBRBygning>;
-export type BBRBygningResponseUdenDybde = Array<BBRBygningUdenDybde>;
+export type BygningResponse = Array<Bygning>;
+export type BygningResponseUdenDybde = Array<BygningUdenDybde>;
+
+/* BBR Ejendomsrelation */
+export type Ejendomsrelation = Ejendomsrelation_[number];
+
+export type EjendomsrelationRequest = {
+  /**
+   * Identifikation af ejendomsrelationen igennem hele sin livscyklus
+   */
+  Id?: IdLokalId | IdLokalId[];
+  /**
+   * Tidspunktet hvorfra den pågældende version af ejendomsrelationen har virkning
+   */
+  VirkningFra?: VirkningstidFra;
+  /**
+   * Tidspunktet hvor virkningen af den pågældende version af ejendomsrelationen ophører
+   */
+  VirkningTil?: VirkningstidTil;
+  /**
+   * Den aktør der har afstedkommet virkningsegenskaberne for den pågældende version af ejendomsrelationen
+   */
+  Virkningsaktoer?: string;
+  /**
+   * Tidspunktet hvor registreringen af den pågældende version af ejendomsrelationen er foretaget
+   */
+  RegistreringFra?: RegistreringstidFra;
+  /**
+   * Tidspunktet hvor en ny registrering på ejendomsrelationen er foretaget, og hvor denne version således ikke længere er den seneste.
+   */
+  RegistreringTil?: RegistreringstidTil;
+  /**
+   * Den aktør der har foretaget registreringen af den pågældende version af ejendomsrelationen
+   */
+  Registreringsaktoer?: string;
+  /**
+   * Ejendomsrelationens status i den pågældende version, dvs. ejendomsrelationens tilstand i den samlede livscyklus
+   */
+  Status?: Livscyklus | Livscyklus[];
+  /**
+   * Den forretningsproces, som afstedkom opdateringen af ejendomsrelationen til den pågældende version
+   */
+  Forretningsproces?: string;
+  /**
+   * Det forretningsområde som har opdateret ejendomsrelationen til den pågældende version
+   */
+  Forretningsomraade?: string;
+  /**
+   * Den forretningshændelse, som afstedkom opdateringen af ejendomsrelationen til den pågældende version
+   */
+  Forretningshaendelse?: string;
+  /**
+   * Den kommune som ejendomsrelationen er registreret i
+   */
+  Kommunekode?: string;
+  /**
+   * Angiver om resultatet skal indeholde nested data fra joins eller kun ID'er.
+   * @default true
+   */
+  MedDybde?: boolean;
+  /**
+   * Fra Datafordeler opdateringstidspunkt
+   */
+  DAFTimestampFra?: DateString;
+  /**
+   * Til Datafordeler opdateringstidspunkt
+   */
+  DAFTimestampTil?: DateString;
+  /**
+   * BFE-nummer er altid én af følgende tre ejendomstyper: SFE, BPFG eller Ejerlejlighed
+   */
+  BFENummer?: number;
+  /**
+   * MU BygningPåFremmedGrund ID
+   */
+  BPFG?: number;
+  /**
+   * Ejerforholdskode
+   */
+  Ejerforholdskode?: string;
+  /**
+   * MU Ejerlejlighed ID
+   */
+  Ejerlejlighed?: number;
+  /**
+   * Ejendomsnummer (unik sammen med Kommunekode)
+   */
+  Ejendomsnummer?: number;
+  /**
+   * MU SamletFastEjendom ID
+   */
+  SamletFastEjendom?: number;
+  /**
+   * Vurderingsejendomsnummer
+   */
+  Vurderingsejendomsnummer?: number;
+  /**
+   * Tidspunkt hvor perioden med ændringer begynder. Kan kun benyttes i kombination med PeriodeaendringTil.
+   */
+  PeriodeaendringFra?: DateString;
+  /**
+   * Tidspunkt hvor perioden med ændringer slutter. Kan kun benyttes i kombination med PeriodeaendringFra.
+   */
+  PeriodeaendringTil?: DateString;
+  /**
+   * Angives hvis man kun vil have de nye versioner af dataobjekterne. Kan kun benyttes i kombination med PeriodeaendringFra og PeriodeaendringTil.
+   * @default false
+   */
+  KunNyesteIPeriode?: boolean;
+};
+
+export type EjendomsrelationResponse = Array<Ejendomsrelation>;
