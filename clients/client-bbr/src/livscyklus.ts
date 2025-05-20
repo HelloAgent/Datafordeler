@@ -1,7 +1,10 @@
 /**
  * Livscyklus repræsenterer stadier i et bbr objekts livsforløb.
- *
+ * 
  * https://teknik.bbr.dk/kodelister/0/1/0/Livscyklus
+ * 
+ * Ikke alle objekter har alle livscyklus stadier. Information om hvilke stadier 
+ * der er relevante for et givent objekt kan findes i BBR's informationsmodel her: https://bbr.dk/file/665192/bbr-informationsmodel.pdf
  */
 export class Livscyklus {
   public readonly livscyklus_code: string;
