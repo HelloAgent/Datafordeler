@@ -11,6 +11,7 @@ import type { Livscyklus } from '../livscyklus';
 import type { BBR_244_BBRSag as BBRSag_ } from './generated/BBR_2.4.4_BBRSag.schema';
 import type { BBR_244_Bygning as Bygning_ } from './generated/BBR_2.4.4_Bygning.schema';
 import type { BBR_244_EjendomsRelation as Ejendomsrelation_ } from './generated/BBR_2.4.4_EjendomsRelation.schema';
+import type { BBR_244_Enhed as Enhed_ } from './generated/BBR_2.4.4_Enhed.schema';
 
 /* BBR Sag */
 export type BBRSag = BBRSag_[number];
@@ -324,3 +325,126 @@ export type EjendomsrelationRequest = {
 };
 
 export type EjendomsrelationResponse = Array<Ejendomsrelation>;
+
+/* BBR Enhed */
+export type Enhed = Enhed_[number];
+export type EnhedUdenDybde = Omit<
+  Enhed,
+  'ejerlejlighedList' | 'fordelingsarealList'
+> & {
+  ejerlejlighedList?: { id_lokalId?: IdLokalId }[];
+  fordelingsarealList?: { id_lokalId?: IdLokalId }[];
+};
+
+export type EnhedRequest = {
+  /**
+   * Identifikation af enheden igennem hele sin livscyklus
+   */
+  Id?: IdLokalId | IdLokalId[];
+  /**
+   * Tidspunktet hvorfra den pågældende version af enheden har virkning
+   */
+  VirkningFra?: VirkningstidFra;
+  /**
+   * Tidspunktet hvor virkningen af den pågældende version af enheden ophører
+   */
+  VirkningTil?: VirkningstidTil;
+  /**
+   * Den aktør der har afstedkommet virkningsegenskaberne for den pågældende version af enheden
+   */
+  Virkningsaktoer?: string;
+  /**
+   * Tidspunktet hvor registreringen af den pågældende version af enheden er foretaget
+   */
+  RegistreringFra?: RegistreringstidFra;
+  /**
+   * Tidspunktet hvor en ny registrering på enheden er foretaget, og hvor denne version således ikke længere er den seneste.
+   */
+  RegistreringTil?: RegistreringstidTil;
+  /**
+   * Den aktør der har foretaget registreringen af den pågældende version af enheden
+   */
+  Registreringsaktoer?: string;
+  /**
+   * Enhedens status i den pågældende version, dvs. enhedens tilstand i den samlede livscyklus
+   */
+  Status?: Livscyklus | Livscyklus[];
+  /**
+   * Den forretningsproces, som afstedkom opdateringen af enheden til den pågældende version
+   */
+  Forretningsproces?: string;
+  /**
+   * Det forretningsområde som har opdateret enheden til den pågældende version
+   */
+  Forretningsomraade?: string;
+  /**
+   * Den forretningshændelse, som afstedkom opdateringen af enheden til den pågældende version
+   */
+  Forretningshaendelse?: string;
+  /**
+   * Den kommune som enheden ligger i
+   */
+  Kommunekode?: string;
+  /**
+   * Angiver om resultatet skal indeholde nested data fra joins eller kun ID'er.
+   * @default true
+   */
+  MedDybde?: boolean;
+  /**
+   * Fra Datafordeler opdateringstidspunkt
+   */
+  DAFTimestampFra?: DateString;
+  /**
+   * Til Datafordeler opdateringstidspunkt
+   */
+  DAFTimestampTil?: DateString;
+  /**
+   * BFE-nummer
+   * Er enheden af ejendomstypen Ejerlejlighed kan BFE-nummer bruges som inputparameter.
+   */
+  BFENummer?: number;
+  /**
+   * BBR Etage ID
+   */
+  Etage?: IdLokalId | IdLokalId[];
+  /**
+   * BBR Fordelingsareal ID
+   */
+  Fordelingsareal?: IdLokalId;
+  /**
+   * BBR Opgang ID
+   */
+  Opgang?: IdLokalId | IdLokalId[];
+  /**
+   * BBR TekniskAnlæg ID
+   */
+  TekniskAnlaeg?: IdLokalId | IdLokalId[];
+  /**
+   * BBR Ejendomsrelation ID
+   */
+  Ejendomsrelation?: IdLokalId;
+  /**
+   * DAR Adresse ID
+   */
+  AdresseIdentificerer?: IdLokalId;
+  /**
+   * BBR Bygning ID
+   */
+  Bygning?: IdLokalId | IdLokalId[];
+  /**
+   * Tidspunkt hvor perioden med ændringer begynder. Kan kun benyttes i kombination med PeriodeaendringTil.
+   */
+  PeriodeaendringFra?: DateString;
+  /**
+   * Tidspunkt hvor perioden med ændringer slutter. Kan kun benyttes i kombination med PeriodeaendringFra.
+   */
+  PeriodeaendringTil?: DateString;
+  /**
+   * Angives hvis man kun vil have de nye versioner af dataobjekterne. Kan kun benyttes i kombination med PeriodeaendringFra og PeriodeaendringTil.
+   * @default false
+   */
+  KunNyesteIPeriode?: boolean;
+};
+
+export type EnhedResponse = Array<Enhed>;
+export type EnhedResponseUdenDybde = Array<EnhedUdenDybde>;

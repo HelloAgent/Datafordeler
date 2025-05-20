@@ -146,4 +146,66 @@ describe('BBR', () => {
     expect(res[0]).toHaveProperty('virkningFra');
     expect(res[0]).toHaveProperty('virkningsaktør');
   });
+
+  it('should get a bbr enhed using id', async () => {
+    const res = await bbrWithAgent.Enhed({
+      Id: '761d5692-af0f-4211-860a-4d25c8011d73',
+    });
+
+    expect(res).toHaveLength(1);
+    expect(res[0]).toHaveProperty('datafordelerOpdateringstid');
+    expect(res[0]).toHaveProperty('adresseIdentificerer');
+    expect(res[0]).toHaveProperty('enh020EnhedensAnvendelse');
+    expect(res[0]).toHaveProperty('enh023Boligtype');
+    expect(res[0]).toHaveProperty('enh024KondemneretBoligenhed');
+    expect(res[0]).toHaveProperty('enh026EnhedensSamledeAreal');
+    expect(res[0]).toHaveProperty('enh027ArealTilBeboelse');
+    expect(res[0]).toHaveProperty('enh028ArealTilErhverv');
+    expect(res[0]).toHaveProperty('enh030KildeTilEnhedensArealer');
+    expect(res[0]).toHaveProperty('enh031AntalVærelser');
+    expect(res[0]).toHaveProperty('enh032Toiletforhold');
+    expect(res[0]).toHaveProperty('enh033Badeforhold');
+    expect(res[0]).toHaveProperty('enh034Køkkenforhold');
+    expect(res[0]).toHaveProperty('enh045Udlejningsforhold');
+    expect(res[0]).toHaveProperty('enh048GodkendtTomBolig');
+    expect(res[0]).toHaveProperty('enh063AntalVærelserTilErhverv');
+    expect(res[0]).toHaveProperty('enh065AntalVandskylledeToiletter');
+    expect(res[0]).toHaveProperty('enh066AntalBadeværelser');
+    expect(res[0]).toHaveProperty('enh071AdresseFunktion');
+    expect(res[0]).toHaveProperty('etage');
+    expect(res[0]).toHaveProperty('forretningshændelse');
+    expect(res[0]).toHaveProperty('forretningsområde');
+    expect(res[0]).toHaveProperty('forretningsproces');
+    expect(res[0]).toHaveProperty('id_lokalId');
+    expect(res[0]).toHaveProperty('id_namespace');
+    expect(res[0]).toHaveProperty('kommunekode');
+    expect(res[0]).toHaveProperty('opgang');
+    expect(res[0]).toHaveProperty('registreringFra');
+    expect(res[0]).toHaveProperty('registreringsaktør');
+    expect(res[0]).toHaveProperty('status');
+    expect(res[0]).toHaveProperty('virkningFra');
+    expect(res[0]).toHaveProperty('virkningsaktør');
+    expect(res[0]).toHaveProperty('bygning');
+  });
+
+  it('should get a bbr enhed with depth', async () => {
+    const res = await bbrWithAgent.Enhed({
+      BFENummer: 413586,
+    });
+
+    expect(res[0]?.ejerlejlighedList).toHaveLength(1);
+    expect(res[0]?.ejerlejlighedList?.[0]).toHaveProperty('id_lokalId');
+    expect(res[0]?.ejerlejlighedList?.[0]).toHaveProperty('ejerlejlighed');
+  });
+
+  it('should get a bbr enhed without depth', async () => {
+    const res = await bbrWithAgent.Enhed({
+      BFENummer: 413586,
+      MedDybde: false,
+    });
+
+    expect(res[0]?.ejerlejlighedList).toHaveLength(1);
+    expect(res[0]?.ejerlejlighedList?.[0]).toHaveProperty('id_lokalId');
+    expect(res[0]?.ejerlejlighedList?.[0]).not.toHaveProperty('ejerlejlighed');
+  });
 });
