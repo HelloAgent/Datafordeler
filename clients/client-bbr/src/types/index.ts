@@ -13,6 +13,7 @@ import type { BBR_244_Bygning as Bygning_ } from './generated/BBR_2.4.4_Bygning.
 import type { BBR_244_EjendomsRelation as Ejendomsrelation_ } from './generated/BBR_2.4.4_EjendomsRelation.schema';
 import type { BBR_244_Enhed as Enhed_ } from './generated/BBR_2.4.4_Enhed.schema';
 import type { BBR_244_Grund as Grund_ } from './generated/BBR_2.4.4_Grund.schema';
+import type { BBR_244_TekniskAnlaeg } from './generated/BBR_2.4.4_TekniskAnlæg.schema';
 
 /* BBR Sag */
 export type BBRSag = BBRSag_[number];
@@ -560,3 +561,138 @@ export type GrundRequest = {
 
 export type GrundResponse = Array<Grund>;
 export type GrundResponseUdenDybde = Array<GrundUdenDybde>;
+
+/* BBR TekniskAnlæg */
+export type TekniskAnlaeg = BBR_244_TekniskAnlaeg[number];
+export type TekniskAnlaegUdenDybde = Omit<
+  TekniskAnlaeg,
+  'bygningPåFremmedGrund' | 'ejerlejlighed'
+> & {
+  bygningPåFremmedGrund?: { id_lokalId?: IdLokalId };
+  ejerlejlighed?: { id_lokalId?: IdLokalId };
+};
+
+export type TekniskAnlaegRequest = {
+  /**
+   * Identifikation af det tekniske anlæg igennem hele dets livscyklus
+   */
+  Id?: IdLokalId | IdLokalId[];
+  /**
+   * Tidspunktet hvorfra den pågældende version af det tekniske anlæg har virkning
+   */
+  VirkningFra?: VirkningstidFra;
+  /**
+   * Tidspunktet hvor virkningen af den pågældende version af det tekniske anlæg ophører
+   */
+  VirkningTil?: VirkningstidTil;
+  /**
+   * Den aktør der har afstedkommet virkningsegenskaberne for den pågældende version af det tekniske anlæg
+   */
+  Virkningsaktoer?: string;
+  /**
+   * Tidspunktet hvor registreringen af den pågældende version af det tekniske anlæg er foretaget
+   */
+  RegistreringFra?: RegistreringstidFra;
+  /**
+   * Tidspunktet hvor en ny registrering på det tekniske anlæg er foretaget, og hvor denne version således ikke længere er den seneste.
+   */
+  RegistreringTil?: RegistreringstidTil;
+  /**
+   * Den aktør der har foretaget registreringen af den pågældende version af det tekniske anlæg
+   */
+  Registreringsaktoer?: string;
+  /**
+   * Det tekniske anlægs status i den pågældende version, dvs. det tekniske anlægs tilstand i den samlede livscyklus
+   */
+  Status?: Livscyklus | Livscyklus[];
+  /**
+   * Den forretningsproces, som afstedkom opdateringen af det tekniske anlæg til den pågældende version
+   */
+  Forretningsproces?: string;
+  /**
+   * Det forretningsområde som har opdateret det tekniske anlæg til den pågældende version
+   */
+  Forretningsomraade?: string;
+  /**
+   * Den forretningshændelse, som afstedkom opdateringen af det tekniske anlæg til den pågældende version
+   */
+  Forretningshaendelse?: string;
+  /**
+   * Den kommune som det tekniske anlæg er registret i
+   */
+  Kommunekode?: string;
+  /**
+   * Angiver om resultatet skal indeholde nested data fra joins eller kun ID'er.
+   * @default true
+   */
+  MedDybde?: boolean;
+  /**
+   * Fra Datafordeler opdateringstidspunkt
+   */
+  DAFTimestampFra?: DateString;
+  /**
+   * Til Datafordeler opdateringstidspunkt
+   */
+  DAFTimestampTil?: DateString;
+  /**
+   * MU Jordstykke ID
+   */
+  Jordstykke?: number;
+  /**
+   * BBR Ejendomsrelation ID
+   */
+  Ejendomsrelation?: IdLokalId;
+  /**
+   * DAR Husnummer ID
+   */
+  Husnummer?: IdLokalId;
+  /**
+   * BBR Bygning ID
+   */
+  Bygning?: IdLokalId;
+  /**
+   * BBR Enhed ID
+   */
+  Enhed?: IdLokalId;
+  /**
+   * BBR Grund ID
+   */
+  Grund?: IdLokalId;
+  /**
+   * BFE-nummer
+   * Er dit BFE-nummer af ejendomstypen Bygning På Fremmed Grund eller Ejerlejlighed og indeholder den teknisk anlæg kan BFE-nummer bruges som inputparameter.
+   */
+  BFENummer?: number;
+  /**
+   * Nordlig koordinat afgrænsning
+   */
+  Nord?: number;
+  /**
+   * Sydlig koordinat afgrænsning
+   */
+  Syd?: number;
+  /**
+   * Østlig koordinat afgrænsning
+   */
+  Oest?: number;
+  /**
+   * Vestlig koordinat afgrænsning
+   */
+  Vest?: number;
+  /**
+   * Tidspunkt hvor perioden med ændringer begynder. Kan kun benyttes i kombination med PeriodeaendringTil.
+   */
+  PeriodeaendringFra?: DateString;
+  /**
+   * Tidspunkt hvor perioden med ændringer slutter. Kan kun benyttes i kombination med PeriodeaendringFra.
+   */
+  PeriodeaendringTil?: DateString;
+  /**
+   * Angives hvis man kun vil have de nye versioner af dataobjekterne. Kan kun benyttes i kombination med PeriodeaendringFra og PeriodeaendringTil.
+   * @default false
+   */
+  KunNyesteIPeriode?: boolean;
+};
+
+export type TekniskAnlaegResponse = Array<TekniskAnlaeg>;
+export type TekniskAnlaegResponseUdenDybde = Array<TekniskAnlaegUdenDybde>;
