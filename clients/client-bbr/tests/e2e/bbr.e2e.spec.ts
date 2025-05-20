@@ -246,4 +246,41 @@ describe('BBR', () => {
     expect(res[0]).toHaveProperty('bestemtFastEjendom');
     expect(res[0]?.bestemtFastEjendom).toHaveProperty('bfeNummer');
   });
+
+  it('should get a bbr tekniskanlaeg', async () => {
+    const res = await bbrWithAgent.TekniskAnlæg({
+      Jordstykke: 2468994,
+    });
+
+    expect(res).toHaveLength(5);
+
+    res.forEach((r) => {
+      expect(r).toHaveProperty('datafordelerOpdateringstid');
+      expect(r).toHaveProperty('forretningshændelse');
+      expect(r).toHaveProperty('forretningsområde');
+      expect(r).toHaveProperty('forretningsproces');
+      expect(r).toHaveProperty('grund');
+      expect(r).toHaveProperty('husnummer');
+      expect(r).toHaveProperty('id_lokalId');
+      expect(r).toHaveProperty('id_namespace');
+      expect(r).toHaveProperty('jordstykke');
+      expect(r).toHaveProperty('kommunekode');
+      expect(r).toHaveProperty('registreringFra');
+      expect(r).toHaveProperty('registreringsaktør');
+      expect(r).toHaveProperty('status');
+      expect(r).toHaveProperty('tek007Anlægsnummer');
+      expect(r).toHaveProperty('tek020Klassifikation');
+      expect(r).toHaveProperty('tek024Etableringsår');
+      expect(r).toHaveProperty('tek042Revisionsdato');
+      expect(r).toHaveProperty('tek045Koordinatsystem');
+      expect(r).toHaveProperty('tek076KildeTilKoordinatsæt');
+      expect(r).toHaveProperty('tek077KvalitetAfKoordinatsæt');
+      expect(r).toHaveProperty('tek078SupplerendeOplysningOmKoordinatsæt');
+      expect(r).toHaveProperty('tek107PlaceringPåSøterritorie');
+      expect(r).toHaveProperty('tek109Koordinat');
+      expect(r).toHaveProperty('tek110Driftstatus');
+      expect(r).toHaveProperty('virkningFra');
+      expect(r).toHaveProperty('virkningsaktør');
+    });
+  });
 });

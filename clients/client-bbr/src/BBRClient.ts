@@ -22,6 +22,9 @@ import type {
   GrundRequest,
   GrundResponse,
   GrundResponseUdenDybde,
+  TekniskAnlaegRequest,
+  TekniskAnlaegResponse,
+  TekniskAnlaegResponseUdenDybde,
 } from './types';
 
 export type BBRClientConfig = ClientBaseConfig & AuthConfig;
@@ -187,7 +190,6 @@ export class BBR extends Client<BBRClientConfig> {
    */
 
   // Overloads the method to allow for different return types based on the MedDybde parameter
-
   public async Grund(
     params: GrundRequest & { MedDybde: false },
   ): Promise<GrundResponseUdenDybde>;
@@ -220,6 +222,43 @@ export class BBR extends Client<BBRClientConfig> {
     return this.request(request);
   }
 
+  /**
+   * BBR TekniskAnlaeg method using version 1
+   * https://confluence.sdfi.dk/pages/viewpage.action?pageId=16056582#REST(BBR)-Metode-tekniskanlaeg
+   */
+
+  // Overloads the method to allow for different return types based on the MedDybde parameter
+  public async TekniskAnlæg(
+    params: TekniskAnlaegRequest & { MedDybde: false },
+  ): Promise<TekniskAnlaegResponseUdenDybde>;
+
+  public async TekniskAnlæg(
+    params: TekniskAnlaegRequest & { MedDybde?: true },
+  ): Promise<TekniskAnlaegResponse>;
+
+  public async TekniskAnlæg(
+    params: TekniskAnlaegRequest,
+  ): Promise<TekniskAnlaegResponse | TekniskAnlaegResponseUdenDybde>;
+
+  public async TekniskAnlæg(
+    params: TekniskAnlaegRequest,
+  ): Promise<TekniskAnlaegResponse | TekniskAnlaegResponseUdenDybde> {
+    const normalizedParams = this.normalizeStatusParam(params);
+
+    const request = new RequestBuilder<
+      TekniskAnlaegRequest,
+      TekniskAnlaegResponse | TekniskAnlaegResponseUdenDybde
+    >()
+      .setEndpoint(this.getRequestBuilderEndpoint())
+      .setService('BBRPublic')
+      .setVersion('1')
+      .setServiceType('REST')
+      .setMethod('tekniskanlaeg')
+      .setParams(normalizedParams)
+      .build();
+
+    return this.request(request);
+  }
   /**
    * Normalizes the status parameter in the given parameters object.
    * If the parameters contain a Status property (of type Livscyklus or Livscyklus[]),
