@@ -8,12 +8,14 @@ import {
 
 import { Livscyklus } from './livscyklus';
 import type {
-  BBRBygningRequest,
-  BBRBygningResponse,
-  BBRBygningResponseUdenDybde,
   BBRSagRequest,
   BBRSagResponse,
   BBRSagResponseUdenDybde,
+  BygningRequest,
+  BygningResponse,
+  BygningResponseUdenDybde,
+  EjendomsrelationRequest,
+  EjendomsrelationResponse,
 } from './types';
 
 export type BBRClientConfig = ClientBaseConfig & AuthConfig;
@@ -82,31 +84,51 @@ export class BBR extends Client<BBRClientConfig> {
 
   // Overloads the method to allow for different return types based on the MedDybde parameter
   public async Bygning(
-    params: BBRBygningRequest & { MedDybde: false },
-  ): Promise<BBRBygningResponseUdenDybde>;
+    params: BygningRequest & { MedDybde: false },
+  ): Promise<BygningResponseUdenDybde>;
 
   public async Bygning(
-    params: BBRBygningRequest & { MedDybde?: true },
-  ): Promise<BBRBygningResponse>;
+    params: BygningRequest & { MedDybde?: true },
+  ): Promise<BygningResponse>;
 
   public async Bygning(
-    params: BBRBygningRequest,
-  ): Promise<BBRBygningResponse | BBRBygningResponseUdenDybde>;
+    params: BygningRequest,
+  ): Promise<BygningResponse | BygningResponseUdenDybde>;
 
   public async Bygning(
-    params: BBRBygningRequest,
-  ): Promise<BBRBygningResponse | BBRBygningResponseUdenDybde> {
+    params: BygningRequest,
+  ): Promise<BygningResponse | BygningResponseUdenDybde> {
     const normalizedParams = this.normalizeStatusParam(params);
 
     const request = new RequestBuilder<
-      BBRBygningRequest,
-      BBRBygningResponse | BBRBygningResponseUdenDybde
+      BygningRequest,
+      BygningResponse | BygningResponseUdenDybde
     >()
       .setEndpoint(this.getRequestBuilderEndpoint())
       .setService('BBRPublic')
       .setVersion('1')
       .setServiceType('REST')
       .setMethod('bygning')
+      .setParams(normalizedParams)
+      .build();
+
+    return this.request(request);
+  }
+
+  public async Ejendomsrelation(
+    params: EjendomsrelationRequest,
+  ): Promise<EjendomsrelationResponse> {
+    const normalizedParams = this.normalizeStatusParam(params);
+
+    const request = new RequestBuilder<
+      EjendomsrelationRequest,
+      EjendomsrelationResponse
+    >()
+      .setEndpoint(this.getRequestBuilderEndpoint())
+      .setService('BBRPublic')
+      .setVersion('1')
+      .setServiceType('REST')
+      .setMethod('ejendomsrelation')
       .setParams(normalizedParams)
       .build();
 
