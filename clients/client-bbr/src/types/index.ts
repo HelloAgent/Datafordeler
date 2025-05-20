@@ -15,33 +15,53 @@ import type { BBR_244_Enhed as Enhed_ } from './generated/BBR_2.4.4_Enhed.schema
 import type { BBR_244_Grund as Grund_ } from './generated/BBR_2.4.4_Grund.schema';
 import type { BBR_244_TekniskAnlaeg } from './generated/BBR_2.4.4_TekniskAnlæg.schema';
 
-/* BBR Sag */
-export type BBRSag = BBRSag_[number];
-export type BBRSagUdenDybde = Omit<BBRSag, 'sagsniveauList'> & {
-  sagsniveauList?: { id_lokalId?: IdLokalId }[];
-};
-
-export type BBRSagRequest = {
+export type BaseRequest = {
+  /**
+   * Identifikation af det objektet igennem hele dets livscyklus
+   */
   Id?: IdLokalId | IdLokalId[];
+  /**
+   * Tidspunktet hvorfra den pågældende version af objektet har virkning
+   */
   VirkningFra?: VirkningstidFra;
+  /**
+   * Tidspunktet hvor virkningen af den pågældende version af objektet ophører
+   */
   VirkningTil?: VirkningstidTil;
+  /**
+   * Den aktør der har afstedkommet virkningsegenskaberne for den pågældende version af objektet
+   */
   Virkningsaktoer?: string;
+  /**
+   * Tidspunktet hvor registreringen af den pågældende version af objektet er foretaget
+   */
   RegistreringFra?: RegistreringstidFra;
+  /**
+   * Tidspunktet hvor en ny registrering på objektet er foretaget, og hvor denne version således ikke længere er den seneste.
+   */
   RegistreringTil?: RegistreringstidTil;
+  /**
+   * Den aktør der har foretaget registreringen af den pågældende version af objektet
+   */
   Registreringsaktoer?: string;
   /**
-   * Byggesagens status i den pågældende version, dvs. byggesagens tilstand i den samlede livscyklus.
-   *
-   * https://teknik.bbr.dk/kodelister/0/1/0/Livscyklus
-   * @default null
+   * Objektets status i den pågældende version, dvs. objektets tilstand i den samlede livscyklus
    */
   Status?: Livscyklus | Livscyklus[];
+  /**
+   * Den forretningsproces, som afstedkom opdateringen af objektet til den pågældende version
+   */
   Forretningsproces?: string;
+  /**
+   * Det forretningsområde som har opdateret objektet til den pågældende version
+   */
   Forretningsomraade?: string;
+  /**
+   * Den forretningshændelse, som afstedkom opdateringen af objektet til den pågældende version
+   */
   Forretningshaendelse?: string;
   /**
-   * Den kommune som byggesagen er registret i.
-   * @default null
+   * Den kommune som objektet er registreret i
    */
   Kommunekode?: string;
   /**
@@ -49,21 +69,60 @@ export type BBRSagRequest = {
    * @default true
    */
   MedDybde?: boolean;
+  /**
+   * Fra Datafordeler opdateringstidspunkt
+   */
   DAFTimestampFra?: DateString;
+  /**
+   * Til Datafordeler opdateringstidspunkt
+   */
   DAFTimestampTil?: DateString;
-  Bygning?: IdLokalId;
-  Enhed?: IdLokalId;
-  Etage?: IdLokalId;
-  Grund?: IdLokalId;
-  Opgang?: IdLokalId;
-  TekniskAnlaeg?: IdLokalId;
+  /**
+   * Tidspunkt hvor perioden med ændringer begynder. Kan kun benyttes i kombination med PeriodeaendringTil.
+   */
   PeriodeaendringFra?: DateString;
+  /**
+   * Tidspunkt hvor perioden med ændringer slutter. Kan kun benyttes i kombination med PeriodeaendringFra.
+   */
   PeriodeaendringTil?: DateString;
   /**
    * Angives hvis man kun vil have de nye versioner af dataobjekterne. Kan kun benyttes i kombination med PeriodeaendringFra og PeriodeaendringTil.
    * @default false
    */
   KunNyesteIPeriode?: boolean;
+};
+
+/* BBR Sag */
+export type BBRSag = BBRSag_[number];
+export type BBRSagUdenDybde = Omit<BBRSag, 'sagsniveauList'> & {
+  sagsniveauList?: { id_lokalId?: IdLokalId }[];
+};
+
+export type BBRSagRequest = BaseRequest & {
+  /**
+   * BBR Bygning UUID bbr sagen er tilknyttet
+   */
+  Bygning?: IdLokalId;
+  /**
+   * BBR Enhed UUID bbr sagen er tilknyttet
+   */
+  Enhed?: IdLokalId;
+  /**
+   * BBR Etage UUID bbr sagen er tilknyttet
+   */
+  Etage?: IdLokalId;
+  /**
+   * BBR Grund UUID bbr sagen er tilknyttet
+   */
+  Grund?: IdLokalId;
+  /**
+   * BBR Opgang UUID bbr sagen er tilknyttet
+   */
+  Opgang?: IdLokalId;
+  /**
+   * BBR TekniskAnlaeg UUID bbr sagen er tilknyttet
+   */
+  TekniskAnlaeg?: IdLokalId;
 };
 
 export type BBRSagResponse = Array<BBRSag>;
@@ -84,68 +143,7 @@ export type BygningUdenDybde = Omit<
   bygningPåFremmedGrundList?: { id_lokalId?: IdLokalId }[];
 };
 
-export type BygningRequest = {
-  /**
-   * Identifikation af bygværkselementet igennem hele dets livscyklus
-   */
-  Id?: IdLokalId | IdLokalId[];
-  /**
-   * Tidspunktet hvorfra den pågældende version af bygværkselement har virkning
-   */
-  VirkningFra?: VirkningstidFra;
-  /**
-   * Tidspunktet hvor virkningen af den pågældende version af bygværkselementet ophører
-   */
-  VirkningTil?: VirkningstidTil;
-  /**
-   * Den aktør der har afstedkommet virkningsegenskaberne for den pågældende version af bygværkselementet
-   */
-  Virkningsaktoer?: string;
-  /**
-   * Tidspunktet hvor registreringen af den pågældende version af bygværkselementet er foretaget
-   */
-  RegistreringFra?: RegistreringstidFra;
-  /**
-   * Tidspunktet hvor en ny registrering på bygværkselementet er foretaget, og hvor denne version således ikke længere er den seneste.
-   */
-  RegistreringTil?: RegistreringstidTil;
-  /**
-   * Den aktør der har foretaget registreringen af den pågældende version af bygværkselementet
-   */
-  Registreringsaktoer?: string;
-  /**
-   * Bygværkselementets status i den pågældende version, dvs. elementets tilstand i den samlede livscyklus
-   */
-  Status?: Livscyklus | Livscyklus[];
-  /**
-   * Den forretningsproces, som afstedkom opdateringen af bygværkselementet til den pågældende version
-   */
-  Forretningsproces?: string;
-  /**
-   * Det forretningsområde som har opdateret bygværkselementet til den pågældende version
-   */
-  Forretningsomraade?: string;
-  /**
-   * Den forretningshændelse, som afstedkom opdateringen af bygværkselementet til den pågældende version
-   */
-  Forretningshaendelse?: string;
-  /**
-   * Den kommune som bygværkselementet ligger i
-   */
-  Kommunekode?: string;
-  /**
-   * Angiver om resultatet skal indeholde nested data fra joins eller kun ID'er.
-   * @default true
-   */
-  MedDybde?: boolean;
-  /**
-   * Fra Datafordeler opdateringstidspunkt
-   */
-  DAFTimestampFra?: DateString;
-  /**
-   * Til Datafordeler opdateringstidspunkt
-   */
-  DAFTimestampTil?: DateString;
+export type BygningRequest = BaseRequest & {
   /**
    * BBR Etage ID
    */
@@ -200,19 +198,6 @@ export type BygningRequest = {
    * Vestlig koordinat afgrænsning
    */
   Vest?: number;
-  /**
-   * Tidspunkt hvor perioden med ændringer begynder. Kan kun benyttes i kombination med PeriodeaendringTil.
-   */
-  PeriodeaendringFra?: DateString;
-  /**
-   * Tidspunkt hvor perioden med ændringer slutter. Kan kun benyttes i kombination med PeriodeaendringFra.
-   */
-  PeriodeaendringTil?: DateString;
-  /**
-   * Angives hvis man kun vil have de nye versioner af dataobjekterne. Kan kun benyttes i kombination med PeriodeaendringFra og PeriodeaendringTil.
-   * @default false
-   */
-  KunNyesteIPeriode?: boolean;
 };
 
 export type BygningResponse = Array<Bygning>;
@@ -221,68 +206,7 @@ export type BygningResponseUdenDybde = Array<BygningUdenDybde>;
 /* BBR Ejendomsrelation */
 export type Ejendomsrelation = Ejendomsrelation_[number];
 
-export type EjendomsrelationRequest = {
-  /**
-   * Identifikation af ejendomsrelationen igennem hele sin livscyklus
-   */
-  Id?: IdLokalId | IdLokalId[];
-  /**
-   * Tidspunktet hvorfra den pågældende version af ejendomsrelationen har virkning
-   */
-  VirkningFra?: VirkningstidFra;
-  /**
-   * Tidspunktet hvor virkningen af den pågældende version af ejendomsrelationen ophører
-   */
-  VirkningTil?: VirkningstidTil;
-  /**
-   * Den aktør der har afstedkommet virkningsegenskaberne for den pågældende version af ejendomsrelationen
-   */
-  Virkningsaktoer?: string;
-  /**
-   * Tidspunktet hvor registreringen af den pågældende version af ejendomsrelationen er foretaget
-   */
-  RegistreringFra?: RegistreringstidFra;
-  /**
-   * Tidspunktet hvor en ny registrering på ejendomsrelationen er foretaget, og hvor denne version således ikke længere er den seneste.
-   */
-  RegistreringTil?: RegistreringstidTil;
-  /**
-   * Den aktør der har foretaget registreringen af den pågældende version af ejendomsrelationen
-   */
-  Registreringsaktoer?: string;
-  /**
-   * Ejendomsrelationens status i den pågældende version, dvs. ejendomsrelationens tilstand i den samlede livscyklus
-   */
-  Status?: Livscyklus | Livscyklus[];
-  /**
-   * Den forretningsproces, som afstedkom opdateringen af ejendomsrelationen til den pågældende version
-   */
-  Forretningsproces?: string;
-  /**
-   * Det forretningsområde som har opdateret ejendomsrelationen til den pågældende version
-   */
-  Forretningsomraade?: string;
-  /**
-   * Den forretningshændelse, som afstedkom opdateringen af ejendomsrelationen til den pågældende version
-   */
-  Forretningshaendelse?: string;
-  /**
-   * Den kommune som ejendomsrelationen er registreret i
-   */
-  Kommunekode?: string;
-  /**
-   * Angiver om resultatet skal indeholde nested data fra joins eller kun ID'er.
-   * @default true
-   */
-  MedDybde?: boolean;
-  /**
-   * Fra Datafordeler opdateringstidspunkt
-   */
-  DAFTimestampFra?: DateString;
-  /**
-   * Til Datafordeler opdateringstidspunkt
-   */
-  DAFTimestampTil?: DateString;
+export type EjendomsrelationRequest = BaseRequest & {
   /**
    * BFE-nummer er altid én af følgende tre ejendomstyper: SFE, BPFG eller Ejerlejlighed
    */
@@ -311,19 +235,6 @@ export type EjendomsrelationRequest = {
    * Vurderingsejendomsnummer
    */
   Vurderingsejendomsnummer?: number;
-  /**
-   * Tidspunkt hvor perioden med ændringer begynder. Kan kun benyttes i kombination med PeriodeaendringTil.
-   */
-  PeriodeaendringFra?: DateString;
-  /**
-   * Tidspunkt hvor perioden med ændringer slutter. Kan kun benyttes i kombination med PeriodeaendringFra.
-   */
-  PeriodeaendringTil?: DateString;
-  /**
-   * Angives hvis man kun vil have de nye versioner af dataobjekterne. Kan kun benyttes i kombination med PeriodeaendringFra og PeriodeaendringTil.
-   * @default false
-   */
-  KunNyesteIPeriode?: boolean;
 };
 
 export type EjendomsrelationResponse = Array<Ejendomsrelation>;
@@ -338,68 +249,7 @@ export type EnhedUdenDybde = Omit<
   fordelingsarealList?: { id_lokalId?: IdLokalId }[];
 };
 
-export type EnhedRequest = {
-  /**
-   * Identifikation af enheden igennem hele sin livscyklus
-   */
-  Id?: IdLokalId | IdLokalId[];
-  /**
-   * Tidspunktet hvorfra den pågældende version af enheden har virkning
-   */
-  VirkningFra?: VirkningstidFra;
-  /**
-   * Tidspunktet hvor virkningen af den pågældende version af enheden ophører
-   */
-  VirkningTil?: VirkningstidTil;
-  /**
-   * Den aktør der har afstedkommet virkningsegenskaberne for den pågældende version af enheden
-   */
-  Virkningsaktoer?: string;
-  /**
-   * Tidspunktet hvor registreringen af den pågældende version af enheden er foretaget
-   */
-  RegistreringFra?: RegistreringstidFra;
-  /**
-   * Tidspunktet hvor en ny registrering på enheden er foretaget, og hvor denne version således ikke længere er den seneste.
-   */
-  RegistreringTil?: RegistreringstidTil;
-  /**
-   * Den aktør der har foretaget registreringen af den pågældende version af enheden
-   */
-  Registreringsaktoer?: string;
-  /**
-   * Enhedens status i den pågældende version, dvs. enhedens tilstand i den samlede livscyklus
-   */
-  Status?: Livscyklus | Livscyklus[];
-  /**
-   * Den forretningsproces, som afstedkom opdateringen af enheden til den pågældende version
-   */
-  Forretningsproces?: string;
-  /**
-   * Det forretningsområde som har opdateret enheden til den pågældende version
-   */
-  Forretningsomraade?: string;
-  /**
-   * Den forretningshændelse, som afstedkom opdateringen af enheden til den pågældende version
-   */
-  Forretningshaendelse?: string;
-  /**
-   * Den kommune som enheden ligger i
-   */
-  Kommunekode?: string;
-  /**
-   * Angiver om resultatet skal indeholde nested data fra joins eller kun ID'er.
-   * @default true
-   */
-  MedDybde?: boolean;
-  /**
-   * Fra Datafordeler opdateringstidspunkt
-   */
-  DAFTimestampFra?: DateString;
-  /**
-   * Til Datafordeler opdateringstidspunkt
-   */
-  DAFTimestampTil?: DateString;
+export type EnhedRequest = BaseRequest & {
   /**
    * BFE-nummer
    * Er enheden af ejendomstypen Ejerlejlighed kan BFE-nummer bruges som inputparameter.
@@ -433,19 +283,6 @@ export type EnhedRequest = {
    * BBR Bygning ID
    */
   Bygning?: IdLokalId | IdLokalId[];
-  /**
-   * Tidspunkt hvor perioden med ændringer begynder. Kan kun benyttes i kombination med PeriodeaendringTil.
-   */
-  PeriodeaendringFra?: DateString;
-  /**
-   * Tidspunkt hvor perioden med ændringer slutter. Kan kun benyttes i kombination med PeriodeaendringFra.
-   */
-  PeriodeaendringTil?: DateString;
-  /**
-   * Angives hvis man kun vil have de nye versioner af dataobjekterne. Kan kun benyttes i kombination med PeriodeaendringFra og PeriodeaendringTil.
-   * @default false
-   */
-  KunNyesteIPeriode?: boolean;
 };
 
 export type EnhedResponse = Array<Enhed>;
@@ -457,68 +294,7 @@ export type GrundUdenDybde = Omit<Grund, 'bestemtFastEjendom'> & {
   bestemtFastEjendom: { id_lokalId?: IdLokalId };
 };
 
-export type GrundRequest = {
-  /**
-   * Identifikation af grunden igennem hele sin livscyklus
-   */
-  Id?: IdLokalId | IdLokalId[];
-  /**
-   * Tidspunktet hvorfra den pågældende version af grunden har virkning
-   */
-  VirkningFra?: VirkningstidFra;
-  /**
-   * Tidspunktet hvor virkningen af den pågældende version af grunden ophører
-   */
-  VirkningTil?: VirkningstidTil;
-  /**
-   * Den aktør der har afstedkommet virkningsegenskaberne for den pågældende version af grunden
-   */
-  Virkningsaktoer?: string;
-  /**
-   * Tidspunktet hvor registreringen af den pågældende version af grunden er foretaget
-   */
-  RegistreringFra?: RegistreringstidFra;
-  /**
-   * Tidspunktet hvor en ny registrering på grunden er foretaget, og hvor denne version således ikke længere er den seneste.
-   */
-  RegistreringTil?: RegistreringstidTil;
-  /**
-   * Den aktør der har foretaget registreringen af den pågældende version af grunden
-   */
-  Registreringsaktoer?: string;
-  /**
-   * Grundens status i den pågældende version, dvs. grundens tilstand i den samlede livscyklus
-   */
-  Status?: Livscyklus | Livscyklus[];
-  /**
-   * Den forretningsproces, som afstedkom opdateringen af grunden til den pågældende version
-   */
-  Forretningsproces?: string;
-  /**
-   * Det forretningsområde som har opdateret grunden til den pågældende version
-   */
-  Forretningsomraade?: string;
-  /**
-   * Den forretningshændelse, som afstedkom opdateringen af grunden til den pågældende version
-   */
-  Forretningshaendelse?: string;
-  /**
-   * Den kommune som grunden er registret i
-   */
-  Kommunekode?: string;
-  /**
-   * Angiver om resultatet skal indeholde nested data fra joins eller kun ID'er.
-   * @default true
-   */
-  MedDybde?: boolean;
-  /**
-   * Fra Datafordeler opdateringstidspunkt
-   */
-  DAFTimestampFra?: DateString;
-  /**
-   * Til Datafordeler opdateringstidspunkt
-   */
-  DAFTimestampTil?: DateString;
+export type GrundRequest = BaseRequest & {
   /**
    * BFE-nummer
    * En grund er altid af ejendomstypen Samlet Fast Ejendom. Kun BFE-numre af ejendomstypen Samlet Fast Ejendom kan bruges som inputparameter.
@@ -544,19 +320,6 @@ export type GrundRequest = {
    * DAR Husnummer ID
    */
   Husnummer?: IdLokalId | IdLokalId[];
-  /**
-   * Tidspunkt hvor perioden med ændringer begynder. Kan kun benyttes i kombination med PeriodeaendringTil.
-   */
-  PeriodeaendringFra?: DateString;
-  /**
-   * Tidspunkt hvor perioden med ændringer slutter. Kan kun benyttes i kombination med PeriodeaendringFra.
-   */
-  PeriodeaendringTil?: DateString;
-  /**
-   * Angives hvis man kun vil have de nye versioner af dataobjekterne. Kan kun benyttes i kombination med PeriodeaendringFra og PeriodeaendringTil.
-   * @default false
-   */
-  KunNyesteIPeriode?: boolean;
 };
 
 export type GrundResponse = Array<Grund>;
@@ -572,68 +335,7 @@ export type TekniskAnlaegUdenDybde = Omit<
   ejerlejlighed?: { id_lokalId?: IdLokalId };
 };
 
-export type TekniskAnlaegRequest = {
-  /**
-   * Identifikation af det tekniske anlæg igennem hele dets livscyklus
-   */
-  Id?: IdLokalId | IdLokalId[];
-  /**
-   * Tidspunktet hvorfra den pågældende version af det tekniske anlæg har virkning
-   */
-  VirkningFra?: VirkningstidFra;
-  /**
-   * Tidspunktet hvor virkningen af den pågældende version af det tekniske anlæg ophører
-   */
-  VirkningTil?: VirkningstidTil;
-  /**
-   * Den aktør der har afstedkommet virkningsegenskaberne for den pågældende version af det tekniske anlæg
-   */
-  Virkningsaktoer?: string;
-  /**
-   * Tidspunktet hvor registreringen af den pågældende version af det tekniske anlæg er foretaget
-   */
-  RegistreringFra?: RegistreringstidFra;
-  /**
-   * Tidspunktet hvor en ny registrering på det tekniske anlæg er foretaget, og hvor denne version således ikke længere er den seneste.
-   */
-  RegistreringTil?: RegistreringstidTil;
-  /**
-   * Den aktør der har foretaget registreringen af den pågældende version af det tekniske anlæg
-   */
-  Registreringsaktoer?: string;
-  /**
-   * Det tekniske anlægs status i den pågældende version, dvs. det tekniske anlægs tilstand i den samlede livscyklus
-   */
-  Status?: Livscyklus | Livscyklus[];
-  /**
-   * Den forretningsproces, som afstedkom opdateringen af det tekniske anlæg til den pågældende version
-   */
-  Forretningsproces?: string;
-  /**
-   * Det forretningsområde som har opdateret det tekniske anlæg til den pågældende version
-   */
-  Forretningsomraade?: string;
-  /**
-   * Den forretningshændelse, som afstedkom opdateringen af det tekniske anlæg til den pågældende version
-   */
-  Forretningshaendelse?: string;
-  /**
-   * Den kommune som det tekniske anlæg er registret i
-   */
-  Kommunekode?: string;
-  /**
-   * Angiver om resultatet skal indeholde nested data fra joins eller kun ID'er.
-   * @default true
-   */
-  MedDybde?: boolean;
-  /**
-   * Fra Datafordeler opdateringstidspunkt
-   */
-  DAFTimestampFra?: DateString;
-  /**
-   * Til Datafordeler opdateringstidspunkt
-   */
-  DAFTimestampTil?: DateString;
+export type TekniskAnlaegRequest = BaseRequest & {
   /**
    * MU Jordstykke ID
    */
@@ -679,19 +381,6 @@ export type TekniskAnlaegRequest = {
    * Vestlig koordinat afgrænsning
    */
   Vest?: number;
-  /**
-   * Tidspunkt hvor perioden med ændringer begynder. Kan kun benyttes i kombination med PeriodeaendringTil.
-   */
-  PeriodeaendringFra?: DateString;
-  /**
-   * Tidspunkt hvor perioden med ændringer slutter. Kan kun benyttes i kombination med PeriodeaendringFra.
-   */
-  PeriodeaendringTil?: DateString;
-  /**
-   * Angives hvis man kun vil have de nye versioner af dataobjekterne. Kan kun benyttes i kombination med PeriodeaendringFra og PeriodeaendringTil.
-   * @default false
-   */
-  KunNyesteIPeriode?: boolean;
 };
 
 export type TekniskAnlaegResponse = Array<TekniskAnlaeg>;
