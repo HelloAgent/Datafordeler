@@ -8,11 +8,11 @@ export class Livscyklus {
 
   public static readonly Start = new Livscyklus('1');
   public static readonly Projekteret = new Livscyklus('2');
-  public static readonly UnderOpfoerelse = new Livscyklus('3');
+  public static readonly UnderOpførelse = new Livscyklus('3');
   public static readonly Sagsgrund = new Livscyklus('4');
   public static readonly Oprettet = new Livscyklus('5');
-  public static readonly Opfoert = new Livscyklus('6');
-  public static readonly Gaeldende = new Livscyklus('7');
+  public static readonly Opført = new Livscyklus('6');
+  public static readonly Gældende = new Livscyklus('7');
   public static readonly Godkendt = new Livscyklus('8');
   public static readonly Afsluttet = new Livscyklus('9');
   public static readonly Historisk = new Livscyklus('10');
@@ -24,7 +24,7 @@ export class Livscyklus {
   public static readonly UnderBehandling = new Livscyklus('16');
   public static readonly Fejl = new Livscyklus('17');
   public static readonly Udført = new Livscyklus('18');
-  public static readonly Foreloebig = new Livscyklus('19');
+  public static readonly Foreløbig = new Livscyklus('19');
   public static readonly BomSagModtaget = new Livscyklus('20');
   public static readonly BomSagUnderBehandling = new Livscyklus('21');
   public static readonly BomSagFejl = new Livscyklus('22');
