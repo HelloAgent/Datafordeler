@@ -208,4 +208,42 @@ describe('BBR', () => {
     expect(res[0]?.ejerlejlighedList?.[0]).toHaveProperty('id_lokalId');
     expect(res[0]?.ejerlejlighedList?.[0]).not.toHaveProperty('ejerlejlighed');
   });
+
+  it('should get a bbr grund using bfe nummer without depth', async () => {
+    const res = await bbrWithAgent.Grund({
+      BFENummer: 2102135,
+      MedDybde: false,
+    });
+
+    expect(res).toHaveLength(1);
+    expect(res[0]).toHaveProperty('datafordelerOpdateringstid');
+    expect(res[0]).toHaveProperty('forretningshændelse');
+    expect(res[0]).toHaveProperty('forretningsområde');
+    expect(res[0]).toHaveProperty('forretningsproces');
+    expect(res[0]).toHaveProperty('gru009Vandforsyning');
+    expect(res[0]).toHaveProperty('gru010Afløbsforhold');
+    expect(res[0]).toHaveProperty('husnummer');
+    expect(res[0]).toHaveProperty('id_lokalId');
+    expect(res[0]).toHaveProperty('id_namespace');
+    expect(res[0]).toHaveProperty('kommunekode');
+    expect(res[0]).toHaveProperty('registreringFra');
+    expect(res[0]).toHaveProperty('registreringsaktør');
+    expect(res[0]).toHaveProperty('status');
+    expect(res[0]).toHaveProperty('virkningFra');
+    expect(res[0]).toHaveProperty('virkningsaktør');
+    expect(res[0]).toHaveProperty('jordstykkeList');
+    expect(res[0]).toHaveProperty('bestemtFastEjendom');
+    expect(res[0]?.bestemtFastEjendom).not.toHaveProperty('bfeNummer');
+  });
+
+  it('should get a bbr grund using bfe nummer with depth', async () => {
+    const res = await bbrWithAgent.Grund({
+      BFENummer: 2102135,
+      MedDybde: true,
+    });
+
+    expect(res).toHaveLength(1);
+    expect(res[0]).toHaveProperty('bestemtFastEjendom');
+    expect(res[0]?.bestemtFastEjendom).toHaveProperty('bfeNummer');
+  });
 });

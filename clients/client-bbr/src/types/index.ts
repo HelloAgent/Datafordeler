@@ -12,6 +12,7 @@ import type { BBR_244_BBRSag as BBRSag_ } from './generated/BBR_2.4.4_BBRSag.sch
 import type { BBR_244_Bygning as Bygning_ } from './generated/BBR_2.4.4_Bygning.schema';
 import type { BBR_244_EjendomsRelation as Ejendomsrelation_ } from './generated/BBR_2.4.4_EjendomsRelation.schema';
 import type { BBR_244_Enhed as Enhed_ } from './generated/BBR_2.4.4_Enhed.schema';
+import type { BBR_244_Grund as Grund_ } from './generated/BBR_2.4.4_Grund.schema';
 
 /* BBR Sag */
 export type BBRSag = BBRSag_[number];
@@ -448,3 +449,114 @@ export type EnhedRequest = {
 
 export type EnhedResponse = Array<Enhed>;
 export type EnhedResponseUdenDybde = Array<EnhedUdenDybde>;
+
+/* BBR Grund */
+export type Grund = Grund_[number];
+export type GrundUdenDybde = Omit<Grund, 'bestemtFastEjendom'> & {
+  bestemtFastEjendom: { id_lokalId?: IdLokalId };
+};
+
+export type GrundRequest = {
+  /**
+   * Identifikation af grunden igennem hele sin livscyklus
+   */
+  Id?: IdLokalId | IdLokalId[];
+  /**
+   * Tidspunktet hvorfra den pågældende version af grunden har virkning
+   */
+  VirkningFra?: VirkningstidFra;
+  /**
+   * Tidspunktet hvor virkningen af den pågældende version af grunden ophører
+   */
+  VirkningTil?: VirkningstidTil;
+  /**
+   * Den aktør der har afstedkommet virkningsegenskaberne for den pågældende version af grunden
+   */
+  Virkningsaktoer?: string;
+  /**
+   * Tidspunktet hvor registreringen af den pågældende version af grunden er foretaget
+   */
+  RegistreringFra?: RegistreringstidFra;
+  /**
+   * Tidspunktet hvor en ny registrering på grunden er foretaget, og hvor denne version således ikke længere er den seneste.
+   */
+  RegistreringTil?: RegistreringstidTil;
+  /**
+   * Den aktør der har foretaget registreringen af den pågældende version af grunden
+   */
+  Registreringsaktoer?: string;
+  /**
+   * Grundens status i den pågældende version, dvs. grundens tilstand i den samlede livscyklus
+   */
+  Status?: Livscyklus | Livscyklus[];
+  /**
+   * Den forretningsproces, som afstedkom opdateringen af grunden til den pågældende version
+   */
+  Forretningsproces?: string;
+  /**
+   * Det forretningsområde som har opdateret grunden til den pågældende version
+   */
+  Forretningsomraade?: string;
+  /**
+   * Den forretningshændelse, som afstedkom opdateringen af grunden til den pågældende version
+   */
+  Forretningshaendelse?: string;
+  /**
+   * Den kommune som grunden er registret i
+   */
+  Kommunekode?: string;
+  /**
+   * Angiver om resultatet skal indeholde nested data fra joins eller kun ID'er.
+   * @default true
+   */
+  MedDybde?: boolean;
+  /**
+   * Fra Datafordeler opdateringstidspunkt
+   */
+  DAFTimestampFra?: DateString;
+  /**
+   * Til Datafordeler opdateringstidspunkt
+   */
+  DAFTimestampTil?: DateString;
+  /**
+   * BFE-nummer
+   * En grund er altid af ejendomstypen Samlet Fast Ejendom. Kun BFE-numre af ejendomstypen Samlet Fast Ejendom kan bruges som inputparameter.
+   */
+  BFENummer?: number;
+  /**
+   * BBR Bygning ID
+   */
+  Bygning?: IdLokalId;
+  /**
+   * BBR TekniskAnlæg ID
+   */
+  TekniskAnlaeg?: IdLokalId;
+  /**
+   * BBR Ejendomsrelation ID
+   */
+  Ejendomsrelation?: IdLokalId;
+  /**
+   * MU Jordstykke ID
+   */
+  Jordstykke?: number;
+  /**
+   * DAR Husnummer ID
+   */
+  Husnummer?: IdLokalId | IdLokalId[];
+  /**
+   * Tidspunkt hvor perioden med ændringer begynder. Kan kun benyttes i kombination med PeriodeaendringTil.
+   */
+  PeriodeaendringFra?: DateString;
+  /**
+   * Tidspunkt hvor perioden med ændringer slutter. Kan kun benyttes i kombination med PeriodeaendringFra.
+   */
+  PeriodeaendringTil?: DateString;
+  /**
+   * Angives hvis man kun vil have de nye versioner af dataobjekterne. Kan kun benyttes i kombination med PeriodeaendringFra og PeriodeaendringTil.
+   * @default false
+   */
+  KunNyesteIPeriode?: boolean;
+};
+
+export type GrundResponse = Array<Grund>;
+export type GrundResponseUdenDybde = Array<GrundUdenDybde>;
