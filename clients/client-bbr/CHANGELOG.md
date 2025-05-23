@@ -1,5 +1,13 @@
 # @datafordeler/bbr
 
+## 0.4.1
+
+### Patch Changes
+
+- 4799af8: Added better documentation for livscyklus in bbr package
+  - @datafordeler/core@0.4.1
+  - @datafordeler/types@0.4.1
+
 ## 0.4.0
 
 ### Minor Changes
