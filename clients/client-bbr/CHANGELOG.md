@@ -1,5 +1,13 @@
 # @datafordeler/bbr
 
+## 0.4.2
+
+### Patch Changes
+
+- Fixed exporting of the correct types from bbr client
+  - @datafordeler/core@0.4.2
+  - @datafordeler/types@0.4.2
+
 ## 0.4.1
 
 ### Patch Changes
